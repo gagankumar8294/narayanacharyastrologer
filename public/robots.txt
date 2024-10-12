@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://codeaspirant.vercel.app
+
+# Sitemaps
+Sitemap: https://codeaspirant.vercel.app/sitemap.xml

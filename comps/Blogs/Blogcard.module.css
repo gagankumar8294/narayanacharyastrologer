@@ -1,0 +1,101 @@
+/* Blogs.module.css */
+
+.blogs_Section {
+  padding: 20px;
+}
+
+.heading {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2rem;
+  color: #333;
+}
+
+.blogList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px; /* Space between the cards */
+  justify-content: center; /* Center the cards horizontally */
+  align-items: center; /* Center the cards vertically */
+}
+
+.blogCard {
+  flex: 1 1 calc(25% - 16px); /* Default: 4 cards in a row */
+  max-width: 300px; /* Set a max-width to control the card width */
+  background-color: rgba(230, 220, 245, 0.082);
+  backdrop-filter: blur(3px);
+  border: 1px solid #dddddd1a;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  box-sizing: border-box;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.blogCard:hover {
+  transform: translateY(-5px); /* Add a slight lift effect on hover */
+}
+
+.blogCard img {
+  width: 100%;
+  height: 150px; /* Set a fixed height for images */
+  object-fit: cover; /* Ensures images maintain aspect ratio and cover the given area */
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+/* .blogCard h3 {
+  font-size: 1.25rem;
+  color: #bfcc09;
+  margin-bottom: 12px;
+  max-height: 50px; 
+  overflow: hidden; 
+  text-overflow: ellipsis;
+  white-space: nowrap;
+} */
+
+.blogCard h3 {
+  font-size: 1.20rem;
+  color: #bfcc09;
+  margin-bottom: 12px;
+  max-height: 3.6em; /* Allow up to 3 lines of text */
+  overflow: hidden; /* Hide overflowed text */
+  text-overflow: ellipsis; /* Adds ellipsis (...) for overflowed text */
+  display: -webkit-box; /* Required for multiline ellipsis */
+  -webkit-line-clamp: 2; /* Show up to 2 lines */
+  -webkit-box-orient: vertical; /* Set the box orientation to vertical */
+}
+
+.readMore {
+  padding: 8px 16px;
+  background-color: #0070f3;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.readMore:hover {
+  background-color: #005bb5;
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+  .blogCard {
+    flex: 1 1 calc(33.33% - 16px); /* 3 cards in a row */
+  }
+}
+
+@media (max-width: 900px) {
+  .blogCard {
+    flex: 1 1 calc(50% - 16px); /* 2 cards in a row */
+  }
+}
+
+@media (max-width: 600px) {
+  .blogCard {
+    flex: 1 1 100%; /* 1 card in a row */
+  }
+}

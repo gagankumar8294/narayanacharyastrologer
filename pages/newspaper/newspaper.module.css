@@ -1,0 +1,166 @@
+
+  .viewpapers {
+    display: flex;
+    padding-top: 200px;
+    display: block;
+  }
+  
+  .paper {
+    flex: 1;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 5px;
+    background-color: #00BFFF;
+  }
+  
+  .paperContent {
+    /* Style for content when selected */
+    width: 100%;
+  }
+
+  .everyday {
+    color: white;
+    text-align: center;
+    padding-top: 150px;
+    font-size: 25px;
+  }
+  
+  .papers_border {
+    padding-top: 40px;
+    width: 100%;
+  }
+  
+  .english_paper_title {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 1%;
+    margin-left: 1%;
+    text-align: center;
+    text-decoration: none;
+    border: 2px solid #333;
+    border-radius: 5px;
+    background-color: rgba(230, 220, 245, 0.200);
+    color: #FFD700;
+    cursor: pointer;
+    /* margin-top: 20px; */
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  }
+  .english_paper_title:hover {
+    background-color: #333;
+  }
+  .english_paper_title:active {
+    background-color: #000;
+    border-color: #000;
+    color: #fff;
+  }
+
+  .english_papers {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin-right: 1%;
+    margin-left: 1%;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border: 2px solid #333;
+    border-radius: 5px;
+    background-color: rgba(230, 220, 245, 0.056);
+    color: #FFD700;
+    cursor: pointer;
+    /* margin-top: 20px; */
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  }
+  
+  .kannada_paper_title {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin-right: 1%;
+    margin-left: 1%;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border: 2px solid #333;
+    border-radius: 5px;
+    background-color: rgba(230, 220, 245, 0.200);
+    color: #FFD700;
+    cursor: pointer;
+    /* margin-top: 20px; */
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  }
+  .kannada_paper_title:hover {
+    background-color: #333;
+  }
+  .kannada_paper_title:active {
+    background-color: #000;
+    border-color: #000;
+    color: #fff;
+  }
+  .kannada_papers {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    margin-right: 1%;
+    margin-left: 1%;
+    text-decoration: none;
+    border: 2px solid #333;
+    border-radius: 5px;
+    background-color: rgba(230, 220, 245, 0.056);
+    color: #FFD700;
+    cursor: pointer;
+    /* margin-top: 20px; */
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  }
+  
+  .telugu_paper_title {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin-right: 1%;
+    margin-left: 1%;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border: 2px solid #333;
+    border-radius: 5px;
+    background-color: rgba(230, 220, 245, 0.200);
+    color: #FFD700;
+    cursor: pointer;
+    /* margin-top: 20px; */
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  }
+  .telugu_paper_title:hover {
+    background-color: #333;
+  }
+  .telugu_paper_title:active {
+    background-color: #000;
+    border-color: #000;
+    color: #fff;
+  }
+  .telugu_papers {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    margin-right: 1%;
+    margin-left: 1%;
+    text-decoration: none;
+    border: 2px solid #333;
+    border-radius: 5px;
+    background-color: rgba(230, 220, 245, 0.056);
+    color: #FFD700;
+    cursor: pointer;
+    /* margin-top: 20px; */
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  }
+
+
+  .papers_border {
+    text-align: center;
+  }
+
+  .language_papers {
+    margin-bottom: 100px;
+    width: 100%;
+  }

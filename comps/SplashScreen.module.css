@@ -1,0 +1,22 @@
+/* styles/SplashScreen.module.css */
+.splashScreen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+  }
+  
+  .logoText {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .loadingGif {
+    width: 100px; /* Adjust the size as per your GIF */
+    height: auto;
+  }
+  
