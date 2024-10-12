@@ -29,7 +29,15 @@
 }
 
 .container {
-  display : flex;
+  background-image: url('/homepage/numerology.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh; /* Adjust to cover the full screen height */
+  padding-top: 150px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 @media (max-width: 768px) {

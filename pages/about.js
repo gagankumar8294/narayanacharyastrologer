@@ -5,7 +5,7 @@ const About = () => {
     return (
         <>
         <Head>
-            <title>CodeAspirant | About Page</title>
+            <title>Narayanachary Astrologer | About Page</title>
             <meta name='keywords' content="codeaspirant" />
         </Head>
         <div style={{paddingTop:"150px"}}>

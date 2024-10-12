@@ -3,12 +3,12 @@ import styles from '../styles/Home.module.css'
 import Link from "next/link"
 import AutoTypingText from '../comps/AutoTypingText';
 import Image from 'next/image';
-import c from ".././public/homepage/c.gif";
+// import c from ".././public/homepage/c.gif";
 
 // import SplashScreen from '@/comps/SplashScreen';
 // import { useState, useEffect } from 'react';
 
-const textList = ['Boost Your Web Savvy','Web Insights for Growth','Learn Web. Grow Business', 'One Stop Web Solutions', 'We Provide Website Services',]
+const textList = ['Astrology, Vaastu shastra','Numerology','Horoscope Prediction',]
 
 export default function Home() {
 
@@ -27,9 +27,9 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>CodeAspirant - Professional Web Developer in Bangalore | Web Design & Website Services</title>
-        <meta name='keywords' content='CodeAspirant,Gagan Web Developer, web developer in Bangalore, web designer, website creator, web design services, website development' />
-        <meta name='description' content='CodeAspirant, Gagan Web designer, offers professional web development and design services in Bangalore. Learn web development, explore tech tricks, and avail our website creation services.' />
+        <title>Narayanachary - Professional Astrologer in Bangalore | Astrology & Vaastu Shastra</title>
+        <meta name='keywords' content='ನಾರಾಯಣಾಚಾರಿ ಜ್ಯೋತಿಷಿ, Bangalore astrologer, professional astrologer, best astrology services, Vaastu Shastra expert, horoscope reading, astrology consultation, Bangalore Vaastu services, spiritual guidance, astrology solutions, నారాయణాచారి జ్యోతిష్యుడు, బెంగళೂರು జ్యೋತಿಷಿ, వాస్తు శాస్త్ర నిపుణుడు, జ్యోతిష్య సేవలు' />
+        <meta name='description' content='Narayanachary, a professional astrologer in Bangalore, offers expert astrology consultations, horoscope readings, and Vaastu Shastra solutions. ನಾರಾಯಣಾಚಾರಿ, ಪ್ರಮುಖ ಜ್ಯೋತಿಷಿ ಬೆಂಗಳೂರಿನಲ್ಲಿ, ಜ್ಯೋತಿಷ್ಯ ಸಮಾಲೋಚನೆಗಳು, ಜಾತಕ ವೀಕ್ಷಣೆ, ಮತ್ತು ವಾಸ್ತು ಪರಿಹಾರ ಸೇವೆಗಳನ್ನು ನೀಡುತ್ತಾನೆ. నారాయణాచారి, బెంగళూరులో ప్రముఖ జ్యోతిష్యుడు, జ్యోతిష్య సంప్రదాయాలు, జాతక పఠనం, మరియు వాస్తు పరిష్కార సేవలను అందిస్తారు.' />
       </Head>
       {/* {loading ? (
         <SplashScreen />
@@ -39,17 +39,17 @@ export default function Home() {
     
 
       <div className={styles.leftDiv}>
-          <h4 className={styles.dynamic_text} >Welcome to<span className={styles.main_title}>Code Aspirant</span></h4>
-          <h2>Code Aspirant</h2>
+          <h4 className={styles.dynamic_text} >Welcome to<span className={styles.main_title}>Chary's Predictions</span></h4>
+          <h2>Narayanachary Astrologer</h2>
           <p className={styles.dynamic_text2} >
             <span className={styles.text_bar_pulse}style={{ color: "#f2f2f2", fontWeight: "bold" }}>|</span> <AutoTypingText textList={textList} typingDelay={100} erasingDelay={30} pauseDelay={1500} />
           </p>
           <div className={styles.intro_para}>
             <p>
-              With 3 years of expertise in Web Design & Development, we teach you everything from scratch and share essential tech tricks to make your life easier and more efficient
+            3 ವರ್ಷಗಳ ಜ್ಯೋತಿಷ್ಯ ಮತ್ತು ವಾಸ್ತು ಶಾಸ್ತ್ರ ಅನುಭವದೊಂದಿಗೆ, ನಾವು ನಿಮಗೆ ಜ್ಯೋತಿಷ್ಯವನ್ನು ಬೋಧಿಸುತ್ತೇವೆ ಮತ್ತು ಜೀವನದಲ್ಲಿ ಉತ್ತಮ ನಿರ್ಧಾರಗಳನ್ನು ಕೈಗೊಳ್ಳಲು ಅಗತ್ಯವಾದ ಮಾರ್ಗದರ್ಶನವನ್ನು ಒದಗಿಸುತ್ತೇವೆ.
             </p>
             <h4 className={styles.services}>
-              We are Open for<span style={{color:'yellow'}}> Website Design Services</span>
+              ನಾವು<span style={{color:'yellow'}}> ಜ್ಯೋತಿಷ್ಯ ಮತ್ತು ವಾಸ್ತು ಪರಿಹಾರ ಸೇವೆಗಳನ್ನು</span> ನೀಡಲು ಸಿದ್ಧವಾಗಿದ್ದೇವೆ
             </h4>
           </div>
           <div className={styles.main_link}>
@@ -57,9 +57,9 @@ export default function Home() {
             <Link className={styles.button_2} href="/videos">Get Started</Link>
           </div>
         </div>
-        <div className={styles.rightDiv} style={{width:"50%"}}>
+        {/* <div className={styles.rightDiv} style={{width:"50%"}}>
           <Image src={c} width={300} height={400} alt="CodeAspirant" />
-        </div>  
+        </div>   */}
       </div>
     </>
   )
