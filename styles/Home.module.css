@@ -442,6 +442,10 @@
   /* .main_title {
     color: yellow;
   } */
+
+  .container {
+    padding-top: 600px !important;
+  }
 }
 
 @media (min-width: 310px) and (max-width: 320px) {

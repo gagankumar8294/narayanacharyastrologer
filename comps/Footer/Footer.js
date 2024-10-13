@@ -6,19 +6,19 @@ const Footer = () => {
         <footer style={styles.footer}>
             <div style={styles.container}>
                 <div style={styles.logo}>
-                    <h2>CodeAspirant</h2>
+                    <h2>narayanacharyastrologer</h2>
                 </div>
                 <div style={styles.links}>
-                    <Link href="/terms" style={styles.link}>
+                    {/* <Link href="/terms" style={styles.link}>
                         Terms and Conditions
                     </Link>
                     <Link href="/privacy" style={styles.link}>
                         Privacy Policy
-                    </Link>
-                    <a href="tel:+1234567890" style={styles.link}>Contact: +919148644611</a>
+                    </Link> */}
+                    <a href="tel:+1234567890" style={styles.link}>Contact: +918549803686</a>
                 </div>
                 <div style={styles.copyright}>
-                    &copy; 2024 CodeAspirant. All rights reserved.
+                    &copy; 2024 narayayanacharyastrologer. All rights reserved.
                 </div>
             </div>
         </footer>
@@ -27,7 +27,7 @@ const Footer = () => {
 
 const styles = {
     footer: {
-        backgroundColor: '#333',
+        backgroundColor: '#ff6801',
         color: '#fff',
         padding: '20px 0',
         textAlign: 'center',

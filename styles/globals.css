@@ -427,6 +427,261 @@ footer {
   
 }
 
+/* NAVBAR  + logo + Hamburger*/
+@media (max-width: 300px) {
+
+  .nav_container {
+    margin-bottom: -110px !important;
+  }
+
+  .logo_cover {
+    margin-left: 90px !important;
+    padding-left: 05px;
+    padding-right: 05px;
+  }
+
+  .hamburger_button {
+    margin-top: -25px;
+    margin-right: -10px;
+  }
+
+}
+
+@media (min-width: 301px) and (max-width: 330px) {
+
+  .nav_container {
+    margin-bottom: -105px !important;
+  }
+
+  .logo_cover {
+    margin-left: 90px !important;
+    padding-left: 05px;
+    padding-right: 05px;
+    margin-top: 15px;
+  }
+
+  .hamburger_button {
+    margin-top: -25px;
+    margin-right: -10px;
+  }
+}
+
+@media (min-width: 331px) and (max-width: 350px) {
+
+  .nav_container {
+    margin-bottom: -105px !important;
+  }
+
+  .logo_cover {
+    margin-left: 90px !important;
+    padding-left: 05px;
+    padding-right: 05px;
+    margin-top: 15px;
+  }
+
+  .hamburger_button {
+    margin-top: -25px;
+    margin-right: -10px;
+  }
+}
+
+@media (min-width: 351px) and (max-width: 370px) {
+
+  .nav_container {
+    margin-bottom: -105px !important;
+  }
+
+  .logo_cover {
+    margin-left: 90px !important;
+    padding-left: 05px;
+    padding-right: 05px;
+    margin-top: 15px;
+  }
+
+  .hamburger_button {
+    margin-top: -25px;
+    margin-right: -10px;
+  }
+}
+
+@media (min-width: 371px) and (max-width: 400px) {
+
+  .nav_container {
+    margin-bottom: -105px !important;
+  }
+
+  .logo_cover {
+    margin-left: 90px !important;
+    padding-left: 05px;
+    padding-right: 05px;
+    margin-top: 15px;
+  }
+
+  .hamburger_button {
+    margin-top: -25px;
+    margin-right: -10px;
+  }
+}
+
+@media (min-width: 401px) and (max-width: 430px) {
+
+  .nav_container {
+    margin-bottom: -105px !important;
+  }
+
+  .logo_cover {
+    margin-left: 90px !important;
+    padding-left: 05px;
+    padding-right: 05px;
+    margin-top: 15px;
+  }
+
+  .hamburger_button {
+    margin-top: -25px;
+    margin-right: -10px;
+  }
+}
+
+@media (min-width: 431px) and (max-width: 450px) {
+
+  .nav_container {
+    margin-bottom: -105px !important;
+  }
+
+  .logo_cover {
+    margin-left: 90px !important;
+    padding-left: 05px;
+    padding-right: 05px;
+    margin-top: 15px;
+  }
+
+  .hamburger_button {
+    margin-top: -25px;
+    margin-right: -10px;
+  }
+}
+
+@media (min-width: 451px) and (max-width: 500px) {
+
+  .nav_container {
+    margin-bottom: -110px !important;
+  }
+
+  .logo_cover {
+    margin-left: 90px !important;
+    padding-left: 05px;
+    padding-right: 05px;
+    margin-top: 40px;
+    margin-bottom: -40px;
+  }
+
+  .hamburger_button {
+    margin-top: 02px;
+    margin-right: -10px;
+  }
+}
+
+@media (min-width: 501px) and (max-width: 550px) {
+
+  .nav_container {
+    margin-bottom: -110px !important;
+  }
+
+  .logo_cover {
+    margin-left: 90px !important;
+    padding-left: 05px;
+    padding-right: 05px;
+    margin-top: 40px;
+    margin-bottom: -40px;
+  }
+
+  .hamburger_button {
+    margin-top: 02px;
+    margin-right: -10px;
+  }
+}
+
+@media (min-width: 551px) and (max-width: 600px) {
+
+  .nav_container {
+    margin-bottom: -110px !important;
+  }
+
+  .logo_cover {
+    margin-left: 90px !important;
+    padding-left: 05px;
+    padding-right: 05px;
+    margin-top: 40px;
+    margin-bottom: -40px;
+  }
+
+  .hamburger_button {
+    margin-top: 02px;
+    margin-right: 35px;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 650px) {
+
+  .nav_container {
+    margin-bottom: -110px !important;
+  }
+
+  .logo_cover {
+    margin-left: 90px !important;
+    padding-left: 05px;
+    padding-right: 05px;
+    margin-top: 40px;
+    margin-bottom: -20px;
+  }
+
+  .hamburger_button {
+    margin-top: 05px;
+    margin-right: 60px;
+  }
+}
+
+@media (min-width: 651px) and (max-width: 768px) {
+
+  .nav_container {
+    margin-bottom: -110px !important;
+  }
+
+  .logo_cover {
+    margin-left: 90px !important;
+    padding-left: 05px;
+    padding-right: 05px;
+    margin-top: 40px;
+    margin-bottom: -20px;
+  }
+
+  .hamburger_button {
+    margin-top: 05px;
+    margin-right: 80px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 800px) {
+  .nav_bar {
+    margin-top: -09px !important;
+  }
+
+  .logo_cover {
+    margin-top: 30px;
+  }
+}
+
+@media (min-width: 801px) and (max-width: 850px) {
+  .nav_bar {
+    margin-top: -09px !important;
+  }
+
+  .logo_cover {
+    margin-top: 30px;
+  }
+}
+
+
 .nav_bar {
   width: 100%;
   backdrop-filter: blur(10px);
@@ -470,13 +725,13 @@ footer {
 
 /* Styling of the scrollbar thumb */
 ::-webkit-scrollbar-thumb {
-  background-color: #FDFF00;
+  background-color: #ff6801;
   border-radius: 6px;
 }
 
 /* Styling of the scrollbar track */
 ::-webkit-scrollbar-track {
-  background-color: #FDFF00;
+  background-color: #ff6801;
 }
 
 /* Width and height of the scrollbar track for Firefox */
@@ -486,7 +741,7 @@ footer {
 /* For the best compatibility, you can include both versions */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #FDFF00 #000000;
+  scrollbar-color: #ff6801 #000000;
 }
 
 /* Styling of the scrollbar thumb for Firefox */
@@ -500,5 +755,5 @@ footer {
 
 /* Styling of the scrollbar track for Firefox */
 *::-webkit-scrollbar-track {
-  background-color: #FDFF00;
+  background-color: #ff6801;
 }
