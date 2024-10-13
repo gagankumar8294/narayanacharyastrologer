@@ -29,7 +29,7 @@
 }
 
 .container {
-  background-image: url('/homepage/numerology.jpg');
+  /* background-image: url('/homepage/numerology.jpg'); */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -133,7 +133,7 @@
   }
 
   .dynamic_text2 {
-    color: #FFD700;
+    color: #ff6801;
     font-size: 40px;
     /* background-color: #333; */
     padding-left: 55px;
@@ -225,7 +225,7 @@
   }
 
   .dynamic_text2 {
-    color: #FFD700;
+    color: #ff6801;
     font-size: 40px;
     /* background-color: #333; */
     padding-left: 55px;
@@ -385,7 +385,7 @@
     word-spacing: -10px;
   }
   .ss_typo {
-    color: yellow;
+    color: #ff6801;
   }
 
   .leftDiv {
@@ -411,7 +411,7 @@
     word-spacing: -10px;
   }
   .dynamic_text2 {
-    color: yellow;
+    color: #ff6801;
     text-align: center;
   }
   .dynamic_text2 span {
@@ -792,7 +792,7 @@
   .leftDiv h2 {
     text-align: center;
     font-size: 50px;
-    color: #FFD700;
+    color: #ff6801;
     margin-top: -20px;
     margin-left: -29px;
     word-spacing: -10px;
@@ -821,7 +821,7 @@
 
   .dynamic_text2 span {
     text-align: center;
-    color: yellow;
+    color: #ff6801;
     font-size: 25px;
     padding-bottom: 4px;
     border-bottom: 1px solid magenta;
@@ -883,7 +883,7 @@
   }
   .dynamic_text2 span {
     font-size: 28px;
-    color: yellow;
+    color: #ff6801;
   }
   .intro_para p {
     font-size: 16px;
@@ -975,7 +975,7 @@
     text-align: center;
     font-size: 80px;
     word-spacing: -20px;
-    color: #FFD700;
+    color: #ff6801;
     margin-top: -32px;
     margin-left: -35px;
   }
@@ -1013,7 +1013,7 @@
 
   .dynamic_text2 span {
     text-align: center;
-    color: yellow;
+    color: #ff6801;
     font-size: 43px;
     padding-bottom: 4px;
     border-bottom: 1px solid magenta;
@@ -1055,7 +1055,7 @@
     text-align: center;
     font-size: 80px;
     word-spacing: -20px;
-    color: #FFD700;
+    color: #ff6801;
     margin-top: -32px;
     margin-left: -35px;
   }
@@ -1093,7 +1093,7 @@
 
   .dynamic_text2 span {
     text-align: center;
-    color: yellow;
+    color:#ff6801;
     font-size: 43px;
     padding-bottom: 4px;
     border-bottom: 1px solid magenta;
@@ -1135,7 +1135,7 @@
     text-align: center;
     font-size: 80px;
     word-spacing: -20px;
-    color: #FFD700;
+    color: #ff6801;
     margin-top: -32px;
     margin-left: -35px;
   }
@@ -1173,7 +1173,7 @@
 
   .dynamic_text2 span {
     text-align: center;
-    color: yellow;
+    color: #ff6801;
     font-size: 43px;
     padding-bottom: 4px;
     border-bottom: 1px solid magenta;
@@ -1215,7 +1215,7 @@
     text-align: center;
     font-size: 80px;
     word-spacing: -20px;
-    color: #FFD700;
+    color: #ff6801;
     margin-top: -32px;
     margin-left: -35px;
   }
@@ -1253,7 +1253,7 @@
 
   .dynamic_text2 span {
     text-align: center;
-    color: yellow;
+    color: #ff6801;
     font-size: 43px;
     padding-bottom: 4px;
     border-bottom: 1px solid magenta;
@@ -1296,7 +1296,7 @@
     text-align: center;
     font-size: 80px;
     word-spacing: -20px;
-    color: #FFD700;
+    color: #ff6801;
     margin-top: -32px;
     margin-left: -35px;
   }
@@ -1334,7 +1334,7 @@
 
   .dynamic_text2 span {
     text-align: center;
-    color: yellow;
+    color: #ff6801;
     font-size: 43px;
     padding-bottom: 4px;
     border-bottom: 1px solid magenta;
@@ -1376,7 +1376,7 @@
     text-align: center;
     font-size: 80px;
     word-spacing: -20px;
-    color: #FFD700;
+    color: #ff6801;
     margin-top: -32px;
     margin-left: -35px;
     margin-bottom: 30px;
@@ -1414,7 +1414,7 @@
 
   .dynamic_text2 span {
     text-align: center;
-    color: yellow;
+    color: #ff6801;
     font-size: 43px;
     padding-bottom: 4px;
     border-bottom: 1px solid magenta;
@@ -1469,7 +1469,7 @@
     text-align: center;
     font-size: 80px;
     word-spacing: -20px;
-    color: #FFD700;
+    color: #ff6801;
     margin-top: -32px;
     margin-left: -35px;
     margin-bottom: 30px;
@@ -1507,7 +1507,7 @@
 
   .dynamic_text2 span {
     text-align: center;
-    color: yellow;
+    color: #ff6801;
     font-size: 43px;
     padding-bottom: 4px;
     border-bottom: 1px solid magenta;
@@ -1560,7 +1560,7 @@
     text-align: center;
     font-size: 80px;
     word-spacing: -20px;
-    color: #FFD700;
+    color: #ff6801;
     margin-top: -32px;
     margin-left: -35px;
     margin-bottom: 30px;
@@ -1598,7 +1598,7 @@
 
   .dynamic_text2 span {
     text-align: center;
-    color: yellow;
+    color: ff6801;
     font-size: 43px;
     padding-bottom: 4px;
     border-bottom: 1px solid magenta;
@@ -1654,7 +1654,7 @@
   .leftDiv h2 {
     text-align: center;
     font-size: 100px;
-    color: #FFD700;
+    color: #ff6801;
     margin-top: -35px;
     margin-left: -10px;
     word-spacing: -25px;
@@ -1691,7 +1691,7 @@
 
   .dynamic_text2 span {
     text-align: center;
-    color: yellow;
+    color: #ff6801;
     font-size: 50px;
     padding-bottom: 4px;
     border-bottom: 1px solid magenta;
@@ -2013,7 +2013,7 @@
   }
   .leftDiv h2 {
     text-align: center;
-    color: #FFD700;
+    color: #ff6801;
     font-size: 40px;
     word-spacing: -10px;
   }
@@ -2054,7 +2054,7 @@
     width: 100%;
   }
   .dynamic_text2 span {
-    color: yellow;
+    color: #ff6801;
     text-align: center;
     font-size: 20px;
     margin-left: -35%;
@@ -2084,7 +2084,7 @@
 }
 
 .main_title {
-  color: yellow;
+  color: #ff6801;
 }
 
 @media (min-width: 1200px) {
@@ -2726,7 +2726,7 @@
   }
   .leftDiv h2 {
     text-align: center;
-    color: #FFD700;
+    color: #ff6801;
     font-size: 40px;
     word-spacing: -10px;
   }
@@ -2767,7 +2767,7 @@
     width: 100%;
   }
   .dynamic_text2 span {
-    color: yellow;
+    color: #ff6801;
     text-align: center;
     font-size: 20px;
     margin-left: -35%;
@@ -2815,7 +2815,7 @@
   .leftDiv h2 {
     text-align: center;
     font-size: 50px;
-    color: #FFD700;
+    color: #ff6801;
     margin-top: -20px;
     margin-left: -29px;
     word-spacing: -10px;
@@ -2847,7 +2847,7 @@
 
   .dynamic_text2 span {
     text-align: center;
-    color: yellow;
+    color: #ff6801;
     font-size: 25px;
     padding-bottom: 4px;
     border-bottom: 1px solid magenta;
@@ -2885,7 +2885,7 @@
   .leftDiv h2 {
     text-align: center;
     font-size: 50px;
-    color: #FFD700;
+    color: #ff6801;
     margin-top: -20px;
     margin-left: -29px;
     word-spacing: -10px;
@@ -2917,7 +2917,7 @@
 
   .dynamic_text2 span {
     text-align: center;
-    color: yellow;
+    color: #ff6801;
     font-size: 25px;
     padding-bottom: 4px;
     border-bottom: 1px solid magenta;
@@ -2955,7 +2955,7 @@
   .leftDiv h2 {
     text-align: center;
     font-size: 50px;
-    color: #FFD700;
+    color: #ff6801;
     margin-top: -20px;
     margin-left: -29px;
     word-spacing: -10px;
@@ -2987,7 +2987,7 @@
 
   .dynamic_text2 span {
     text-align: center;
-    color: yellow;
+    color: #ff6801;
     font-size: 25px;
     padding-bottom: 4px;
     border-bottom: 1px solid magenta;
@@ -3025,7 +3025,7 @@
   .leftDiv h2 {
     text-align: center;
     font-size: 50px;
-    color: #FFD700;
+    color: #ff6801;
     margin-top: -20px;
     margin-left: -29px;
     word-spacing: -10px;
@@ -3057,7 +3057,7 @@
 
   .dynamic_text2 span {
     text-align: center;
-    color: yellow;
+    color: #ff6801;
     font-size: 25px;
     padding-bottom: 4px;
     border-bottom: 1px solid magenta;

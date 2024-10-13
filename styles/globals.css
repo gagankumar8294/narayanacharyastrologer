@@ -7,8 +7,8 @@
 
 
 body {
-  background: #000000;
-  color: #fff;
+  background: #fff;
+  color: #000;
   font-family: "Nunito";
 }
 
@@ -26,14 +26,10 @@ nav {
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
-  border-bottom: 1px solid black;
+  /* border-bottom: 1px solid black; */
 }
 .links {
   margin-left: 12px
-}
-
-nav .logo {
-  margin-right: auto;
 }
 
 footer {
@@ -45,7 +41,20 @@ footer {
   border-top: 1px solid #eaeaea;
 }
 
-
+.logo_cover {
+  text-align: center;
+  background-color: #ff6801;
+  color: #fff;
+  border-radius: 5px;
+  margin-left: 100px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 25px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  line-height: 30px;
+}
 
 @media (min-width: 769px) {
   .hidden-md {
@@ -60,7 +69,7 @@ footer {
   .nav_links_block {
     position: absolute;
     right: 30px;
-    top: 50px;
+    top: 35px;
   }
 
   .nav_links_block ul {
@@ -84,9 +93,8 @@ footer {
     margin-left: 70px;
     margin-top: 9px;
     margin-bottom: 5px;
-    border-radius: 50%;
-    height: 100px;
-    width: 100px;
+    height: auto;
+    width: 250px;
   }
 
   .nav-container {
