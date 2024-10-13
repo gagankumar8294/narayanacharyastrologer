@@ -39,7 +39,7 @@ export default function Home() {
     
 
       <div className={styles.leftDiv}>
-          <h4 className={styles.dynamic_text} >Welcome to<span className={styles.main_title}>Chary's Predictions</span></h4>
+          <h4 className={styles.dynamic_text} >Welcome to<span className={styles.main_title}>Achary's Predictions</span></h4>
           <h2>Narayanachary Astrologer</h2>
           <p className={styles.dynamic_text2} >
             <span className={styles.text_bar_pulse}style={{ color: "#f2f2f2", fontWeight: "bold" }}>|</span> <AutoTypingText textList={textList} typingDelay={100} erasingDelay={30} pauseDelay={1500} />
