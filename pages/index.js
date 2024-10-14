@@ -70,7 +70,7 @@ export default function Home() {
       <div className={styles.leftDiv}>
           {/* Dynamically display welcome message based on selected language */}
           <h4 className={styles.dynamic_text}>Welcome to<span className={styles.main_title}> Achary's Predictions</span></h4>
-          <h2>{content[language].welcome}</h2>
+          <h2 className={styles.welcome_textis}>{content[language].welcome}</h2>
           {/* AutoTyping text */}
           <p className={styles.dynamic_text2}>
             <span className={styles.text_bar_pulse} style={{ color: "#f2f2f2", fontWeight: "bold" }}>|</span>

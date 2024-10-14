@@ -374,6 +374,11 @@
 }
 
 @media (max-width: 300px) {
+
+  .intro_para {
+    color: #000 !important;
+  }
+
   .rightDiv {
     display: none;
   }
@@ -456,6 +461,10 @@
   .main_title {
     padding-left: 05px;
   }
+  
+  .intro_para {
+    color: #000 !important;
+  }
 }
 
 @media (min-width: 320px) and (max-width: 330px) {
@@ -464,6 +473,10 @@
   }
   .main_title {
     padding-left: 09px;
+  }
+  
+  .intro_para {
+    color: #000 !important;
   }
 }
 
@@ -474,6 +487,10 @@
   .main_title {
     padding-left: 15px;
   }
+
+  .intro_para {
+    color: #000 !important;
+  }
 }
 
 @media (min-width: 340px) and (max-width: 350px) {
@@ -482,6 +499,10 @@
   }
   .main_title {
     padding-left: 27px;
+  }
+
+  .intro_para {
+    color: #000 !important;
   }
 }
 
@@ -492,11 +513,19 @@
   .main_title {
     padding-left: 35px;
   }
+
+  .intro_para {
+    color: #000 !important;
+  }
 }
 
 @media (min-width: 360px) and (max-width: 360px) {
   .leftDiv h4 {
     padding-top: 20px;
+  }
+
+  .intro_para {
+    color: #000 !important;
   }
 }
 
@@ -515,6 +544,14 @@
   .main_title {
     padding-left: 45px;
   }
+
+  .leftDiv h2 {
+    line-height: 50px;
+  }
+
+  .intro_para {
+    color: #000 !important;
+  }
 }
 
 @media (min-width: 380px) and (max-width: 391px) {
@@ -523,6 +560,10 @@
   }
   .main_title {
     padding-left: 48px;
+  }
+
+  .intro_para {
+    color: #000 !important;
   }
 }
 
@@ -533,6 +574,10 @@
   .main_title {
     padding-left: 53px;
   }
+
+  .intro_para {
+    color: #000 !important;
+  }
 }
 
 @media (min-width: 401px) and (max-width: 410px) {
@@ -541,6 +586,10 @@
   }
   .main_title {
     padding-left: 57px;
+  }
+
+  .intro_para {
+    color: #000 !important;
   }
 }
 
@@ -558,6 +607,10 @@
   .leftDiv h2 {
     margin-left: -28px;
     margin-top: -18px;
+  }
+
+  .intro_para {
+    color: #000 !important;
   }
 
   .intro_para h4 {
@@ -588,6 +641,10 @@
 @media (min-width: 360px) and (max-width: 374px) {
   .leftDiv h4 {
     margin-top: -20px !important;
+  }
+
+  .intro_para {
+    color: #000 !important;
   }
   .leftDiv h2 {
     margin-top: -14px;
@@ -621,6 +678,11 @@
 
 /*   iphone SE  */
 @media (min-width: 375px) and (max-width: 385px) {
+
+
+  .intro_para {
+    color: #000 !important;
+  }
 
   .dynamic_text2 span {
     margin-left: -70px !important;
@@ -676,6 +738,10 @@
       padding-top: 0px;
       margin-top: -20px;
     }
+    .intro_para {
+      color: #000 !important;
+    }
+
     .leftDiv h2 {
       margin-left: -30px;
       font-size: 45px !important;
@@ -713,6 +779,11 @@
     font-size: 45px !important;
     margin-top: -15px;
   }
+
+  .intro_para {
+    color: #000 !important;
+  }
+
   .dynamic_text2 {
     margin-left: 75px !important;
     margin-top: 25px !important;
@@ -745,6 +816,11 @@
     font-size: 50px !important;
     margin-top: -15px;
   }
+
+  .intro_para {
+    color: #000 !important;
+  }
+
   .dynamic_text2 {
     padding-left: 50px;
   }
@@ -782,6 +858,11 @@
   .rightDiv {
     display: none;
   }
+
+  .intro_para {
+    color: #000 !important;
+  }
+
   .leftDiv {
     width: 100%;
     margin-top: -18px;
@@ -854,6 +935,11 @@
     margin-top: 60px;
     width:65%;
   }
+
+  .intro_para {
+    color: #000 !important;
+  }
+
   .leftDiv h4 {
     font-size: 25px;
     margin-left: 10px;
@@ -968,6 +1054,11 @@
     width: 100%;
     margin-top: -18px;
   }
+
+  .intro_para {
+    color: #000 !important;
+  }
+
   .leftDiv h4 {
     text-align: center;
     font-size: 50px;
@@ -1040,6 +1131,9 @@
 @media (min-width: 601px) and (max-width: 650px){
   .container {
     padding-top: 190px !important;
+  }
+  .intro_para {
+    color: #000 !important;
   }
   .rightDiv {
     display: none;
@@ -1124,6 +1218,9 @@
   .rightDiv {
     display: none;
   }
+  .intro_para {
+    color: #000 !important;
+  }
   .leftDiv {
     width: 100%;
     margin-top: -18px;
@@ -1204,6 +1301,9 @@
   .rightDiv {
     display: none;
   }
+  .intro_para {
+    color: #000 !important;
+  }
   .leftDiv {
     width: 100%;
     margin-top: -18px;
@@ -1281,6 +1381,9 @@
 @media (min-width: 768px) and (max-width: 790px){
   .container {
     padding-top: 190px !important;
+  }
+  .intro_para {
+    color: #000 !important;
   }
   .rightDiv {
     display: none;
@@ -1364,6 +1467,9 @@
   }
   .rightDiv {
     display: none;
+  }
+  .intro_para {
+    color: #000 !important;
   }
   .leftDiv {
     width: 100%;
@@ -1462,6 +1568,9 @@
     width: 100%;
     margin-top: -18px;
   }
+  .intro_para {
+    color: #000 !important;
+  }
   .leftDiv h4 {
     text-align: center;
     font-size: 50px;
@@ -1548,6 +1657,9 @@
   }
   .rightDiv {
     display: none;
+  }
+  .intro_para {
+    color: #000 !important;
   }
   .leftDiv {
     width: 100%;
@@ -1640,6 +1752,9 @@
 
   .container {
     padding-top: 250px !important;
+  }
+  .intro_para {
+    color: #000 !important;
   }
   .rightDiv {
     display: none;
@@ -3084,4 +3199,10 @@
 .maintenance {
   text-align: center;
   padding-top: 300px;
+}
+
+@media (min-width: 200px) and (max-width:768px) {
+  .intro_para {
+  color: #000 !important;
+}
 }
