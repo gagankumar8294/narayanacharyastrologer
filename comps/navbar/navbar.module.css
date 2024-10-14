@@ -578,3 +578,9 @@
     /* margin-top: 20px !important; */
   }
 }
+
+@media (min-width: 250px) and (max-width: 768px) {
+  .hover_buttons a {
+    color: #ff6801 !important;
+  }
+}
