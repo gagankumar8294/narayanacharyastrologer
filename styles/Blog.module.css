@@ -21,7 +21,11 @@
 }
 
 .main_heading {
-  color: #FF10FF;
+  color: #ff6801;
+}
+
+.paragraph {
+  color: #000000
 }
 
 .svgs {
@@ -33,20 +37,20 @@
 }
 
 .h2 {
-  color: #FF10FF !important;
+  color: #ff6801 !important;
 }
 
 .h1 {
-  color: #FF10FF !important;
+  color: #ff6801 !important;
 }
 
 .date {
-  color: yellow;
+  color: magenta;
   padding-left: 30px;
 }
 
 .time {
-  color: yellow;
+  color: magenta;
 }
 
 /* YT setup */ /* h3 h2 h1 */

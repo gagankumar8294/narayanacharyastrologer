@@ -10,6 +10,7 @@
     "postbuild": "next-sitemap"
   },
   "dependencies": {
+    "@google-cloud/translate": "^8.5.0",
     "@mailchimp/mailchimp_marketing": "^3.0.80",
     "express": "^4.19.2",
     "firebase": "^10.13.0",
