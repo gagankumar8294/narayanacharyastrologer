@@ -220,7 +220,7 @@ const BlogDetail = () => {
               <div className={styles.download_our_app}>
                 <h3>WhatsApp Group</h3>
                 <p>Discover special offers, top stories, upcoming events, and more.</p>
-                <h5><a href='https://chat.whatsapp.com/BOypJbJNmaJHgWtWfdrx3i'>Join Whatsapp</a></h5>
+                <h5 className={styles.jonwhatsapp}><a href='https://chat.whatsapp.com/BOypJbJNmaJHgWtWfdrx3i'>Join Whatsapp</a></h5>
               </div>
 
               {/* <div className={styles.download_our_app}>

@@ -2592,7 +2592,7 @@
   }
   
   .download_our_app {
-    border: solid 1.5px rgb(229, 229, 229);
+    border: solid 1.5px rgb(0, 0, 0);
     width: 80%;
     display: block;
     margin: 0 auto;
@@ -2704,7 +2704,7 @@
   }
 
   .download_our_app {
-    border: solid 1.5px rgb(229, 229, 229);
+    border: solid 1.5px rgb(34, 34, 34);
     width: 80%;
     display: block;
     margin: 0 auto;
@@ -2866,4 +2866,17 @@
    .community h5:hover {
     background-color: yellow;
    }
+}
+
+
+
+@media (min-width: 250px) and (max-width: 768px) {
+  .download_our_app {
+    border: solid 1.5px rgb(0, 0, 0);
+  }
+
+  .community h5 {
+    background-color: #ff6801;
+    color: #ffffff;
+  }
 }
