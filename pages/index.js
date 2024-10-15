@@ -5,7 +5,7 @@ import styles from '../styles/Home.module.css'
 import Link from "next/link"
 import AutoTypingText from '../comps/AutoTypingText';
 import Image from 'next/image';
-// import c from ".././public/homepage/c.gif";
+import c from ".././public/homepage/c.gif";
 
 // import SplashScreen from '@/comps/SplashScreen';
 // import { useState, useEffect } from 'react';
@@ -88,9 +88,9 @@ export default function Home() {
             <Link className={styles.button_2} href="/videos">Get Started</Link>
           </div>
         </div>
-        {/* <div className={styles.rightDiv} style={{width:"50%"}}>
-          <Image src={c} width={300} height={400} alt="CodeAspirant" />
-        </div>   */}
+         <div className={styles.rightDiv} style={{width:"50%"}}>
+          <Image className={styles.rightDivIMG} src={c} width={300} height={400} alt="CodeAspirant" />
+        </div>
       </div>
     </>
   )
