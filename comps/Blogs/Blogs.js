@@ -4,6 +4,7 @@ import style from './Blogcard.module.css';
 import { db, storage } from '../../firebaseConfig';
 import { collection, addDoc, onSnapshot, deleteDoc, doc, query, orderBy } from "firebase/firestore"; // Import query and orderBy
 import { useRouter } from 'next/router';
+import Spinner from "../Spinner/Spinner";
 
 function Blogs() {
     const [blogs, setBlogs] = useState([]);
@@ -46,6 +47,7 @@ function Blogs() {
                 {loading ? (
                     <div>
                         <p className={styles.loading_text}>Loading... Please wait</p>
+                        <Spinner/>
                     </div>
                 ) : (
                 
