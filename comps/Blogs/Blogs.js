@@ -46,8 +46,9 @@ function Blogs() {
                 {/* Show loading message while blogs are being fetched */}
                 {loading ? (
                     <div>
-                        <p className={styles.loading_text}>Loading... Please wait</p>
+                        
                         <Spinner/>
+                        <p className={styles.loading_text}>Loading... Please wait</p>
                     </div>
                 ) : (
                 
