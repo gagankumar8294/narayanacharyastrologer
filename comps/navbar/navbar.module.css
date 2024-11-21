@@ -1,8 +1,24 @@
+.call_to_action {
+  text-align: center;
+}
+
 .hover_buttons:hover {
     background-color: #ff6801;
     color: rgb(255, 255, 255);
     font-weight: 800;
 }
+
+.link {
+  color: inherit; /* Ensures the text color matches parent styles */
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
 
 .language_switcher button {
     margin: 0 10px;
