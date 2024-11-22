@@ -1,5 +1,29 @@
 .call_to_action {
-  text-align: center;
+  justify-content: center !important;
+  
+}
+
+@media (min-width: 622px) and (max-width: 1500px) {
+  .call_to_action {
+    display: flex;
+    justify-content: center;
+
+  }
+}
+
+.phone_icon {
+  width: 20px;
+  height: 20px;
+}
+
+.cta_dial {
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.cta_whatsapp {
+  margin-right: 20px;
+  margin-bottom: 20px;
 }
 
 .hover_buttons:hover {

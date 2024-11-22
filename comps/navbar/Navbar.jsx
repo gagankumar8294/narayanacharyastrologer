@@ -33,54 +33,10 @@ function NavBar() {
   return (
     <div>
       <nav className="nav_bar">
+        
+        
         <div className="nav_container">
-        <div className={styles.call_to_action}>
-  <h3>
-    <a href="tel:+91854980686" className={styles.link}>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        strokeWidth={1.5}
-        stroke="currentColor"
-        className={styles.icon}
-        style={{ width: '24px', height: '24px', marginRight: '8px' }}
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M2.25 6.75v10.5c0 1.242 1.008 2.25 2.25 2.25h15c1.242 0 2.25-1.008 2.25-2.25V6.75c0-1.242-1.008-2.25-2.25-2.25h-15c-1.242 0-2.25 1.008-2.25 2.25zM7.5 6.75v10.5M12 6.75v10.5M16.5 6.75v10.5"
-        />
-      </svg>
-      Call to Narayanachary: <span>+91 854980686</span>
-    </a>
-  </h3>
-  <h3>
-    <a
-      href="https://wa.me/918549803686?text=Hello%20Narayanachary,%20I%27m%20here%20to%20enquire%20about%20horoscope%20predictions"
-      target="_blank"
-      rel="noopener noreferrer"
-      className={styles.link}
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        strokeWidth={1.5}
-        stroke="currentColor"
-        className={styles.icon}
-        style={{ width: '24px', height: '24px', marginRight: '8px' }}
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M17.25 9.75h-4.5M9.75 17.25h-.009m-.491-7.5a1.5 1.5 0 101.5-1.5v-.75h.75v.75a1.5 1.5 0 101.5 1.5v.75h-.75v-.75h-.75v.75a1.5 1.5 0 101.5 1.5v.75h-.75v-.75a1.5 1.5 0 10-1.5-1.5v-.75h-.75v.75z"
-        />
-      </svg>
-      WhatsApp: Book Appointment
-    </a>
-  </h3>
-</div>
+        
   
                 <div className={styles.logo_language_switcher}>
                   <Link href="/" className='logo_border'>
