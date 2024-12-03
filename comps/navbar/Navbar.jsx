@@ -33,11 +33,7 @@ function NavBar() {
   return (
     <div>
       <nav className="nav_bar">
-        
-        
         <div className="nav_container">
-        
-  
                 <div className={styles.logo_language_switcher}>
                   <Link href="/" className='logo_border'>
                     <div className='logo_cover'>
@@ -112,6 +108,7 @@ function NavBar() {
               </ul>
             </div>
         </div>
+        
       </nav>
     </div>
   );

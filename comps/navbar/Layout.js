@@ -10,7 +10,7 @@ const Layout = ({ children }) => {
                 <link rel="icon" href="/fav_icon/codeaspirant.png" />
             </Head>
             <div className="content">
-                <CallToAction />
+                {/* <CallToAction /> */}
                 <Navbar />
                 { children }
                 <Footer />
