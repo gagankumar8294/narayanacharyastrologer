@@ -536,8 +536,18 @@
   .main_title {
     padding-left: 40px;
   }
+
+  .leftDiv {
+    margin-top: -190px;
+  }
 }
+
 @media (min-width: 371px) and (max-width: 380px) {
+
+  .leftDiv {
+    margin-top: -10px;
+  }
+
   .welcome {
     padding-left: 49px;
   }
@@ -565,6 +575,9 @@
   .intro_para {
     color: #000 !important;
   }
+  .leftDiv {
+    margin-top: -80px !important;
+  }
 }
 
 @media (min-width: 391px) and (max-width: 400px) {
@@ -578,6 +591,10 @@
   .intro_para {
     color: #000 !important;
   }
+
+  /* .leftDiv {
+    margin-top: -20px;
+  } */
 }
 
 @media (min-width: 401px) and (max-width: 410px) {
@@ -2350,7 +2367,7 @@
 
 @media (min-width: 311px) and (max-width:324px) {
     .leftDiv {
-      margin-top: -30px;
+      margin-top: -190px;
     }
   
     .leftDiv p {
@@ -2396,7 +2413,7 @@
 
 @media (min-width: 325px) and (max-width:334px) {
   .leftDiv {
-    margin-top: -30px;
+    margin-top: -190px;
   }
 
   .leftDiv p {
@@ -2445,7 +2462,7 @@
 
 @media (min-width: 335px) and (max-width:350px) {
   .leftDiv {
-    margin-top: -30px;
+    margin-top: -190px;
   }
 
   .leftDiv p {
@@ -2496,7 +2513,7 @@
 
 @media (min-width: 350px) and (max-width:360px) {
   .leftDiv {
-    margin-top: -30px;
+    margin-top: -190px;
   }
 
   .leftDiv p {
