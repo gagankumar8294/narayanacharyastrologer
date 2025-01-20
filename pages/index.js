@@ -15,17 +15,6 @@ const textList = ['Astrology, Vaastu shastra','Numerology','Horoscope Prediction
 export default function Home() {
 
   const { language } = useContext(LanguageContext);
-  // const [loading, setLoading] = useState(true);
-
-  // useEffect(() => {
-  //   // Set a timer to hide splash screen after 5 seconds
-  //   const timer = setTimeout(() => {
-  //     setLoading(false);
-  //   }, 5000); // 5 seconds
-
-  //   // Cleanup the timer
-  //   return () => clearTimeout(timer);
-  // }, []);
 
   // Define the content for each language
   const content = {
@@ -56,40 +45,13 @@ export default function Home() {
         <meta name='keywords' content='Bangalore astrologer, professional astrologer, best astrology services, Vaastu Shastra expert, horoscope reading, astrology consultation, spiritual guidance, astrology solutions' />
         <meta name='description' content='Narayanachary, a professional astrologer in Bangalore, offers expert astrology consultations, horoscope readings, and Vaastu Shastra solutions.' />
       </Head>
-      {/* {loading ? (
-        <SplashScreen />
-      ) : ( */}
-      {/* <div className={styles.container}>
-      <div className={styles.leftDiv}>
-        <h2>{content[language].welcome}</h2>
-        <p>{content[language].description}</p>
-        <h4>{content[language].services}</h4>
-      </div>
-    </div> */}
-      <div style={{paddingTop:"150px"}} className={styles.container}>
-      <div className={styles.leftDiv}>
-          {/* Dynamically display welcome message based on selected language */}
-          <h4 className={styles.dynamic_text}>Welcome to<span className={styles.main_title}> Achary's Predictions</span></h4>
-          <h2 className={styles.welcome_textis}>{content[language].welcome}</h2>
-          {/* AutoTyping text */}
-          <p className={styles.dynamic_text2}>
-            <span className={styles.text_bar_pulse} style={{ color: "#f2f2f2", fontWeight: "bold" }}>|</span>
-            <AutoTypingText textList={textList} typingDelay={100} erasingDelay={30} pauseDelay={1500} />
-          </p>
-          {/* Display content based on selected language */}
-          <div className={styles.intro_para}>
-            <p>{content[language].intro}</p>
-            <h4 className={styles.services}>
-              {content[language].services}
-            </h4>
-          </div>
-          <div className={styles.main_link}>
-            <Link className={styles.button_1} href="/blog">Explore Blog</Link>
-            <Link className={styles.button_2} href="/videos">Get Started</Link>
-          </div>
+      <h1>Hello</h1>
+      <div className={styles.divContainer}>
+        <div className={styles.leftDiv}>
+
         </div>
-         <div className={styles.rightDiv} style={{width:"50%"}}>
-          <Image className={styles.rightDivIMG} src={c} width={300} height={400} alt="CodeAspirant" />
+        <div className={styles.rightDiv}>
+
         </div>
       </div>
     </>
