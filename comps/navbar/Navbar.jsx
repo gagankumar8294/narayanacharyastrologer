@@ -102,7 +102,7 @@ function NavBar() {
                   </Link>
                 </li>
                 <li className={styles.hover_buttons}>
-                  <Link href="/gagankumar" onClick={() => setNavbar(!navbar)}>
+                  <Link href="/about" onClick={() => setNavbar(!navbar)}>
                     About
                   </Link>
                 </li>
