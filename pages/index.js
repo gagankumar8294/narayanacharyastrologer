@@ -84,7 +84,7 @@ export default function Home() {
             </h4>
           </div>
           <div className={styles.main_link}>
-            <Link className={styles.button_1} href="/blog">Blog</Link>
+            <Link className={styles.button_1} href="/blog">Explore Blog</Link>
             <Link className={styles.button_2} href="/videos">Get Started</Link>
           </div>
         </div>
