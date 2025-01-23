@@ -30,19 +30,19 @@ export default function Home() {
   // Define the content for each language
   const content = {
     kannada: {
-      welcome: "ನಾರಾಯಣಾಚಾರಿ ಜ್ಯೋತಿಷ್ಯ",
+      welcome: "Achary's Predictions",
       description: "ಎಂಟು ವರ್ಷಗಳ ಜ್ಯೋತಿಷ್ಯ ವಾಸ್ತು ಸಂಖ್ಯಾಶಾಸ್ತ್ರದ ಅನುಭವದೊಂದಿಗೆ...",
       services: "ನಾವು ಜ್ಯೋತಿಷ್ಯ ಮತ್ತು ವಾಸ್ತು ಪರಿಹಾರ ಸೇವೆಗಳನ್ನು ನೀಡಲು ಸಿದ್ಧವಾಗಿದ್ದೇವೆ",
       intro: "ಎಂಟು ವರ್ಷಗಳ ಜ್ಯೋತಿಷ್ಯ ವಾಸ್ತು ಸಂಖ್ಯಾಶಾಸ್ತ್ರದ ಅನುಭವದೊಂದಿಗೆ ಬ್ರಹ್ಮ ಶ್ರೀ ನಾರಾಯಣಚಾರ್ಯ ಆದ ನಾನು ಸುಖ ಜೀವನ ನಡೆಸಲು ಒಳ್ಳೆಯ ಮಾರ್ಗದರ್ಶನ ಸಲಹೆ ಸೂಚನೆಗಳನ್ನು ನೀಡಲಾಗುವುದು"
     },
     telugu: {
-      welcome: "నారాయణాచారి జ్యోతిష్యుడు",
+      welcome: "Achary's Predictions",
       description: "ఆరు సంవత్సరాల జ్యోతిష్య మరియు వాస్తు పరిష్కారాలలో...",
       services: "మేము జ్యోతిష్య మరియు వాస్తు పరిష్కార సేవలను అందించడానికి సిద్ధంగా ఉన్నాము",
       intro: "ఎనిమిది సంవత్సరాల జ్యోతిష్య వాస్తు సంఖ్యాశాస్త్రం అనుభవంతో బ్రహ్మ శ్రీ నారాయణాచారి అను నేను సుఖ జీవనం కోసం మంచి మార్గదర్శక సలహాలు అందిస్తాను"
     },
     english: {
-      welcome: "Narayanachary Astrologer",
+      welcome: "Achary's Predictions",
       description: "With over eight years of experience in astrology, Vaastu...",
       services: "We are ready to provide astrology and Vaastu remedy services",
       intro: "With over eight years of experience in astrology, numerology, and Vaastu Shastra, I, Brahma Sri Narayanacharya, offer guidance and advice for living a happy life."
