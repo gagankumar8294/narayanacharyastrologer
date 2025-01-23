@@ -5,7 +5,7 @@ import styles from '../styles/Home.module.css'
 import Link from "next/link"
 import AutoTypingText from '../comps/AutoTypingText';
 import Image from 'next/image';
-import c from ".././public/homepage/c.gif";
+import c from ".././public/homepage/c.png";
 
 // import SplashScreen from '@/comps/SplashScreen';
 // import { useState, useEffect } from 'react';
