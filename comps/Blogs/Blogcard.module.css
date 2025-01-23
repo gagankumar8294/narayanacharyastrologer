@@ -43,6 +43,11 @@
   object-fit: cover; /* Ensures images maintain aspect ratio and cover the given area */
   border-radius: 8px;
   margin-bottom: 12px;
+  transition: transform 0.5s ease; /* Add a smooth transition effect for the zoom */
+}
+
+.blogCard img:hover {
+  transform: scale(1.2); /* Zoom out slightly */
 }
 
 /* .blogCard h3 {
