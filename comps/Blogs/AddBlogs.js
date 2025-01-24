@@ -5,13 +5,19 @@ import { collection, addDoc, onSnapshot, deleteDoc, doc } from "firebase/firesto
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { useRouter } from 'next/router';
 
+
 function AddBlogs() {
     const [sections, setSections] = useState([{ type: "title", value: "", alt: "" }]);
     const [blogs, setBlogs] = useState([]);
     const titleRef = useRef(null);
     const router = useRouter();
     const [slug, setSlug] = useState(""); // New state for slug
+    const [category, setCategory] = useState(""); // New state for category
 
+
+    const handleCategoryChange = (e) => {
+        setCategory(e.target.value);
+    };
 
     useEffect(() => {
         titleRef.current.focus();
@@ -73,7 +79,7 @@ function AddBlogs() {
     async function handleSubmit(e) {
         e.preventDefault();
 
-        if (!slug) {
+        if (!slug || !category) {
             alert("Please enter a slug for the blog post.");
             return;
         }
@@ -81,8 +87,9 @@ function AddBlogs() {
         const blogData = {
             createdOn: new Date(),
             sections: [],
-            slug: slug.toLowerCase().replace(/ /g, '-')
+            slug: slug.toLowerCase().replace(/ /g, '-'),
             //slug: sections[0].value.toLowerCase().replace(/ /g, '-') // Assuming the first section is the title
+            category, // Include the selected category
         };
 
         for (const section of sections) {
@@ -115,6 +122,7 @@ function AddBlogs() {
             console.log("Document written with ID: ", docRef.id);
             setSections([{ type: "title", value: "" }]);
             setSlug("");  // Reset the slug field after submission
+            setCategory(""); // Reset category field after submission
         } catch (e) {
             console.error("Error adding document: ", e);
         }
@@ -143,6 +151,21 @@ function AddBlogs() {
                             onChange={(e) => setSlug(e.target.value)}
                         />
                     </Row>
+                    <Row label="Category">
+                <select
+                    className={styles.input}
+                    value={category}
+                    onChange={handleCategoryChange}
+                >
+                    <option value="" disabled>
+                        Select a category
+                    </option>
+                    <option value="astrology">Astrology</option>
+                    <option value="numerology">Numerology</option>
+                    <option value="vaastu">Vaastu</option>
+                    <option value="yantra-mantra-tantra">Yantra Mantra Tantra</option>
+                </select>
+            </Row>
                         {sections.map((section, index) => (
                             <div key={index}>
                                 {section.type === "title" && (
@@ -211,7 +234,9 @@ function AddBlogs() {
                             <option value="image" style={{ color: "gray" }}>Image</option>
                         </select>
 
-                        <button className={styles.btn} type="submit">Submit Blog</button>
+                        <button className={styles.btn} type="submit">
+                            Submit Blog
+                        </button>
                     </form>
                 </div>
                 <h2>Blogs</h2>
