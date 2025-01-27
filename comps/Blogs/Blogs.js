@@ -14,7 +14,7 @@ function Blogs() {
 
     useEffect(() => {
         // Create a query that orders documents by 'createdOn' field in descending order
-        const blogsQuery = query(collection(db, "matrimonialuserdata"), orderBy("createdOn", "desc"));
+        const blogsQuery = query(collection(db, "blogs"), orderBy("createdOn", "desc"));
 
         // Use the ordered query with onSnapshot
         const unsub = onSnapshot(blogsQuery, (snapshot) => {
