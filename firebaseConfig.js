@@ -3,13 +3,30 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDKC2KCUP9OM8yRebstpKUsJoHktWDnHrI",
-  authDomain: "narayana-astrologer.firebaseapp.com",
-  projectId: "narayana-astrologer",
-  storageBucket: "narayana-astrologer.appspot.com",
-  messagingSenderId: "885505641811",
-  appId: "1:885505641811:web:b73c6a75041782f92325a6"
+  // apiKey: "AIzaSyDKC2KCUP9OM8yRebstpKUsJoHktWDnHrI",
+  // authDomain: "narayana-astrologer.firebaseapp.com",
+  // projectId: "narayana-astrologer",
+  // storageBucket: "narayana-astrologer.appspot.com",
+  // messagingSenderId: "885505641811",
+  // appId: "1:885505641811:web:b73c6a75041782f92325a6"
+  apiKey: "AIzaSyDmzCydC5ELpweeyW2YXzkAIuwat1B3TEM",
+  authDomain: "matrimonialdata-debb1.firebaseapp.com",
+  projectId: "matrimonialdata-debb1",
+  storageBucket: "matrimonialdata-debb1.firebasestorage.app",
+  messagingSenderId: "1086934703817",
+  appId: "1:1086934703817:web:ac675a14f554f7fc577718",
+  measurementId: "G-8MJ9LK3Y9J"
 };
+
+// const firebaseConfigMatrimonial = {
+//   apiKey: "AIzaSyDmzCydC5ELpweeyW2YXzkAIuwat1B3TEM",
+//   authDomain: "matrimonialdata-debb1.firebaseapp.com",
+//   projectId: "matrimonialdata-debb1",
+//   storageBucket: "matrimonialdata-debb1.firebasestorage.app",
+//   messagingSenderId: "1086934703817",
+//   appId: "1:1086934703817:web:ac675a14f554f7fc577718",
+//   measurementId: "G-8MJ9LK3Y9J"
+// }
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);

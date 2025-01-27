@@ -1,8 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import styles from './Blogs.module.css';
-import { db, storage } from '../../firebaseConfig';
+import { db } from '../../firebaseConfig';
 import { collection, addDoc, onSnapshot, deleteDoc, doc } from "firebase/firestore";
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { useRouter } from 'next/router';
 
 function AddBlogs() {
@@ -12,18 +11,17 @@ function AddBlogs() {
     const router = useRouter();
     const [slug, setSlug] = useState(""); // New state for slug
 
-
     useEffect(() => {
         titleRef.current.focus();
     }, []);
 
     useEffect(() => {
-        const unsub = onSnapshot(collection(db, "blogs"), (snapshot) => {
+        const unsub = onSnapshot(collection(db, "matrimonialuserdata"), (snapshot) => {
             const blogs = snapshot.docs.map((doc) => {
                 const data = doc.data();
                 return {
                     id: doc.id,
-                    sections: data.sections || [],  // Ensure sections is always an array
+                    sections: data.sections || [], // Ensure sections is always an array
                     createdOn: data.createdOn ? data.createdOn.toDate() : null,
                     slug: data.slug || (data.sections && data.sections.find(section => section.type === "title"))?.value.toLowerCase().replace(/ /g, '-') || ''
                 };
@@ -54,20 +52,14 @@ function AddBlogs() {
     const handleImageChange = (index, e) => {
         const file = e.target.files[0];
         if (file) {
-            const updatedSections = [...sections];
-            updatedSections[index].value = file;
-            setSections(updatedSections);
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                const updatedSections = [...sections];
+                updatedSections[index].value = event.target.result; // Store Base64 string
+                setSections(updatedSections);
+            };
+            reader.readAsDataURL(file); // Convert to Base64
         }
-    };
-    
-    const handleLinkChange = (index, value, isText) => {
-        const updatedSections = [...sections];
-        if (isText) {
-            updatedSections[index].linkText = value;
-        } else {
-            updatedSections[index].value = value;
-        }
-        setSections(updatedSections);
     };
 
     async function handleSubmit(e) {
@@ -80,48 +72,22 @@ function AddBlogs() {
 
         const blogData = {
             createdOn: new Date(),
-            sections: [],
+            sections,
             slug: slug.toLowerCase().replace(/ /g, '-')
-            //slug: sections[0].value.toLowerCase().replace(/ /g, '-') // Assuming the first section is the title
         };
 
-        for (const section of sections) {
-            if (section.type === "image" && section.value) {
-                const storageRef = ref(storage, `blog-images/${section.value.name}`);
-                const uploadTask = uploadBytesResumable(storageRef, section.value);
-
-                await new Promise((resolve, reject) => {
-                    uploadTask.on(
-                        "state_changed",
-                        (snapshot) => {},
-                        (error) => {
-                            console.error("Error uploading image:", error);
-                            reject(error);
-                        },
-                        async () => {
-                            const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
-                            blogData.sections.push({ type: "image", value: downloadURL });
-                            resolve();
-                        }
-                    );
-                });
-            } else {
-                blogData.sections.push(section);
-            }
-        }
-
         try {
-            const docRef = await addDoc(collection(db, "blogs"), blogData);
+            const docRef = await addDoc(collection(db, "matrimonialuserdata"), blogData);
             console.log("Document written with ID: ", docRef.id);
             setSections([{ type: "title", value: "" }]);
-            setSlug("");  // Reset the slug field after submission
+            setSlug(""); // Reset the slug field after submission
         } catch (e) {
             console.error("Error adding document: ", e);
         }
     }
 
     async function removeBlog(id) {
-        const docRef = doc(db, "blogs", id);
+        const docRef = doc(db, "matrimonialuserdata", id);
         await deleteDoc(docRef);
     }
 
@@ -135,14 +101,14 @@ function AddBlogs() {
                 <h2 className={styles.heading}>Blogs</h2>
                 <div className={styles.section}>
                     <form onSubmit={handleSubmit}>
-                    <Row label="Slug">
-                        <input
-                            className={styles.input}
-                            placeholder="Enter the Slug Here..."
-                            value={slug}
-                            onChange={(e) => setSlug(e.target.value)}
-                        />
-                    </Row>
+                        <Row label="Slug">
+                            <input
+                                className={styles.input}
+                                placeholder="Enter the Slug Here..."
+                                value={slug}
+                                onChange={(e) => setSlug(e.target.value)}
+                            />
+                        </Row>
                         {sections.map((section, index) => (
                             <div key={index}>
                                 {section.type === "title" && (
@@ -163,22 +129,6 @@ function AddBlogs() {
                                             placeholder={`Enter the ${section.type.toUpperCase()} Text Here...`}
                                             value={section.value}
                                             onChange={(e) => handleSectionChange(index, e.target.value)}
-                                        />
-                                    </Row>
-                                )}
-                                {section.type === "link" && (
-                                    <Row label="Link">
-                                        <input
-                                            className={styles.input}
-                                            placeholder="Enter Link Text Here..."
-                                            value={section.linkText || ""}
-                                            onChange={(e) => handleLinkChange(index, e.target.value, true)}
-                                        />
-                                        <input
-                                            className={styles.input}
-                                            placeholder="Enter URL Here..."
-                                            value={section.value}
-                                            onChange={(e) => handleLinkChange(index, e.target.value, false)}
                                         />
                                     </Row>
                                 )}
@@ -207,7 +157,6 @@ function AddBlogs() {
                             <option value="h2" style={{ color: "gray" }}>H2 Heading</option>
                             <option value="h3" style={{ color: "gray" }}>H3 Heading</option>
                             <option value="paragraph" style={{ color: "gray" }}>Paragraph</option>
-                            <option value="link" style={{ color: "gray" }}>Link</option>
                             <option value="image" style={{ color: "gray" }}>Image</option>
                         </select>
 

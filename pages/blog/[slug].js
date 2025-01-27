@@ -17,7 +17,7 @@ const BlogDetail = () => {
         if (slug) {
             const fetchBlogBySlug = async () => {
                 // Query the collection "blogs" where the field "slug" matches the slug from the URL
-                const q = query(collection(db, "blogs"), where("slug", "==", slug));
+                const q = query(collection(db, "matrimonialuserdata"), where("slug", "==", slug));
                 const querySnapshot = await getDocs(q);
                 if (!querySnapshot.empty) {
                     const blogData = querySnapshot.docs[0].data();
