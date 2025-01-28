@@ -1,0 +1,16 @@
+.profileContainer {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .profilePhoto {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+  }
+  
+  .name {
+    font-size: 2rem;
+    margin: 10px 0;
+  }
+  

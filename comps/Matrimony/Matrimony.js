@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { getFirestore, collection, addDoc } from 'firebase/firestore';
-import { matrimonialDb } from './firebaseConfig'; // Import Firestore from your firebaseConfig.js
+import { matrimonialDb } from '@/fireConfig';
+import styles from './matrimonyList.module.css';
 
 export default function Matrimony() {
   const [formData, setFormData] = useState({
@@ -70,8 +71,8 @@ export default function Matrimony() {
     setDatePopup(false);
   };
 
-  const handleSexSelect = (selectedSex) => {
-    setFormData({ ...formData, sex: selectedSex });
+  const handleSexSelect = (sex) => {
+    setFormData({ ...formData, sex });
   };
 
   const handleSubmit = async (e) => {
@@ -115,201 +116,185 @@ export default function Matrimony() {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Name:</label>
-          <input type="text" name="name" value={formData.name} onChange={handleInputChange} required />
+    <div className={styles.formContainer}>
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <div className={styles.field}>
+          <label className={styles.label}>Name:</label>
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleInputChange}
+            className={styles.input}
+            required
+          />
         </div>
-        <div>
-          <label>Father's Name:</label>
-          <input type="text" name="fatherName" value={formData.fatherName} onChange={handleInputChange} required />
+        <div className={styles.field}>
+          <label className={styles.label}>Father's Name:</label>
+          <input
+            type="text"
+            name="fatherName"
+            value={formData.fatherName}
+            onChange={handleInputChange}
+            className={styles.input}
+            required
+          />
         </div>
-        <div>
-          <label>Mother's Name:</label>
-          <input type="text" name="motherName" value={formData.motherName} onChange={handleInputChange} required />
+        <div className={styles.field}>
+          <label className={styles.label}>Mother's Name:</label>
+          <input
+            type="text"
+            name="motherName"
+            value={formData.motherName}
+            onChange={handleInputChange}
+            className={styles.input}
+            required
+          />
         </div>
-        <div>
-          <label>Siblings:</label>
+        <div className={styles.field}>
+          <label className={styles.label}>Siblings:</label>
           <input
             type="text"
             value={siblingInput}
             onChange={(e) => setSiblingInput(e.target.value)}
+            className={styles.input}
           />
-          <button type="button" onClick={handleAddSibling}>Add Sibling</button>
-          <ul>
+          <button
+            type="button"
+            onClick={handleAddSibling}
+            className={styles.button}
+          >
+            Add Sibling
+          </button>
+          <ul className={styles.siblingList}>
             {formData.siblings.map((sibling, index) => (
-              <li key={index}>{sibling}</li>
+              <li key={index} className={styles.siblingItem}>
+                {sibling}
+              </li>
             ))}
           </ul>
         </div>
-        <div>
-          <label>Age:</label>
+        <div className={styles.field}>
+          <label className={styles.label}>Age:</label>
           <input
             type="text"
             readOnly
             value={formData.age}
             onClick={() => setDatePopup(true)}
+            className={styles.input}
             required
           />
           {datePopup && (
-            <div>
-              <label>Year:</label>
+            <div className={styles.datePopup}>
+              <label className={styles.label}>Year:</label>
               <input
                 type="number"
                 value={selectedDate.year}
-                onChange={(e) => setSelectedDate({ ...selectedDate, year: e.target.value })}
+                onChange={(e) =>
+                  setSelectedDate({ ...selectedDate, year: e.target.value })
+                }
+                className={styles.input}
               />
-              <label>Month:</label>
+              <label className={styles.label}>Month:</label>
               <input
                 type="number"
                 value={selectedDate.month}
-                onChange={(e) => setSelectedDate({ ...selectedDate, month: e.target.value })}
+                onChange={(e) =>
+                  setSelectedDate({ ...selectedDate, month: e.target.value })
+                }
+                className={styles.input}
               />
-              <label>Day:</label>
+              <label className={styles.label}>Day:</label>
               <input
                 type="number"
                 value={selectedDate.day}
-                onChange={(e) => setSelectedDate({ ...selectedDate, day: e.target.value })}
+                onChange={(e) =>
+                  setSelectedDate({ ...selectedDate, day: e.target.value })
+                }
+                className={styles.input}
               />
-              <button type="button" onClick={() => handleDateSelection(selectedDate.year, selectedDate.month, selectedDate.day)}>Select Date</button>
+              <button
+                type="button"
+                onClick={() =>
+                  handleDateSelection(
+                    selectedDate.year,
+                    selectedDate.month,
+                    selectedDate.day
+                  )
+                }
+                className={styles.button}
+              >
+                Select Date
+              </button>
             </div>
           )}
         </div>
-        <div>
-          <label>Mobile Number:</label>
+        <div className={styles.field}>
+          <label className={styles.label}>Mobile Number:</label>
           <input
             type="text"
             name="mobile"
             value={formData.mobile}
             onChange={handleInputChange}
+            className={styles.input}
             required
           />
         </div>
-        <div>
-          <label>Born Time:</label>
+        <div className={styles.field}>
+          <label className={styles.label}>Born Time:</label>
           <input
             type="time"
             name="bornTime"
             value={formData.bornTime}
             onChange={handleInputChange}
+            className={styles.input}
             required
           />
         </div>
-        <div>
-          <label>Sex:</label>
-          <button type="button" onClick={() => handleSexSelect('Male')}>Male</button>
-          <button type="button" onClick={() => handleSexSelect('Female')}>Female</button>
+        <div className={styles.field}>
+          <label className={styles.label}>Sex:</label>
+          <button
+            type="button"
+            onClick={() => handleSexSelect('Male')}
+            className={styles.button}
+          >
+            Male
+          </button>
+          <button
+            type="button"
+            onClick={() => handleSexSelect('Female')}
+            className={styles.button}
+          >
+            Female
+          </button>
         </div>
-        <div>
-          <label>Place of Birth:</label>
+        <div className={styles.field}>
+          <label className={styles.label}>Place of Birth:</label>
           <input
             type="text"
             name="placeOfBirth"
             value={formData.placeOfBirth}
             onChange={handleInputChange}
+            className={styles.input}
             required
           />
         </div>
-        <div>
-          <label>Caste:</label>
-          <input
-            type="text"
-            name="caste"
-            value={formData.caste}
-            onChange={handleInputChange}
-            required
-          />
-        </div>
-        <div>
-          <label>Currently Staying:</label>
-          <input
-            type="text"
-            name="staying"
-            value={formData.staying}
-            onChange={handleInputChange}
-            required
-          />
-        </div>
-        <div>
-          <label>Qualification:</label>
-          <input
-            type="text"
-            name="qualification"
-            value={formData.qualification}
-            onChange={handleInputChange}
-            required
-          />
-        </div>
-        <div>
-          <label>Work:</label>
-          <input
-            type="text"
-            name="work"
-            value={formData.work}
-            onChange={handleInputChange}
-            required
-          />
-        </div>
-        <div>
-          <label>Rashi:</label>
-          <select
-            name="rashi"
-            value={formData.rashi}
-            onChange={handleInputChange}
-            required
-          >
-            <option value="">Select Rashi</option>
-            <option value="Aries">Aries</option>
-            <option value="Taurus">Taurus</option>
-            {/* Add other rashis */}
-          </select>
-        </div>
-        <div>
-          <label>Nakshatra:</label>
-          <select
-            name="nakshatra"
-            value={formData.nakshatra}
-            onChange={handleInputChange}
-            required
-          >
-            <option value="">Select Nakshatra</option>
-            <option value="Ashwini">Ashwini</option>
-            <option value="Bharani">Bharani</option>
-            {/* Add other nakshatras */}
-          </select>
-        </div>
-        <div>
-          <label>Height:</label>
-          <input
-            type="text"
-            name="height"
-            value={formData.height}
-            onChange={handleInputChange}
-            required
-          />
-        </div>
-        <div>
-          <label>Profile Photo (Mandatory):</label>
+        <div className={styles.field}>
+          <label className={styles.label}>Profile Photo (Mandatory):</label>
           <input
             type="file"
             name="profilePhoto"
             accept="image/*"
             onChange={handleFileChange}
+            className={styles.input}
             required
           />
         </div>
-        <div>
-          <label>Extra Photos (Optional):</label>
-          <input
-            type="file"
-            name="extraPhotos"
-            accept="image/*"
-            multiple
-            onChange={handleFileChange}
-          />
+        <div className={styles.field}>
+          <button type="submit" className={styles.submitButton}>
+            Submit
+          </button>
         </div>
-        <button type="submit">Submit</button>
       </form>
     </div>
   );
