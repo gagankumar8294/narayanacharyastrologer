@@ -1,9 +1,13 @@
 import Blogs from "@/comps/Blogs/Blogs";
+import ErrorBoundary from "@/comps/ErrorHandling/ErrorBoundary";
 
 const blog = () => {
     return (
         <>
-            <Blogs/>
+            <ErrorBoundary>
+                <Blogs/>
+            </ErrorBoundary>
+            
         </>
     );
 }

@@ -5,6 +5,7 @@ import { db, storage } from '../../firebaseConfig';
 import { collection, addDoc, onSnapshot, deleteDoc, doc, query, orderBy } from "firebase/firestore"; // Import query and orderBy
 import { useRouter } from 'next/router';
 import Spinner from "../Spinner/Spinner";
+import ErrorBoundary from "../ErrorHandling/ErrorBoundary"; // Import the ErrorBoundary
 
 function Blogs() {
     const [blogs, setBlogs] = useState([]);
@@ -13,6 +14,7 @@ function Blogs() {
     const router = useRouter();
 
     useEffect(() => {
+        try {
         // Create a query that orders documents by 'createdOn' field in descending order
         const blogsQuery = query(collection(db, "blogs"), orderBy("createdOn", "desc"));
 
@@ -32,7 +34,10 @@ function Blogs() {
         });
 
         return () => unsub();
-    }, []);
+    } catch (error) {
+        console.error("Error fetching blogs:", error);
+      }
+    },[]);
 
     const handleReadMore = (blog) => {
         router.push(`/blog/${blog.slug}`);
@@ -40,6 +45,7 @@ function Blogs() {
 
     return (
         <>
+        <ErrorBoundary>
             <section className={styles.blogs_Section}>
                 <h2 className={styles.heading}>Blogs</h2>
 
@@ -91,6 +97,7 @@ function Blogs() {
                 </div>
                 )}
             </section>
+            </ErrorBoundary>
         </>
     );
 }
