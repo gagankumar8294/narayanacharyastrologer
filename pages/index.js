@@ -113,6 +113,7 @@ export default function Home() {
           <Image className={styles.rightDivIMG} src={c} width={300} height={400} alt="CodeAspirant" />
         </div>
       </div>
+      
     </>
   )
 }
