@@ -6,6 +6,7 @@ import Link from "next/link"
 import AutoTypingText from '../comps/AutoTypingText';
 import Image from 'next/image';
 import c from ".././public/homepage/c.png";
+import { NewProducts } from '@/comps/Products/NewProducts';
 
 // import SplashScreen from '@/comps/SplashScreen';
 // import { useState, useEffect } from 'react';
@@ -113,7 +114,9 @@ export default function Home() {
           <Image className={styles.rightDivIMG} src={c} width={300} height={400} alt="CodeAspirant" />
         </div>
       </div>
-      
+      <section>
+        <NewProducts/>
+      </section>
     </>
   )
 }
