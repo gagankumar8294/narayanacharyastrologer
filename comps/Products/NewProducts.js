@@ -23,9 +23,7 @@ export const NewProducts = () => {
             createdAt: data.createdAt ? new Date(data.createdAt.seconds * 1000).toLocaleString() : "No Date",
           };
         });
-
-        // Duplicate the product list for smooth infinite scrolling
-        setNewProducts([...productList, ...productList]);
+        setNewProducts(productList);
       } catch (error) {
         console.error("Error fetching new products: ", error);
       } finally {
@@ -38,19 +36,10 @@ export const NewProducts = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex(prevIndex => prevIndex + 1);
+      setCurrentIndex(prevIndex => (prevIndex + 1) % newProducts.length);
     }, 3000);
     return () => clearInterval(interval);
-  }, []);
-
-  // CSS infinite scrolling trick: Reset index when the last product is reached
-  useEffect(() => {
-    if (newProducts.length > 0 && currentIndex >= newProducts.length / 2) {
-      setTimeout(() => {
-        setCurrentIndex(0);
-      }, 500); // Delay to ensure the transform is applied before resetting
-    }
-  }, [currentIndex, newProducts.length]);
+  }, [newProducts]);
 
   if (loading) {
     return <p>Loading new products...</p>;
@@ -67,13 +56,12 @@ export const NewProducts = () => {
       }}>
         <div style={{
           display: "flex",
-          transform: `translateX(-${(currentIndex % (newProducts.length / 2)) * 25}%)`, // Looping
-          transition: "transform 0.5s linear",
-          gap: "20px",
-          whiteSpace: "nowrap"
+          transform: `translateX(-${currentIndex * 25}%)`,  // Corrected: backticks for template literal
+          transition: "transform 0.5s ease-in-out",
+          gap: "20px"
         }}>
-          {newProducts.map((product, index) => (
-            <div key={index} style={{ minWidth: "25%", flexShrink: 0, textAlign: "center" }}>
+          {newProducts.map(product => (
+            <div key={product.id} style={{ minWidth: "25%", flexShrink: 0, textAlign: "center" }}>
               <img src={product.image} alt={product.name} style={{ width: "100%", height: "200px", objectFit: "cover", borderRadius: "8px" }} />
             </div>
           ))}
