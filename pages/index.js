@@ -7,6 +7,7 @@ import AutoTypingText from '../comps/AutoTypingText';
 import Image from 'next/image';
 import c from ".././public/homepage/c.png";
 import { NewProducts } from '@/comps/Products/NewProducts';
+import Carousel from '@/comps/Products/Carousel';
 
 // import SplashScreen from '@/comps/SplashScreen';
 // import { useState, useEffect } from 'react';
@@ -116,6 +117,9 @@ export default function Home() {
       </div>
       <section>
         <NewProducts/>
+      </section>
+      <section>
+        <Carousel />
       </section>
     </>
   )
