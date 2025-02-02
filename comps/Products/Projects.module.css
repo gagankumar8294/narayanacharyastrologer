@@ -123,14 +123,14 @@
     }
 
     .project_section {
-      height: 40vh;
+      height: 60vh;
     }
   }
 
   @media (min-width: 400px) and (max-width: 499px) {
 
     .project_section {
-      height: 190px;
+      height: 50vh;
     }
 
     .leftButton, .rightButton {
@@ -160,13 +160,13 @@
     }
 
     .project_section {
-      height: 10vh;
+      height: 50vh;
     }
   }
 
   @media (min-width: 361px) and (max-width: 400px) {
     .project_section {
-      height: 150px;
+      height: 50vh;
     }
   }
 
