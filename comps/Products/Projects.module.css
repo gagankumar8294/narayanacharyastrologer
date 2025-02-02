@@ -1,0 +1,190 @@
+.project_section {
+    height: 70vh;
+}
+
+.service_heading {
+    color: aliceblue;
+    font-size: 50px;
+    text-align: center;
+    font-family: "Dancing Script", cursive;
+    font-weight: 1000;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.carousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgba(230, 220, 245, 0.082);
+    backdrop-filter: blur(3px);
+  }
+  
+  .imageContainer {
+    position: relative;
+    text-align: center;
+  }
+  
+  .image {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    opacity: 0; /* Start with invisible */
+    transition: opacity 0.5s ease-in-out; /* Smooth transition for fade effect */
+  }
+  
+  .fadeIn {
+    opacity: 1; /* Fade in effect */
+  }
+  
+  .fadeOut {
+    opacity: 0; /* Fade out effect */
+  }
+  
+  .description {
+    margin-top: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: yellow;
+  }
+
+  .leftButton {
+    margin-left: -30px;
+  }
+  
+  .rightButton {
+    margin-right: -30px;
+  }
+
+  .leftButton, .rightButton {
+    position: absolute;
+    width: 50px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: 2px solid magenta;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    opacity: 0.8;
+  }
+  
+  .leftButton {
+    left: -40px; /* Adjust based on your design */
+  }
+  
+  .rightButton {
+    right: -40px; /* Adjust based on your design */
+  }
+  
+  .leftButton:hover, .rightButton:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+
+  @media (min-width: 700px) and (max-width: 849px) {
+    .leftButton, .rightButton {
+      display: none;
+    }
+  }
+
+  @media (min-width: 600px) and (max-width: 699px) {
+    .leftButton, .rightButton {
+      display: none;
+    }
+
+    .carousel {
+      max-width: 600px;
+    }
+
+    .service_heading {
+      font-size: 40px;
+    }
+  }
+
+  @media (min-width: 500px) and (max-width: 599px) {
+    .leftButton, .rightButton {
+      display: none;
+    }
+
+    .carousel {
+      max-width: 500px;
+    }
+
+    .service_heading {
+      font-size: 35px;
+    }
+
+    .project_section {
+      height: 40vh;
+    }
+  }
+
+  @media (min-width: 400px) and (max-width: 499px) {
+
+    .project_section {
+      height: 190px;
+    }
+
+    .leftButton, .rightButton {
+      display: none;
+    }
+
+    .carousel {
+      max-width: 400px;
+    }
+
+    .service_heading {
+      font-size: 32px;
+    }
+  }
+
+  @media (min-width: 300px) and (max-width: 399px) {
+    .leftButton, .rightButton {
+      display: none;
+    }
+
+    .carousel {
+      max-width: 300px;
+    }
+
+    .service_heading {
+      font-size: 27px;
+    }
+
+    .project_section {
+      height: 10vh;
+    }
+  }
+
+  @media (min-width: 361px) and (max-width: 400px) {
+    .project_section {
+      height: 150px;
+    }
+  }
+
+  @media (min-width: 250px) and (max-width: 299px) {
+
+    .project_section {
+      height: 05vh;
+    }
+
+    .leftButton, .rightButton {
+      display: none;
+    }
+
+    .carousel {
+      max-width: 250px;
+    }
+
+    .service_heading {
+      font-size: 25px;
+    }
+  }

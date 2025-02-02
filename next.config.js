@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  images: {
+    domains: ['ibb.co'], // Add 'ibb.co' or the actual domain serving the images
+  },
     webpack: (config, { isServer }) => {
       if (!isServer) {
         config.resolve.fallback = {
