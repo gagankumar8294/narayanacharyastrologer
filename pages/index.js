@@ -118,9 +118,6 @@ export default function Home() {
       <section>
         <NewProducts/>
       </section>
-      <section>
-        <Carousel />
-      </section>
     </>
   )
 }
