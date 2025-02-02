@@ -3,13 +3,12 @@
 }
 
 .service_heading {
-    color: aliceblue;
+    color: #F28C0E;
     font-size: 50px;
     text-align: center;
-    font-family: "Dancing Script", cursive;
     font-weight: 1000;
     margin-top: 40px;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
 }
 
 .carousel {
