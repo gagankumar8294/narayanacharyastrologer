@@ -1,8 +1,7 @@
 import React from "react";
-import AddProduct from "@/comps/Products/Products";
 import { ProductCard } from "@/comps/Products/ProductsCards";
 
-const AddProd = () => {
+const ListProduct = () => {
     return (
         <>
         <h1 style={{paddingTop:"150px"}}>Here is the Products List</h1>
@@ -11,4 +10,4 @@ const AddProd = () => {
     );
 }
 
-export default AddProd;
+export default ListProduct;
