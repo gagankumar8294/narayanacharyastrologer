@@ -22,7 +22,17 @@ class ErrorBoundary extends React.Component {
   render() {
     if (this.state.hasError) {
       return (
-        <div style={{ paddingTop: '100px' }}>
+        <div style={{
+          display: 'flex', 
+          flexDirection: 'column', 
+          justifyContent: 'center', 
+          alignItems: 'center', 
+          minHeight: '100vh', // Full height of the viewport
+          paddingTop: '100px',
+          marginTop: 'auto',
+          marginBottom: 'auto'
+        }}
+        >
           <div className={styles.errorContainer}>
             <h2>Oops! Something went wrong.</h2>
             <p>Please refresh the page and try again.</p>
@@ -30,9 +40,7 @@ class ErrorBoundary extends React.Component {
               Refresh Page
             </button>
           </div>
-        </div>
-
-        
+        </div> 
       );
     }
     return this.props.children;
