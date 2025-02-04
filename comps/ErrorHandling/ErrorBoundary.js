@@ -37,7 +37,7 @@ class ErrorBoundary extends React.Component {
             <h2>Oops! Something went wrong.</h2>
             <p>Please refresh the page and try again.</p>
             <button className={styles.refreshButton} onClick={this.handleRefresh}>
-              Refresh Page
+              Refresh Page click
             </button>
           </div>
         </div> 
