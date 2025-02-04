@@ -26,7 +26,7 @@ class ErrorBoundary extends React.Component {
           <p style={{ paddingTop: '100px' }}>|</p>
           <div className={styles.errorContainer}>
             <h1 style={{ paddingTop: '100px' }}></h1>
-            <h2>Oops! Something went wrong.</h2>
+            <h2 style={{ paddingTop: '100px' }}>Oops! Something went wrong.</h2>
             <p>Please refresh the page and try again.</p>
             <button className={styles.refreshButton} onClick={this.handleRefresh}>
               Refresh Page
