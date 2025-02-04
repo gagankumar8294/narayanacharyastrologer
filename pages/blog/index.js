@@ -4,7 +4,7 @@ import ErrorBoundary from "@/comps/ErrorHandling/ErrorBoundary";
 const blog = () => {
     return (
         <>
-            <ErrorBoundary style={{ paddingTop: '100px' }}>
+            <ErrorBoundary>
                 <Blogs/>
             </ErrorBoundary>
             

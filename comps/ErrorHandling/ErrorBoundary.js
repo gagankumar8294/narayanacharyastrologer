@@ -23,6 +23,7 @@ class ErrorBoundary extends React.Component {
     if (this.state.hasError) {
       return (
         <div style={{ paddingTop: '100px' }}>
+          <p style={{ paddingTop: '100px' }}>|</p>
           <div className={styles.errorContainer}>
             <h1 style={{ paddingTop: '100px' }}></h1>
             <h2>Oops! Something went wrong.</h2>
