@@ -113,7 +113,7 @@ export default function Home() {
           </div>
         </div>
          <div className={styles.rightDiv} style={{width:"50%"}}>
-          <Image className={styles.rightDivIMG} src={c} width={300} height={400} alt="CodeAspirant" />
+          <Image className={styles.rightDivIMG} src={c} width={300} height={400} alt="narayanachary-astrologer" />
         </div>
       </div>
       <section>
