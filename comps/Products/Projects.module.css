@@ -202,7 +202,7 @@
   }
 
   .mobile_service_heading {
-    color: #F28C0E;
+    color: #f3f3f3;
     font-size: 25px;
     border-bottom: 1px solid;
     text-align: center;
@@ -237,3 +237,8 @@
     background-color: #005bb5;
   }
   
+
+  .mobile_project_section {
+    background-color: rgba(255, 104, 1, 0.6);
+   
+  }

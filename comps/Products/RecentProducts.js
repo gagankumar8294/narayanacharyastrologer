@@ -78,7 +78,7 @@ const RecentProducts = () => {
                 className={`${styles.image} ${fade ? styles.fadeIn : styles.fadeOut}`}
               />
             </a>
-            <div className={styles.description}>{products[currentIndex].description}</div>
+            <div className={styles.description}>{products[currentIndex].name}</div>
           </div>
           <button className={styles.rightButton} onClick={() => setCurrentIndex((prev) => (prev + 1) % products.length)}>&gt;</button>
         </div>
@@ -98,7 +98,7 @@ const RecentProducts = () => {
                 className={`${styles.image} ${fade ? styles.fadeIn : styles.fadeOut}`}
               />
             </a>
-            <div className={styles.mobile_description}>{products[currentIndex].description}</div>
+            <div className={styles.mobile_description}>{products[currentIndex].name}</div>
           </div>
           <button className={styles.rightButton} onClick={() => setCurrentIndex((prev) => (prev + 1) % products.length)}>&gt;</button>
         </div>
