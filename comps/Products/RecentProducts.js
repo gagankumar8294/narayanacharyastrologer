@@ -3,12 +3,14 @@ import { collection, getDocs, query, orderBy, limit } from 'firebase/firestore';
 import { db } from '../../fireProductsConfig'; // Ensure correct path
 import Image from 'next/image';
 import styles from './Projects.module.css';
+import { useRouter } from 'next/router';
 
 const RecentProducts = () => {
   const [isLargeScreen, setIsLargeScreen] = useState(true);
   const [products, setProducts] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [fade, setFade] = useState(true);
+  const router = useRouter();
 
   useEffect(() => {
     const handleResize = () => {
@@ -100,6 +102,12 @@ const RecentProducts = () => {
           </div>
           <button className={styles.rightButton} onClick={() => setCurrentIndex((prev) => (prev + 1) % products.length)}>&gt;</button>
         </div>
+        {/* All Products Button */}
+      <div className={styles.allProductsContainer}>
+        <button className={styles.allProductsButton} onClick={() => router.push('/product')}>
+          All Products
+        </button>
+      </div>
       </section>
       ) }
     </>

@@ -213,3 +213,27 @@
   .mobile_description {
     
   }
+
+  /* /////  Mobile ///// */
+
+  .allProductsContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .allProductsButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #0070f3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .allProductsButton:hover {
+    background-color: #005bb5;
+  }
+  
