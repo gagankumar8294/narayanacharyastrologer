@@ -187,3 +187,29 @@
       font-size: 25px;
     }
   }
+
+  .mobile_description {
+    color: purple;
+    font-size: 16px;
+  }
+
+  .mobile_project_section {
+    border: 3px solid gold;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: #F28C0E;
+    height: 70vh;
+  }
+
+  .mobile_service_heading {
+    color: #F28C0E;
+    font-size: 25px;
+    border-bottom: 1px solid;
+    text-align: center;
+    font-weight: 1000;
+    margin-top: 30px;
+  }
+
+  .mobile_description {
+    
+  }

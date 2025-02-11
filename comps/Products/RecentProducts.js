@@ -5,9 +5,21 @@ import Image from 'next/image';
 import styles from './Projects.module.css';
 
 const RecentProducts = () => {
+  const [isLargeScreen, setIsLargeScreen] = useState(true);
   const [products, setProducts] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [fade, setFade] = useState(true);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsLargeScreen(window.innerWidth > 768);
+    };
+
+    handleResize(); // Set the initial state
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   // Fetch the 3 most recent products from Firestore
   useEffect(() => {
@@ -48,25 +60,49 @@ const RecentProducts = () => {
   }
 
   return (
-    <section className={styles.project_section}>
-      <h3 className={styles.service_heading}>Recent Products</h3>
-      <div className={styles.carousel}>
-        <button className={styles.leftButton} onClick={() => setCurrentIndex((prev) => (prev - 1 + products.length) % products.length)}>&lt;</button>
-        <div className={styles.imageContainer}>
-          <a href={products[currentIndex].url} target="_blank" rel="noopener noreferrer">
-            <Image
-              src={products[currentIndex].image}
-              alt={products[currentIndex].name}
-              width={600}
-              height={400}
-              className={`${styles.image} ${fade ? styles.fadeIn : styles.fadeOut}`}
-            />
-          </a>
-          <div className={styles.description}>{products[currentIndex].description}</div>
+    <>
+      {isLargeScreen ? ( 
+        <section className={styles.project_section}>
+        <h3 className={styles.service_heading}>Recent Products</h3>
+        <div className={styles.carousel}>
+          <button className={styles.leftButton} onClick={() => setCurrentIndex((prev) => (prev - 1 + products.length) % products.length)}>&lt;</button>
+          <div className={styles.imageContainer}>
+            <a href={products[currentIndex].url} target="_blank" rel="noopener noreferrer">
+              <Image
+                src={products[currentIndex].image}
+                alt={products[currentIndex].name}
+                width={600}
+                height={400}
+                className={`${styles.image} ${fade ? styles.fadeIn : styles.fadeOut}`}
+              />
+            </a>
+            <div className={styles.description}>{products[currentIndex].description}</div>
+          </div>
+          <button className={styles.rightButton} onClick={() => setCurrentIndex((prev) => (prev + 1) % products.length)}>&gt;</button>
         </div>
-        <button className={styles.rightButton} onClick={() => setCurrentIndex((prev) => (prev + 1) % products.length)}>&gt;</button>
-      </div>
-    </section>
+      </section>
+      ) : (
+        <section className={styles.mobile_project_section}>
+        <h3 className={styles.mobile_service_heading}>Recent Products</h3>
+        <div className={styles.carousel}>
+          <button className={styles.leftButton} onClick={() => setCurrentIndex((prev) => (prev - 1 + products.length) % products.length)}>&lt;</button>
+          <div className={styles.imageContainer}>
+            <a href={products[currentIndex].url} target="_blank" rel="noopener noreferrer">
+              <Image
+                src={products[currentIndex].image}
+                alt={products[currentIndex].name}
+                width={600}
+                height={400}
+                className={`${styles.image} ${fade ? styles.fadeIn : styles.fadeOut}`}
+              />
+            </a>
+            <div className={styles.mobile_description}>{products[currentIndex].description}</div>
+          </div>
+          <button className={styles.rightButton} onClick={() => setCurrentIndex((prev) => (prev + 1) % products.length)}>&gt;</button>
+        </div>
+      </section>
+      ) }
+    </>
   );
 };
 
