@@ -120,13 +120,10 @@
     // </div>
 //   );
 // };
-
-// export default AddProduct;
-
-import React, { useState } from "react";
-import { collection, addDoc } from "firebase/firestore";
-import { db } from "../../fireProductsConfig"; // Ensure correct path
-import styles from "./products.module.css"; // Import the CSS module
+import React, { useState, useEffect } from "react";
+import { collection, addDoc, onSnapshot, doc, deleteDoc, updateDoc } from "firebase/firestore";
+import { db } from "../../fireProductsConfig";
+import styles from "./products.module.css";
 
 const AddProduct = () => {
   const [formData, setFormData] = useState({
@@ -139,6 +136,20 @@ const AddProduct = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
+  const [products, setProducts] = useState([]);
+  const [editProductId, setEditProductId] = useState(null);
+
+  useEffect(() => {
+    const unsubscribe = onSnapshot(collection(db, "products"), (snapshot) => {
+      const productList = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setProducts(productList);
+    });
+
+    return () => unsubscribe();
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -155,10 +166,10 @@ const AddProduct = () => {
       reader.onloadend = () => {
         setFormData({
           ...formData,
-          image: reader.result, // Store Base64 image data
+          image: reader.result,
         });
       };
-      reader.readAsDataURL(file); // Convert file to Base64
+      reader.readAsDataURL(file);
     }
   };
 
@@ -169,25 +180,64 @@ const AddProduct = () => {
     setSuccess(null);
 
     try {
-      // Store the image data directly in Firestore
-      const docRef = await addDoc(collection(db, "products"), {
-        ...formData,
-        createdAt: new Date(),
-      });
+      if (editProductId) {
+        // Confirm before updating
+        const confirmUpdate = window.confirm("Are you sure you want to update this product?");
+        if (!confirmUpdate) {
+          setLoading(false);
+          return;
+        }
 
-      setSuccess(`Product added successfully with ID: ${docRef.id}`);
+        const productRef = doc(db, "products", editProductId);
+        await updateDoc(productRef, { ...formData });
+        setSuccess("Product updated successfully!");
+        setEditProductId(null);
+      } else {
+        const docRef = await addDoc(collection(db, "products"), {
+          ...formData,
+          createdAt: new Date(),
+        });
+        setSuccess(`Product added successfully with ID: ${docRef.id}`);
+      }
+
       setFormData({ image: "", name: "", price: "", description: "" });
     } catch (err) {
-      setError("Error adding product: " + err.message);
+      setError("Error saving product: " + err.message);
     } finally {
       setLoading(false);
     }
   };
 
+  // 🗑️ Delete Function with Confirmation
+  const handleDelete = async (productId) => {
+    const confirmDelete = window.confirm("Are you sure you want to delete this product?");
+    if (!confirmDelete) return;
+
+    try {
+      await deleteDoc(doc(db, "products", productId));
+      setSuccess("Product deleted successfully!");
+    } catch (err) {
+      setError("Error deleting product: " + err.message);
+    }
+  };
+
+  // ✏️ Edit Function
+  const handleEdit = (product) => {
+    setFormData({
+      image: product.image,
+      name: product.name,
+      price: product.price,
+      description: product.description,
+    });
+    setEditProductId(product.id);
+  };
+
   return (
-    <div style={{ paddingTop: '100px' }}>
+    <div style={{ paddingTop: "100px" }}>
       <div className={styles.container}>
-        <h2 className={styles.title}>Add New Product</h2>
+        <h2 className={styles.title}>
+          {editProductId ? "Edit Product" : "Add New Product"}
+        </h2>
 
         {error && <p className={styles.error}>{error}</p>}
         {success && <p className={styles.success}>{success}</p>}
@@ -200,7 +250,6 @@ const AddProduct = () => {
               accept="image/*"
               onChange={handleImageChange}
               className={styles.input}
-              required
             />
           </div>
 
@@ -240,14 +289,56 @@ const AddProduct = () => {
             ></textarea>
           </div>
 
-          <button
-            type="submit"
-            className={styles.button}
-            disabled={loading}
-          >
-            {loading ? "Adding..." : "Add Product"}
+          <button type="submit" className={styles.button} disabled={loading}>
+            {loading ? "Saving..." : editProductId ? "Update Product" : "Add Product"}
           </button>
+
+          {editProductId && (
+            <button
+              type="button"
+              className={styles.cancelButton}
+              onClick={() => {
+                setFormData({ image: "", name: "", price: "", description: "" });
+                setEditProductId(null);
+              }}
+            >
+              Cancel
+            </button>
+          )}
         </form>
+
+        {/* Product List */}
+        <div className={styles.productList}>
+          <h3>Product List</h3>
+          {products.length === 0 ? (
+            <p>No products added yet.</p>
+          ) : (
+            products.map((product) => (
+              <div key={product.id} className={styles.productItem}>
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className={styles.productImage}
+                />
+                <div className={styles.productDetails}>
+                  <p className={styles.productName}>{product.name}</p>
+                  <button
+                    className={styles.editButton}
+                    onClick={() => handleEdit(product)}
+                  >
+                    Edit
+                  </button>
+                  <button
+                    className={styles.deleteButton}
+                    onClick={() => handleDelete(product.id)}
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
+            ))
+          )}
+        </div>
       </div>
     </div>
   );

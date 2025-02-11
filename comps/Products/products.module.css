@@ -108,3 +108,79 @@
     }
   }
   
+
+  /* === RENDER PRODUCT LIST ====  */
+  .productList {
+    margin-top: 20px;
+  }
+  
+  .productItem {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .productImage {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  .productDetails {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .productName {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .editButton {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+    margin-right: 5px;
+  }
+  
+  .editButton:hover {
+    background-color: #0056b3;
+  }
+  
+  .deleteButton {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+  }
+  
+  .deleteButton:hover {
+    background-color: #cc0000;
+  }
+  
+  .cancelButton {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 10px;
+  }
+  
+  .cancelButton:hover {
+    background-color: #5a6268;
+  }
+  

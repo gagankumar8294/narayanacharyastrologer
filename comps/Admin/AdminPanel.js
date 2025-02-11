@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "./AdminPanel.module.css";
 import AddBlog from "@/pages/blog/add";
+import AddProduct from "../Products/Products";
 
 const AdminPanel = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -50,7 +51,7 @@ const AdminPanel = () => {
 
 // Sample Components
 const Blogs = () => <><AddBlog /></>;
-const Products = () => <div><h3>Manage Products</h3></div>;
+const Products = () => <><AddProduct /></>;
 const Matrimony = () => <div><h3>Manage Matrimony</h3></div>;
 
 export default AdminPanel;
