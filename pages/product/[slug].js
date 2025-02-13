@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
-import { doc, getDoc } from 'firebase/firestore';
+import { collection, query, where, getDocs } from 'firebase/firestore';
 import { db } from '../../fireProductsConfig';
 import Image from 'next/image';
 import styles from '../../comps/Products/products.module.css';
@@ -16,11 +16,14 @@ const ProductDetail = () => {
 
     const fetchProduct = async () => {
       try {
-        const productRef = doc(db, 'products', slug);
-        const productSnap = await getDoc(productRef);
+        console.log("Fetching product with slug:", slug); // Debugging
 
-        if (productSnap.exists()) {
-          setProduct({ id: productSnap.id, ...productSnap.data() });
+        const q = query(collection(db, 'products'), where('slug', '==', slug));
+        const querySnapshot = await getDocs(q);
+
+        if (!querySnapshot.empty) {
+          const productData = querySnapshot.docs[0].data();
+          setProduct({ id: querySnapshot.docs[0].id, ...productData });
         } else {
           console.error('Product not found');
         }
