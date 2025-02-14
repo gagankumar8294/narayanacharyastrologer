@@ -675,7 +675,42 @@ const AddProduct = () => {
             </button>
           )}
         </form>
+        
       </div>
+      
+      <div className={styles.productList}>
+          <h3>Product List</h3>
+          {products.length === 0 ? (
+            <p>No products added yet.</p>
+          ) : (
+            products.map((product) => (
+              <div key={product.id} className={styles.productItem}>
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className={styles.productImage}
+                />
+                <div className={styles.productDetails}>
+                  <p className={styles.productName}>{product.name}</p>
+                  <p className={styles.productSlug}>Slug: {product.slug}</p>
+                  <button
+                    className={styles.editButton}
+                    onClick={() => handleEdit(product)}
+                  >
+                    Edit
+                  </button>
+                  <button
+                    className={styles.deleteButton}
+                    onClick={() => handleDelete(product.id)}
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
+            ))
+          )}
+        </div>
+
     </div>
   );
 };
