@@ -42,12 +42,24 @@ const ProductDetail = () => {
 
   return (
     <section className={styles.productDetail}>
-      <h1 className={styles.title}>{product.name}</h1>
       <Image src={product.image} alt={product.name} width={600} height={400} className={styles.image} />
+      <h1 className={styles.title}>{product.name}</h1>
+      <p className={styles.price_tag} style={{ display: "flex", alignItems: "center", gap: "5px", fontWeight: "bold" }}>
+        ₹ {product.price} <span className={styles.price_span}>- contact us for best price</span>
+      </p>
+      <h3 className={styles.h3_description}>Description</h3>
+      {/* Conditional bullet points */}
+      {(product.weight || product.length || product.width) && (
+        <ul className={styles.productSpecs}>
+          {product.weight && <li>Weight: {product.weight} kg</li>}
+          {product.length && <li>Length: {product.length} cm</li>}
+          {product.width && <li>Width: {product.width} cm</li>}
+        </ul>
+      )}
       <p className={styles.description}>{product.description}</p>
-      <a href={product.url} target="_blank" rel="noopener noreferrer" className={styles.link}>
+      {/* <a href={product.url} target="_blank" rel="noopener noreferrer" className={styles.link}>
         View Product
-      </a>
+      </a> */}
     </section>
   );
 };

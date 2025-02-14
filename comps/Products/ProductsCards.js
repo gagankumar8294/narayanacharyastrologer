@@ -28,7 +28,6 @@ export const ProductCard = () => {
         setLoading(false);
       }
     };
-
     fetchProducts();
   }, []);
 
