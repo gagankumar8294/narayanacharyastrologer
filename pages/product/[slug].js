@@ -51,9 +51,9 @@ const ProductDetail = () => {
       {/* Conditional bullet points */}
       {(product.weight || product.length || product.width) && (
         <ul className={styles.productSpecs}>
-          {product.weight && <li>Weight: {product.weight} kg</li>}
-          {product.length && <li>Length: {product.length} cm</li>}
-          {product.width && <li>Width: {product.width} cm</li>}
+          {product.weight && <li className={styles.desc_li}>Weight: {product.weight} kg</li>}
+          {product.length && <li className={styles.desc_li}>Length: {product.length} cm</li>}
+          {product.width && <li className={styles.desc_li}>Width: {product.width} cm</li>}
         </ul>
       )}
       <p className={styles.description}>{product.description}</p>

@@ -187,7 +187,7 @@
   .productDetail {
     padding-top: 100px !important;
   }
-
+/* 
   .image {
     padding-right: 10px;
     padding-left: 10px;
@@ -220,4 +220,108 @@
     padding-left: 13px;
     padding-right: 13px;
     text-align: justify;
+  }
+
+  .productSpecs {
+    padding-left: 13px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .desc_li {
+    font-weight: bold;
+  } */
+
+  @media (min-width: 350px) and (max-width:370px){
+
+    .image {
+      padding-right: 10px;
+      padding-left: 10px;
+    }
+  
+    .price_tag {
+      margin-left: 15px;
+      font-weight: bold;
+      color: peru;
+      font-size: 20px;
+    }
+  
+    .price_span {
+      font-weight: normal;
+      color: #0056b3;
+    }
+  
+    .h3_description {
+      margin-left: 12px;
+      padding-left: 2px;
+      margin-top: 10px;
+      font-weight: bold;
+      border-bottom: 3px solid peru;
+      width: 25%;
+      font-size: 17px;
+      color: peru;
+    }
+  
+    .description {
+      padding-left: 13px;
+      padding-right: 13px;
+      text-align: justify;
+    }
+  
+    .productSpecs {
+      padding-left: 13px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+  
+    .desc_li {
+      font-weight: bold;
+    }
+  }
+
+  @media (min-width: 350px) and (max-width:370px){
+
+    .image {
+      padding-right: 10px;
+      padding-left: 10px;
+    }
+  
+    .price_tag {
+      margin-left: 15px;
+      font-weight: bold;
+      color: peru;
+      font-size: 20px;
+    }
+  
+    .price_span {
+      font-weight: normal;
+      color: #0056b3;
+    }
+  
+    .h3_description {
+      margin-left: 12px;
+      padding-left: 2px;
+      margin-top: 10px;
+      font-weight: bold;
+      border-bottom: 3px solid peru;
+      width: 25%;
+      font-size: 17px;
+      color: peru;
+    }
+  
+    .description {
+      padding-left: 13px;
+      padding-right: 13px;
+      text-align: justify;
+    }
+  
+    .productSpecs {
+      padding-left: 13px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+  
+    .desc_li {
+      font-weight: bold;
+    }
   }
