@@ -113,7 +113,7 @@ const ProductDetail = () => {
             {/* community joine */}
             <div className={styles.community_div}>
               <section className={styles.community}>
-              <h4>3 Ways to Join Our Community</h4>
+              <h4>Join Our Community</h4>
               {/* <div className={styles.download_our_app}>
                 <h3>Telegram Group</h3>
                 <p>Discover special offers, top stories, upcoming events, and more.</p>
