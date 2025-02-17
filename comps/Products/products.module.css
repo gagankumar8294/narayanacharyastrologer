@@ -382,10 +382,6 @@
 
 
   
-.container {
-  padding-top: 150px;
-  text-align: center;
-}
 
 .containerMargin {
   padding: 60vh;
@@ -397,7 +393,7 @@
 }
 
 .svgs {
-  fill: #FF10FF;
+  fill: peru;
 }
 
 .flexings {

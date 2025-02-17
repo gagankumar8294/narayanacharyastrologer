@@ -40,7 +40,7 @@ const ProductDetail = () => {
   if (loading) return <p>Loading product details...</p>;
   if (!product) return <p>Product not found</p>;
 
-  const blogURL = `${window.location.origin}/blog/${slug}`;
+  const blogURL = `${window.location.origin}/product/${slug}`;
   const blogTitle = product?.sections?.find(section => section.type === "title")?.value || "Untitled Blog";
 
 
