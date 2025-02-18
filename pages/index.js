@@ -9,6 +9,7 @@ import c from ".././public/homepage/c.png";
 import { NewProducts } from '@/comps/Products/NewProducts';
 import Carousel from '@/comps/Products/Carousel';
 import RecentProducts from '@/comps/Products/RecentProducts';
+import Blogs from '@/comps/Blogs/Blogs';
 
 // import SplashScreen from '@/comps/SplashScreen';
 // import { useState, useEffect } from 'react';
@@ -118,6 +119,9 @@ export default function Home() {
       </div>
       <section>
         <RecentProducts />
+      </section>
+      <section>
+        <Blogs />
       </section>
       
     </>
