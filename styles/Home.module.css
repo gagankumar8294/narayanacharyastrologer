@@ -3734,7 +3734,7 @@
 @media (min-width: 1101px) and (max-width: 1300px) {
 
   .leftDiv {
-    margin-top: 80px !important;
+    margin-top: 50px !important;
   }
 
 
@@ -3752,7 +3752,7 @@
 @media (min-width: 1301px) and (max-width: 1367px) {
 
   .leftDiv {
-    margin-top: 90px !important;
+    margin-top: -90px !important;
   }
 
 
