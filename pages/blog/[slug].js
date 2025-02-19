@@ -101,12 +101,12 @@ const BlogDetail = () => {
                 </div>          
                 {blog.sections.map((section, index) => {
                 switch (section.type) {
-                    case 'title':
-                      return (
-                        <h1 className={styles.main_heading} key={index} >
-                          {section.value}
-                        </h1>
-                      );
+                    // case 'title':
+                    //   return (
+                    //     <h1 className={styles.main_heading} key={index} >
+                    //       {section.value}
+                    //     </h1>
+                    //   );
                     case 'h1':
                       return (
                         <h1 key={index} className={styles.h1}>
