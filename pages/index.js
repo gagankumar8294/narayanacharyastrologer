@@ -90,7 +90,7 @@ export default function Home() {
             <Link className={styles.button_1} href="/blog">Explore Blog</Link>
             <Link 
               className={styles.button_2} 
-              href="https://wa.me/918549803686?text=Hello,%20**Brahmashree%20Narayanachary%20Vishwakarma**%0A%0AI%20need%20an%20appointment%20for%20Astrology%20prediction,%0A%0Aplease%20give%20us%20an%20Appointment%20Date"
+              href="https://wa.me/918549803686?text=Hello,%20*Brahmashree%20Narayanachary%20Vishwakarma*%0A%0AI%20need%20an%20appointment%20for%20Astrology%20prediction,%0A%0Aplease%20give%20us%20an%20Appointment%20Date"
               target="_blank" 
               rel="noopener noreferrer"
             >
