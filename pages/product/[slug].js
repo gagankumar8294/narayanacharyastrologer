@@ -123,7 +123,7 @@ const ProductDetail = () => {
               <div className={styles.download_our_app}>
                 <h3>WhatsApp Group</h3>
                 <p>Discover special offers, top stories, upcoming events, and more.</p>
-                <h5><a href='https://chat.whatsapp.com/BOypJbJNmaJHgWtWfdrx3i'>Join Whatsapp</a></h5>
+                <h5><a href='https://chat.whatsapp.com/IEEk7CbRplX4fGAUZK5Dt7'>Join Whatsapp</a></h5>
               </div>
 
               {/* <div className={styles.download_our_app}>
