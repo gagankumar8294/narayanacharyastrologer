@@ -35,7 +35,15 @@ const fireProductConfig = {
 };
 
 // Check if Firebase app is already initialized for this config
-const productApp = getApps().find(app => app.name === "productApp")
+// const productApp = getApps().find(app => app.name === "productApp")
+//   ? getApp("productApp")
+//   : initializeApp(fireProductConfig, "productApp");
+
+// const db = getFirestore(productApp);
+
+// export { productApp, db };
+
+const productApp = getApps().some(app => app.name === "productApp")
   ? getApp("productApp")
   : initializeApp(fireProductConfig, "productApp");
 

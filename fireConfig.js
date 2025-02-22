@@ -12,7 +12,14 @@ const fireConfig = {
 };
 
 // Check if Firebase apps are already initialized
-const matrimonialDb = getApps().length === 0 ? initializeApp(fireConfig) : getApp(); // Get existing app or initialize a new one
+// const matrimonialDb = getApps().length === 0 ? initializeApp(fireConfig) : getApp(); // Get existing app or initialize a new one
+
+// const db = getFirestore(matrimonialDb);
+
+// export { matrimonialDb, db };
+const matrimonialDb = getApps().some(app => app.name === "matrimonialApp")
+  ? getApp("matrimonialApp")
+  : initializeApp(fireConfig, "matrimonialApp");
 
 const db = getFirestore(matrimonialDb);
 
