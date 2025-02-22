@@ -122,9 +122,6 @@ export default function Home() {
         <RecentProducts />
       </section>
       <section>
-        <Blogs />
-      </section>
-      <section>
         <StoreLocation />
       </section>
     </>
