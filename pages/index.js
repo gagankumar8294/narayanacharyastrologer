@@ -6,8 +6,8 @@ import Link from "next/link"
 import AutoTypingText from '../comps/AutoTypingText';
 import Image from 'next/image';
 import c from ".././public/homepage/c.png";
-import { NewProducts } from '@/comps/Products/NewProducts';
-import Carousel from '@/comps/Products/Carousel';
+// import { NewProducts } from '@/comps/Products/NewProducts';
+// import Carousel from '@/comps/Products/Carousel';
 import RecentProducts from '@/comps/Products/RecentProducts';
 import StoreLocation from '@/comps/maps/StoreLocation';
 import Blogs from '@/comps/Blogs/Blogs';
