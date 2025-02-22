@@ -3231,3 +3231,35 @@
     background-color: yellow;
    }
 }
+
+
+.whatsappButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin: 20px auto;
+  padding: 10px 20px;
+  border: none;
+  background-color: #25d366; /* WhatsApp green */
+  width: 30%;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  animation: zoomEffect 3s infinite ease-in-out;
+}
+
+/* Keyframes for smooth zoom-in and zoom-out */
+@keyframes zoomEffect {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1); /* Zoom in */
+  }
+  100% {
+    transform: scale(1); /* Zoom out */
+  }
+}
+

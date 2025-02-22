@@ -52,6 +52,18 @@ const ProductDetail = () => {
       <p className={styles.price_tag} style={{ display: "flex", alignItems: "center", gap: "5px", fontWeight: "bold" }}>
         ₹ {product.price} <span className={styles.price_span}>- contact us for best price</span>
       </p>
+       {/* Button to redirect to WhatsApp */}
+       <div className={styles.whatsappButton}>
+       <button
+  onClick={() => {
+    const message = encodeURIComponent(`Hello, I'm interested in:\n\n*${product.name}*`);
+    window.open(`https://wa.me/918549803686?text=${message}`, "_blank");
+  }}
+>
+  Buy
+</button>
+       </div>
+      
       <h3 className={styles.h3_description}>Description</h3>
       {/* Conditional bullet points */}
       {(product.weight || product.length || product.width) && (
