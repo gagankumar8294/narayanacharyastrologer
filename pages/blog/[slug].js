@@ -12,6 +12,13 @@ const BlogDetail = () => {
     const { slug } = router.query;
     const [blog, setBlog] = useState(null);
     const [postDate, setPostDate] = useState(null);
+    const [origin, setOrigin] = useState('');
+
+    useEffect(() => {
+      if (typeof window !== 'undefined') {
+        setOrigin(window.location.origin); // Safely access window on client
+      }
+    }, []);
 
     useEffect(() => {
         if (slug) {
@@ -71,7 +78,7 @@ const BlogDetail = () => {
   const createdOn = blog.createdOn.toDate();
   const timeAgo = getTimeAgo(createdOn);
 
-    const blogURL = `${window.location.origin}/blog/${slug}`;
+  const blogURL = origin ? `${origin}/blog/${slug}` : '';
     const blogTitle = blog.sections.find(section => section.type === "title")?.value || "Untitled Blog";
 
     return (
