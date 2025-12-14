@@ -1,7 +1,11 @@
-import Link from "next/link";
+import { useRouter } from "next/router";
+
 import styles from "./DiwaliPromo.module.css";
 
 export default function DiwaliPromo() {
+
+    const router = useRouter();
+
   return (
     <section className={styles.wrapper}>
       <div className={styles.card}>
@@ -16,11 +20,12 @@ export default function DiwaliPromo() {
           ಎಲ್ಲವನ್ನೂ ಒಂದೇ ಕಡೆ ಸುಲಭವಾಗಿ ನೋಡಿ.
         </p>
 
-        <Link href="/diwali" passHref legacyBehavior>
-            <a className={styles.button}>
-                ದೀಪಾವಳಿ ವಿವರಗಳನ್ನು ನೋಡಿ ➜
-            </a>
-        </Link>
+        <button
+            className={styles.button}
+            onClick={() => router.push("/diwali")}
+            >
+            ದೀಪಾವಳಿ ವಿವರಗಳನ್ನು ನೋಡಿ ➜
+        </button>
 
       </div>
     </section>
