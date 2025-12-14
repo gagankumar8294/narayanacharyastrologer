@@ -11,6 +11,7 @@ import c from ".././public/homepage/c.png";
 import RecentProducts from '@/comps/Products/RecentProducts';
 import StoreLocation from '@/comps/maps/StoreLocation';
 import Blogs from '@/comps/Blogs/Blogs';
+import DiwaliPromo from '@/comps/Diwali/Diwali';
 
 // import SplashScreen from '@/comps/SplashScreen';
 // import { useState, useEffect } from 'react';
@@ -118,6 +119,9 @@ export default function Home() {
           <Image className={styles.rightDivIMG} src={c} width={300} height={400} alt="narayanachary-astrologer" />
         </div>
       </div>
+      <section>
+        <DiwaliPromo />
+      </section>
       <section>
         <RecentProducts />
       </section>
