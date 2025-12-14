@@ -72,3 +72,75 @@
     min-width: 750px;
   }
 }
+
+/* relative container */
+.tableContainer {
+  position: relative;
+}
+
+/* arrow base */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.95);
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+  animation: arrowPulse 1.6s infinite ease-in-out;
+}
+
+/* left arrow */
+.left {
+  left: 6px;
+}
+
+/* right arrow */
+.right {
+  right: 6px;
+}
+
+/* subtle pulse */
+@keyframes arrowPulse {
+  0% {
+    opacity: 0.6;
+    transform: translateY(-50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-50%) scale(1.08);
+  }
+  100% {
+    opacity: 0.6;
+    transform: translateY(-50%) scale(1);
+  }
+}
+
+/* hide arrows on desktop if you want */
+@media (min-width: 1024px) {
+  .arrow {
+    display: none;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .cardCol {
+    width: 80px;
+    font-size: 12px;
+  }
+}
+
+/* Card Number column width control */
+.cardCol {
+  width: 110px;        /* adjust as needed */
+  min-width: 90px;
+  max-width: 120px;
+  text-align: center;
+  font-weight: 500;
+}

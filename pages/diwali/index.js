@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import styles from "./diwali.module.css";
 
 export async function getServerSideProps() {
@@ -12,42 +13,89 @@ export async function getServerSideProps() {
 }
 
 export default function Home({ data }) {
-  const months = [
-    "Nov",
-    "Dec",
-    "Jan",
-  ];
+  const months = ["Nov", "Dec", "Jan"];
+
+  const wrapperRef = useRef(null);
+  const [showLeft, setShowLeft] = useState(false);
+  const [showRight, setShowRight] = useState(false);
+
+  // detect scroll position
+  const checkScroll = () => {
+    const el = wrapperRef.current;
+    if (!el) return;
+
+    setShowLeft(el.scrollLeft > 0);
+    setShowRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 5);
+  };
+
+  // initial check
+  useEffect(() => {
+    checkScroll();
+  }, []);
+
+  const scrollRight = () => {
+    wrapperRef.current.scrollTo({
+      left: wrapperRef.current.scrollWidth,
+      behavior: "smooth",
+    });
+  };
+
+  const scrollLeft = () => {
+    wrapperRef.current.scrollTo({
+      left: 0,
+      behavior: "smooth",
+    });
+  };
 
   return (
     <div className={styles.container}>
       <h2 className={styles.heading}>Diwali savings / festival fund</h2>
 
-      <div className={styles.tableWrapper}>
-        <table className={styles.table}>
-          <thead>
-            <tr>
-              {/* ✅ NEW column */}
-              <th>Card Number</th>
-              <th>Name</th>
-              {months.map(m => (
-                <th key={m}>{m}</th>
-              ))}
-            </tr>
-          </thead>
+      <div className={styles.tableContainer}>
+        {/* ⬅ Left Arrow */}
+        {showLeft && (
+          <button className={`${styles.arrow} ${styles.left}`} onClick={scrollLeft}>
+            ⬅
+          </button>
+        )}
 
-          <tbody>
-            {data.map((row, i) => (
-              <tr key={i}>
-                {/* ✅ NEW column data */}
-                <td>{row["Card Number"]}</td>
-                <td>{row.Name}</td>
+        {/* Table */}
+        <div
+          className={styles.tableWrapper}
+          ref={wrapperRef}
+          onScroll={checkScroll}
+        >
+          <table className={styles.table}>
+            <thead>
+              <tr>
+                <th>Card Number</th>
+                <th>Name</th>
                 {months.map(m => (
-                  <td key={m}>{row[m]}</td>
+                  <th key={m}>{m}</th>
                 ))}
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+
+            <tbody>
+              {data.map((row, i) => (
+                <tr key={i}>
+                  <td className={styles.cardCol}>{row["Card Number"]}</td>
+                  <td>{row.Name}</td>
+                  {months.map(m => (
+                    <td key={m}>{row[m]}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        {/* ➜ Right Arrow */}
+        {showRight && (
+          <button className={`${styles.arrow} ${styles.right}`} onClick={scrollRight}>
+            ➜
+          </button>
+        )}
       </div>
     </div>
   );
