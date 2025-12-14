@@ -13,16 +13,6 @@ export async function getServerSideProps() {
 
 export default function Home({ data }) {
   const months = [
-    
-    // "Feb",
-    // "Mar",
-    // "Apr",
-    // "May",
-    // "Jun",
-    // "Jul",
-    // "Aug",
-    // "Sep",
-    // "Oct",
     "Nov",
     "Dec",
     "Jan",
@@ -30,12 +20,14 @@ export default function Home({ data }) {
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.heading}>Diwali savings/festival fund</h2>
+      <h2 className={styles.heading}>Diwali savings / festival fund</h2>
 
       <div className={styles.tableWrapper}>
         <table className={styles.table}>
           <thead>
             <tr>
+              {/* ✅ NEW column */}
+              <th>Card Number</th>
               <th>Name</th>
               {months.map(m => (
                 <th key={m}>{m}</th>
@@ -46,6 +38,8 @@ export default function Home({ data }) {
           <tbody>
             {data.map((row, i) => (
               <tr key={i}>
+                {/* ✅ NEW column data */}
+                <td>{row["Card Number"]}</td>
                 <td>{row.Name}</td>
                 {months.map(m => (
                   <td key={m}>{row[m]}</td>
