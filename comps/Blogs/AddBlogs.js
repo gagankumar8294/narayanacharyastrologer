@@ -220,14 +220,14 @@ function AddBlogs() {
                     ))}
 
                     <select onChange={(e) => addSection(e.target.value)}>
-                        <option value="">Add Section</option>
-                        <option value="title">Title</option>
-                        <option value="h1">H1 Heading</option>
-                        <option value="h2">H2 Heading</option>
-                        <option value="h3">H3 Heading</option>
-                        <option value="paragraph">Paragraph</option>
-                        <option value="link">Link</option>
-                        <option value="image">Image</option>
+                        <option value="" style={{ color: "#000" }}>Add Section</option>
+                        <option value="title" style={{ color: "#000" }}>Title</option>
+                        <option value="h1" style={{ color: "#000" }}>H1 Heading</option>
+                        <option value="h2" style={{ color: "#000" }}>H2 Heading</option>
+                        {/* <option value="h3">H3 Heading</option> */}
+                        <option value="paragraph" style={{ color: "#000" }}>Paragraph</option>
+                        <option value="link" style={{ color: "#000" }}>Link</option>
+                        <option value="image" style={{ color: "#000" }}>Image</option>
                     </select>
 
                     <button className={styles.btn} type="submit">
