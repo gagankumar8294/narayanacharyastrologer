@@ -43,9 +43,34 @@ const ProductDetail = () => {
   const blogURL = `${window.location.origin}/product/${slug}`;
   const blogTitle = product?.sections?.find(section => section.type === "title")?.value || "Untitled Blog";
 
-
+  
   return (
     <>
+      {product && (
+        <Head>
+          {/* Basic */}
+          <title>{product.name}</title>
+          <meta name="description" content={product.description} />
+
+          {/* Open Graph */}
+          <meta property="og:type" content="product" />
+          <meta property="og:title" content={product.name} />
+          <meta property="og:description" content={product.description} />
+          <meta property="og:image" content={product.image} />
+          <meta property="og:url" content={blogURL} />
+          <meta property="og:site_name" content="Happy Greenery" />
+
+          {/* Image size for social */}
+          <meta property="og:image:width" content="1200" />
+          <meta property="og:image:height" content="630" />
+
+          {/* Twitter */}
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content={product.name} />
+          <meta name="twitter:description" content={product.description} />
+          <meta name="twitter:image" content={product.image} />
+        </Head>
+      )}
       <section className={styles.productDetail}>
       <Image src={product.image} alt={product.name} width={600} height={400} className={styles.image} />
       <h1 className={styles.title}>{product.name}</h1>
