@@ -1,7 +1,7 @@
 const { getBlogSlugs } = require('./lib/getBlogSlugs');
 
 module.exports = {
-    siteUrl: 'https://codeaspirant.vercel.app',
+    siteUrl: 'https://www.narayanacharyastrologer.com/',
     generateRobotsTxt: true, // (optional)
     changefreq: 'daily', // How frequently your website content changes
     priority: 0.7, // The priority of this URL relative to other URLs on your site
