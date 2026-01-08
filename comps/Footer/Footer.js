@@ -18,7 +18,7 @@ const Footer = () => {
                     <a href="tel:+1234567890" style={styles.link}>Contact: +918549803686</a>
                 </div>
                 <div style={styles.copyright}>
-                    &copy; 2025 narayayanacharyastrologer. All rights reserved.
+                    &copy; 2026 narayayanacharyastrologer. All rights reserved.
                 </div>
             </div>
         </footer>
