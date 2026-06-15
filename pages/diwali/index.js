@@ -13,7 +13,7 @@ export async function getServerSideProps() {
 }
 
 export default function Home({ data }) {
-  const months = ["village","Nov", "Dec", "Jan", "Feb", "Mar", "Apr", "May"];
+  const months = ["village","Nov", "Dec", "Jan", "Feb", "Mar", "Apr", "May", "June"];
 
   const wrapperRef = useRef(null);
   const [showLeft, setShowLeft] = useState(false);
