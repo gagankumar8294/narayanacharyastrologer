@@ -1,13 +1,18 @@
-.visit_heading {
-    text-align: center;
-    font-size: 30px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    color: tomato;
-    font-weight: bold;
+.mapContainer {
+  max-width: 1200px;
+  margin: 0 auto 50px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(15, 8, 29, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .iframe_div {
-    padding-left: 20px;
-    padding-right: 20px;
+  width: 100%;
+  height: 420px;
+  display: block;
+}
+
+.visit_heading {
+  display: none; /* Managed by parent section header */
 }

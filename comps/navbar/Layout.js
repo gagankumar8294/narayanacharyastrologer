@@ -1,6 +1,7 @@
 import Navbar from "./Navbar"
 import Head from "next/head";
 import Footer from "../Footer/Footer";
+import FloatingWhatsApp from "../FloatingWhatsApp/FloatingWhatsApp";
 
 const Layout = ({ children }) => {
     return (
@@ -8,10 +9,11 @@ const Layout = ({ children }) => {
             <Head>
                 <link rel="icon" href="/fav_icon/codeaspirant.png" />
             </Head>
-            <div className="content">
+            <div className="site-wrapper">
                 <Navbar />
-                { children }
+                <main id="main-content">{ children }</main>
                 <Footer />
+                <FloatingWhatsApp />
             </div>
         </>
     );

@@ -65,32 +65,25 @@ function Blogs() {
 
                         return (
                             <div className={style.blogCard} key={blog.id}>
-                                {/* {firstImage && firstImage.value && (
+                                <div className={style.cardImageWrapper}>
                                     <img
-                                        src={firstImage.value}
-                                        alt="Blog Image - codeaspirant"
+                                        src={firstImage ? firstImage.value : "/homepage/c.png"}
+                                        alt={firstTitle ? firstTitle.value : "Astrology Article"}
                                     />
-                                )}
-                                {firstTitle && <h3>{firstTitle.value}</h3>}
-                                <button
-                                    onClick={() => handleReadMore(blog)}
-                                    className={style.readMore}
-                                >
-                                    Read More
-                                </button> */}
-                                {firstImage && (
-                                    <img
-                                        src={firstImage.value}
-                                        alt="Blog Image - codeaspirant"
-                                    />
-                                )}
-                                {firstTitle && <h3>{firstTitle.value}</h3>}
-                                <button
-                                    onClick={() => handleReadMore(blog)}
-                                    className={style.readMore}
-                                >
-                                    Read More
-                                </button>
+                                </div>
+                                <div className={style.cardBody}>
+                                    <div>
+                                        <span className={style.cardTag}>Vedic Astrology</span>
+                                        <h3>{firstTitle ? firstTitle.value : "Astrology Insight"}</h3>
+                                    </div>
+                                    <button
+                                        onClick={() => handleReadMore(blog)}
+                                        className={style.readMore}
+                                    >
+                                        <span>Read Full Article</span>
+                                        <span>➔</span>
+                                    </button>
+                                </div>
                             </div>
                         );
                     })}

@@ -1,0 +1,173 @@
+.aboutPage {
+  font-family: var(--font-body);
+  color: var(--text-main);
+  background: var(--bg-main);
+  padding-top: 120px;
+  min-height: 100vh;
+}
+
+.heroBanner {
+  background: radial-gradient(circle at 70% 30%, #2b1154 0%, #120826 60%, #0a0316 100%);
+  color: #ffffff;
+  padding: 60px 24px 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.bannerContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 50px;
+  align-items: center;
+}
+
+.photoWrapper {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 2px solid var(--color-gold);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+}
+
+.astrologerPhoto {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.bannerBadge {
+  display: inline-block;
+  background: rgba(255, 104, 1, 0.2);
+  border: 1px solid var(--color-primary);
+  color: #ff9d54;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.bannerTitle {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 8px;
+}
+
+.bannerRole {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-gold);
+  margin: 0 0 24px;
+}
+
+.bannerBio {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #d1c9de;
+  margin: 0 0 16px;
+}
+
+.bannerActions {
+  margin-top: 28px;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.primaryCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-primary-gradient);
+  color: #ffffff;
+  padding: 12px 26px;
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(255, 104, 1, 0.4);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 24px;
+}
+
+.valuesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+.valueCard {
+  background: #ffffff;
+  padding: 36px 28px;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 20px rgba(15, 8, 29, 0.04);
+}
+
+.valueIcon {
+  font-size: 2rem;
+  color: var(--color-primary);
+  margin-bottom: 16px;
+}
+
+.valueTitle {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0 0 10px;
+}
+
+.valueDesc {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.lineageBox {
+  background: linear-gradient(135deg, #fff7ee 0%, #ffeedd 100%);
+  border: 1px solid rgba(255, 104, 1, 0.2);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  margin-bottom: 60px;
+}
+
+.lineageTitle {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin: 0 0 14px;
+}
+
+.lineageText {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #4a455a;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .bannerContent {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .photoWrapper {
+    max-width: 320px;
+    margin: 0 auto;
+  }
+  .valuesGrid {
+    grid-template-columns: 1fr;
+  }
+}

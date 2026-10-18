@@ -1,893 +1,249 @@
+.videoPage {
+  font-family: var(--font-body);
+  color: var(--text-main);
+  background: var(--bg-main);
+  padding-top: 100px;
+  min-height: 100vh;
+}
 
-@media (max-width: 1480px) {
+.headerSection {
+  background: radial-gradient(circle at 50% 30%, #2b1154 0%, #120826 60%, #0a0316 100%);
+  color: #ffffff;
+  padding: 60px 24px;
+  text-align: center;
+}
 
-    .course_name h2{
-      padding-top:104.5px;
-      padding-bottom: 05px;
-      text-align: center;
-      /* color: #FF10FF; */
-      color: yellow;
-      font-size: 50px;
-      font-family: "EB Garamond", sans-serif;
-    }
-  
-    .video_container {
-      display: flex;
-      width: 100%;
-      position: fixed;
-      justify-content: space-between;
-      align-items: flex-start;
-      /* padding-top:125px; */
-      /* background-color: #FF10FF; */
-      height: 100vh;
-    }
-  
-    .video_titles {
-      width: 35%;
-      border-right: 1px solid #ccc;
-      background-color: #ccc;
-      max-height: 77vh; /* Set the maximum height for the scrollable area */
-      overflow-y: auto; /* Add vertical scrollbar when content overflows */
-      
-    }
-  
-      .video_titles div {
-        cursor: pointer;
-        font-size: 16px;
-        color: #333;
-        padding-left: 30px;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        border-bottom: #333 solid 1px;
-        font-size: 22px;
-      }
-  
-      .video_titles div:hover {
-        background-color: #f5f5f5;
-      }
-  
-      .video_embed {
-        flex: 1;
-        width: 90%;
-        position: relative;
-        padding-bottom: 56.25%; /* 16:9 aspect ratio for responsive video */
-        background-color: #333;
-        max-height: 10px;/* Set the maximum height for the scrollable area */
-        overflow-y: auto; /* Add vertical scrollbar when content overflows */
-      }
-  
-      .video_embed iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width:100%;
-        /* margin-top: 35px; */
-        height: 540px;
-      }
-      .type_yt {
-        background-color: aqua;
-        margin-top: 540px;
-      }
-    }
-  
-  @media (max-width: 1450px) {
-    .video_embed {
-      flex: 1;
-      width: 90%;
-      position: relative;
-      padding-bottom: 56.25%; /* 16:9 aspect ratio for responsive video */
-      background-color: #333;
-      max-height: 10px;/* Set the maximum height for the scrollable area */
-      overflow-y: auto; /* Add vertical scrollbar when content overflows */
-    }
-  
-    .video_embed iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width:95%;
-      /* margin-top: 35px; */
-      height: 500px;
-      margin-left: 20px;
-    }
-    .type_yt {
-      background-color: aqua;
-      margin-top: 500px;
-    }
+.headerContainer {
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.badge {
+  display: inline-block;
+  background: rgba(255, 104, 1, 0.2);
+  border: 1px solid var(--color-primary);
+  color: #ff9d54;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: 2.3rem;
+  font-weight: 800;
+  margin: 0 0 10px;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #c7bece;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 50px 24px;
+}
+
+/* Featured Player */
+.playerWrapper {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(15, 8, 29, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  margin-bottom: 50px;
+}
+
+.embedBox {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 ratio */
+  height: 0;
+  background: #000;
+}
+
+.iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.playerMeta {
+  padding: 24px 30px;
+}
+
+.categoryBadge {
+  display: inline-block;
+  background: #fdf2e9;
+  color: var(--color-primary);
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.videoTitle {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0 0 10px;
+}
+
+.videoDesc {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Category Filter Bar */
+.filterBar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+  justify-content: center;
+}
+
+.filterBtn {
+  background: #ffffff;
+  border: 1px solid #dcd7e6;
+  padding: 8px 18px;
+  border-radius: var(--radius-pill);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #4a455a;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filterBtn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.filterBtnActive {
+  background: var(--color-primary-gradient);
+  color: #ffffff;
+  border-color: transparent;
+  box-shadow: var(--shadow-primary);
+}
+
+/* Video Grid */
+.videoGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.videoCard {
+  background: #ffffff;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 16px rgba(15, 8, 29, 0.04);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.videoCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(15, 8, 29, 0.08);
+  border-color: var(--color-primary);
+}
+
+.activeCard {
+  border: 2px solid var(--color-primary);
+}
+
+.thumbnailBox {
+  height: 140px;
+  background: linear-gradient(135deg, #180d2e 0%, #2f1754 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.playIcon {
+  width: 44px;
+  height: 44px;
+  background: rgba(255, 104, 1, 0.9);
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.durationBadge {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.cardInfo {
+  padding: 16px;
+}
+
+.cardCategory {
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  text-transform: uppercase;
+}
+
+.cardTitle {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 6px 0 8px;
+  line-height: 1.35;
+}
+
+.cardDesc {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@media (max-width: 1024px) {
+  .videoGrid {
+    grid-template-columns: repeat(2, 1fr);
   }
-  
-  @media (max-width: 1420px) {
-    .video_embed {
-      flex: 1;
-      width: 100%;
-      position: relative;
-      padding-bottom: 56.25%; /* 16:9 aspect ratio for responsive video */
-      background-color: #333;
-      max-height: 10px;/* Set the maximum height for the scrollable area */
-      overflow-y: auto; /* Add vertical scrollbar when content overflows */
-    }
-  
-    .video_embed iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width:100%;
-      /* margin-top: 35px; */
-      height: 512px;
-      margin-left: 0px;
-    }
-    .type_yt {
-      background-color: aqua;
-      margin-top: 500px;
-    }
+}
+
+@media (max-width: 600px) {
+  .videoGrid {
+    grid-template-columns: 1fr;
   }
-  
-  @media (max-width: 1385px) {
-    .video_embed {
-      flex: 1;
-      /* width: 90%; */
-      position: relative;
-      padding-bottom: 56.25%; /* 16:9 aspect ratio for responsive video */
-      background-color: #333;
-      max-height: 10px;/* Set the maximum height for the scrollable area */
-      overflow-y: auto; /* Add vertical scrollbar when content overflows */
-    }
-  
-    .video_embed iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width:95%;
-      /* margin-top: 35px; */
-      height: 480px;
-      margin-left: 20px;
-    }
-    .type_yt {
-      background-color: aqua;
-      margin-top: 480px;
-    }
+  .playerMeta {
+    padding: 18px 20px;
   }
-  
-  @media (max-width: 1365px) {
-    .video_embed {
-      flex: 1;
-      /* width: 90%; */
-      position: relative;
-      padding-bottom: 56.25%; /* 16:9 aspect ratio for responsive video */
-      background-color: #333;
-      max-height: 10px;/* Set the maximum height for the scrollable area */
-      overflow-y: auto; /* Add vertical scrollbar when content overflows */
-    }
-  
-    .video_embed iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width:100%;
-      /* margin-top: 35px; */
-      height: 495px;
-      margin-left: 0px;
-    }
-    .type_yt {
-      background-color: aqua;
-      margin-top: 495px;
-    }
-  }
-  
-  @media (max-width: 1335px) {
-    .video_embed {
-      flex: 1;
-      /* width: 90%; */
-      position: relative;
-      padding-bottom: 56.25%; /* 16:9 aspect ratio for responsive video */
-      background-color: #333;
-      max-height: 10px;/* Set the maximum height for the scrollable area */
-      overflow-y: auto; /* Add vertical scrollbar when content overflows */
-    }
-  
-    .video_embed iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width:95%;
-      /* margin-top: 35px; */
-      height: 460px;
-      margin-left: 20px;
-    }
-    .type_yt {
-      background-color: aqua;
-      margin-top: 460px;
-    }
-  }
-  
-  @media (max-width: 1305px) {
-    .video_embed {
-      flex: 1;
-      /* width: 90%; */
-      position: relative;
-      padding-bottom: 56.25%; /* 16:9 aspect ratio for responsive video */
-      background-color: #333;
-      max-height: 10px;/* Set the maximum height for the scrollable area */
-      overflow-y: auto; /* Add vertical scrollbar when content overflows */
-    }
-  
-    .video_embed iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width:100%;
-      /* margin-top: 35px; */
-      height: 474px;
-      margin-left: 0px;
-    }
-    .type_yt {
-      background-color: aqua;
-      margin-top: 474px;
-    }
-  }
-  
-  @media (max-width: 1305px) {
-    .video_embed {
-      flex: 1;
-      /* width: 90%; */
-      position: relative;
-      padding-bottom: 56.25%; /* 16:9 aspect ratio for responsive video */
-      background-color: #333;
-      max-height: 10px;/* Set the maximum height for the scrollable area */
-      overflow-y: auto; /* Add vertical scrollbar when content overflows */
-    }
-  
-    .video_embed iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width:100%;
-      /* margin-top: 35px; */
-      height: 474px;
-      margin-left: 0px;
-    }
-    .type_yt {
-      background-color: aqua;
-      margin-top: 474px;
-    }
-  }
-  
-  @media (max-width: 1275px) {
-    .video_embed {
-      flex: 1;
-      /* width: 90%; */
-      position: relative;
-      padding-bottom: 56.25%; /* 16:9 aspect ratio for responsive video */
-      background-color: #333;
-      max-height: 10px;/* Set the maximum height for the scrollable area */
-      overflow-y: auto; /* Add vertical scrollbar when content overflows */
-    }
-  
-    .video_embed iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width:97%;
-      /* margin-top: 35px; */
-      height: 448px;
-      margin-left: 12.5px;
-    }
-    .type_yt {
-      background-color: aqua;
-      margin-top: 448px;
-    }
-  }
-  
-  @media (max-width: 1245px) {
-    .video_embed {
-      flex: 1;
-      /* width: 90%; */
-      position: relative;
-      padding-bottom: 56.25%; /* 16:9 aspect ratio for responsive video */
-      background-color: #333;
-      max-height: 10px;/* Set the maximum height for the scrollable area */
-      overflow-y: auto; /* Add vertical scrollbar when content overflows */
-    }
-  
-    .video_embed iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width:100%;
-      /* margin-top: 35px; */
-      height: 450px;
-      margin-left: 0px;
-    }
-    .type_yt {
-      background-color: aqua;
-      margin-top: 448px;
-    }
-  }
-  
-  @media (max-width: 1215px) {
-    .video_embed {
-      flex: 1;
-      /* width: 90%; */
-      position: relative;
-      padding-bottom: 56.25%; /* 16:9 aspect ratio for responsive video */
-      background-color: #333;
-      max-height: 10px;/* Set the maximum height for the scrollable area */
-      overflow-y: auto; /* Add vertical scrollbar when content overflows */
-    }
-  
-    .video_embed iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width:97%;
-      /* margin-top: 35px; */
-      height: 427px;
-      margin-left: 12.5px;
-    }
-    .type_yt {
-      background-color: aqua;
-      margin-top: 427px;
-    }
-  }
-  
-  @media (max-width: 1190px) {
-    .video_embed {
-      flex: 1;
-      /* width: 90%; */
-      position: relative;
-      padding-bottom: 56.25%; /* 16:9 aspect ratio for responsive video */
-      background-color: #333;
-      max-height: 10px;/* Set the maximum height for the scrollable area */
-      overflow-y: auto; /* Add vertical scrollbar when content overflows */
-    }
-  
-    .video_embed iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width:100%;
-      /* margin-top: 35px; */
-      height: 432px;
-      margin-left: 0px;
-    }
-    .type_yt {
-      background-color: aqua;
-      margin-top: 432px;
-    }
-  }
-  
-  @media (max-width: 1165px) {
-    .video_embed {
-      flex: 1;
-      /* width: 90%; */
-      position: relative;
-      padding-bottom: 56.25%; /* 16:9 aspect ratio for responsive video */
-      background-color: #333;
-      max-height: 10px;/* Set the maximum height for the scrollable area */
-      overflow-y: auto; /* Add vertical scrollbar when content overflows */
-    }
-  
-    .video_embed iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width:97%;
-      /* margin-top: 35px; */
-      height: 410px;
-      margin-left: 12.5px;
-    }
-    .type_yt {
-      background-color: aqua;
-      margin-top: 410px;
-    }
-  }
-  
-  @media (max-width: 1140px) {
-    .video_embed {
-      flex: 1;
-      /* width: 90%; */
-      position: relative;
-      padding-bottom: 56.25%; /* 16:9 aspect ratio for responsive video */
-      background-color: #333;
-      max-height: 10px;/* Set the maximum height for the scrollable area */
-      overflow-y: auto; /* Add vertical scrollbar when content overflows */
-    }
-  
-    .video_embed iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width:100%;
-      /* margin-top: 35px; */
-      height: 412px;
-      margin-left: 0px;
-    }
-    .type_yt {
-      background-color: aqua;
-      margin-top: 412px;
-    }
-  }
-  
-  @media (max-width: 1110px) {
-    .video_embed {
-      flex: 1;
-      /* width: 90%; */
-      position: relative;
-      padding-bottom: 56.25%; /* 16:9 aspect ratio for responsive video */
-      background-color: #333;
-      max-height: 10px;/* Set the maximum height for the scrollable area */
-      overflow-y: auto; /* Add vertical scrollbar when content overflows */
-    }
-  
-    .video_embed iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width:97%;
-      /* margin-top: 35px; */
-      height: 390px;
-      margin-left: 12.5px;
-    }
-    .type_yt {
-      background-color: aqua;
-      margin-top: 390px;
-    }
-  }
-  
-  @media (max-width: 1185px) {
-    .video_embed {
-      flex: 1;
-      /* width: 90%; */
-      position: relative;
-      padding-bottom: 56.25%; /* 16:9 aspect ratio for responsive video */
-      background-color: #333;
-      max-height: 10px;/* Set the maximum height for the scrollable area */
-      overflow-y: auto; /* Add vertical scrollbar when content overflows */
-    }
-  
-    .video_embed iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width:100%;
-      /* margin-top: 35px; */
-      height: 394px;
-      margin-left: 0px;
-    }
-    .type_yt {
-      background-color: aqua;
-      margin-top: 394px;
-    }
-  }
-  
-  @media (max-width: 1065px) {
-    .video_embed {
-      flex: 1;
-      /* width: 90%; */
-      position: relative;
-      padding-bottom: 56.25%; /* 16:9 aspect ratio for responsive video */
-      background-color: #333;
-      max-height: 10px;/* Set the maximum height for the scrollable area */
-      overflow-y: auto; /* Add vertical scrollbar when content overflows */
-    }
-  
-    .video_embed iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width:97%;
-      /* margin-top: 35px; */
-      height: 375px;
-      margin-left: 12.5px;
-    }
-    .type_yt {
-      background-color: aqua;
-      margin-top: 375px;
-    }
-  }
-  
-  @media (max-width: 1045px) {
-    .video_embed {
-      flex: 1;
-      /* width: 90%; */
-      position: relative;
-      padding-bottom: 56.25%; /* 16:9 aspect ratio for responsive video */
-      background-color: #333;
-      max-height: 10px;/* Set the maximum height for the scrollable area */
-      overflow-y: auto; /* Add vertical scrollbar when content overflows */
-    }
-  
-    .video_embed iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width:100%;
-      /* margin-top: 35px; */
-      height: 379px;
-      margin-left: 0px;
-    }
-    .type_yt {
-      background-color: aqua;
-      margin-top: 375px;
-    }
-  }
-  
-  @media (max-width: 1020px) {
-    .video_embed {
-      flex: 1;
-      /* width: 90%; */
-      position: relative;
-      padding-bottom: 56.25%; /* 16:9 aspect ratio for responsive video */
-      background-color: #333;
-      max-height: 10px;/* Set the maximum height for the scrollable area */
-      overflow-y: auto; /* Add vertical scrollbar when content overflows */
-    }
-  
-    .video_embed iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width:98%;
-      /* margin-top: 35px; */
-      height: 360px;
-      margin-left: px;
-    }
-    .type_yt {
-      background-color: aqua;
-      margin-top: 360px;
-    }
-  }
-  
-  @media (max-width: 1010px) {
-    .video_embed {
-      flex: 1;
-      /* width: 90%; */
-      position: relative;
-      padding-bottom: 56.25%; /* 16:9 aspect ratio for responsive video */
-      background-color: #333;
-      max-height: 10px;/* Set the maximum height for the scrollable area */
-      overflow-y: auto; /* Add vertical scrollbar when content overflows */
-    }
-  
-    .video_embed iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width:97%;
-      /* margin-top: 35px; */
-      height: 358px;
-      margin-left: px;
-    }
-    .type_yt {
-      background-color: aqua;
-      margin-top: 358px;
-    }
-  }
-  
-  @media (max-width: 1000px) {
-    .video_embed {
-      flex: 1;
-      /* width: 90%; */
-      position: relative;
-      padding-bottom: 56.25%; /* 16:9 aspect ratio for responsive video */
-      background-color: #333;
-      max-height: 10px;/* Set the maximum height for the scrollable area */
-      overflow-y: auto; /* Add vertical scrollbar when content overflows */
-    }
-  
-    .video_embed iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width:96%;
-     /* margin-top: 35px; */
-      height: 350px;
-      margin-left: 12.5px;
-    }
-    .type_yt {
-      background-color: aqua;
-      margin-top: 350px;
-    }
-  }
-  
-  @media (max-width: 975px) {
-    .video_embed {
-      flex: 1;
-      /* width: 90%; */
-      position: relative;
-      padding-bottom: 56.25%; /* 16:9 aspect ratio for responsive video */
-      background-color: #333;
-      max-height: 10px;/* Set the maximum height for the scrollable area */
-      overflow-y: auto; /* Add vertical scrollbar when content overflows */
-    }
-  
-    .video_embed iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width:100%;
-     /* margin-top: 35px; */
-      height: 355px;
-      margin-left: 0px;
-    }
-    .type_yt {
-      background-color: aqua;
-      margin-top: 350px;
-    }
-  }
-  
-  @media (max-width: 955px) {
-    .video_embed {
-      flex: 1;
-      /* width: 90%; */
-      position: relative;
-      padding-bottom: 56.25%; /* 16:9 aspect ratio for responsive video */
-      background-color: #333;
-      max-height: 10px;/* Set the maximum height for the scrollable area */
-      overflow-y: auto; /* Add vertical scrollbar when content overflows */
-    }
-  
-    .video_embed iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width:97%;
-     /* margin-top: 35px; */
-      height: 333px;
-      margin-left: 10px;
-    }
-    .type_yt {
-      background-color: aqua;
-      margin-top: 333px;
-    }
-  }
-  
-  @media (max-width: 930px) {
-    .video_embed {
-      flex: 1;
-      /* width: 90%; */
-      position: relative;
-      padding-bottom: 56.25%; /* 16:9 aspect ratio for responsive video */
-      background-color: #333;
-      max-height: 10px;/* Set the maximum height for the scrollable area */
-      overflow-y: auto; /* Add vertical scrollbar when content overflows */
-    }
-  
-    .video_embed iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width:100%;
-     /* margin-top: 35px; */
-      height: 338px;
-      margin-left: 0px;
-    }
-    .type_yt {
-      background-color: aqua;
-      margin-top: 338px;
-    }
-  }
-  
-  @media (max-width: 915px) {
-    .video_embed {
-      flex: 1;
-      /* width: 90%; */
-      position: relative;
-      padding-bottom: 56.25%; /* 16:9 aspect ratio for responsive video */
-      background-color: #333;
-      max-height: 10px;/* Set the maximum height for the scrollable area */
-      overflow-y: auto; /* Add vertical scrollbar when content overflows */
-    }
-  
-    .video_embed iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width:97%;
-     /* margin-top: 35px; */
-      height: 320px;
-      margin-left: 8px;
-    }
-    .type_yt {
-      background-color: aqua;
-      margin-top: 320px;
-    }
-  }
-  
-  @media (max-width: 885px) {
-    .video_embed {
-      flex: 1;
-      /* width: 90%; */
-      position: relative;
-      padding-bottom: 56.25%; /* 16:9 aspect ratio for responsive video */
-      background-color: #333;
-      max-height: 10px;/* Set the maximum height for the scrollable area */
-      overflow-y: auto; /* Add vertical scrollbar when content overflows */
-    }
-  
-    .video_embed iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width:97%;
-     /* margin-top: 35px; */
-      height: 310px;
-      margin-left: 8px;
-    }
-    .type_yt {
-      background-color: aqua;
-      margin-top: 310px;
-    }
-  }
-  
-  @media (max-width: 860px) {
-    .video_embed iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width:100%;
-     /* margin-top: 35px; */
-      height: 312px;
-      margin-left: 8px;
-    }
-    .type_yt {
-      background-color: aqua;
-      margin-top: 312px;
-    }
-  }
-  
-  @media (max-width: 840px) {
-    .video_embed iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width:100%;
-     /* margin-top: 35px; */
-      height: 300px;
-      margin-left: 8px;
-    }
-    .type_yt {
-      background-color: aqua;
-      margin-top: 300px;
-    }
-  }
-  
-  @media (max-width: 815px) {
-    .video_embed iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width:100%;
-     /* margin-top: 35px; */
-      height: 295px;
-      margin-left: 8px;
-    }
-    .type_yt {
-      background-color: aqua;
-      margin-top: 295px;
-    }
-  }
-  
-  @media (max-width: 800px) {
-    .video_embed iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width:100%;
-     /* margin-top: 35px; */
-      height: 290px;
-      margin-left: 8px;
-    }
-    .type_yt {
-      background-color: aqua;
-      margin-top: 290px;
-    }
-  }
-  
-  @media (max-width: 785px) {
-    .video_embed iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width:100%;
-     /* margin-top: 35px; */
-      height: 280px;
-      margin-left: 8px;
-    }
-    .type_yt {
-      background-color: aqua;
-      margin-top: 280px;
-    }
-    .type_yt_mobile {
-      display: none;
-    }
-    .title_icon {
-        /* notvalid */
-        background-color: yalkx;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .wholepage {
-      height: 200vh;
-    }
-    
-    .course_name {
-      padding-top: 7px;
-      /* position: relative; */
-    }
-  
-    .circle_right {
-      width: 40px;
-      height: 40px;
-      fill:#FF10FF;
-      /* position: absolute; */
-      /* background-color: #FF10FF; */
-      z-index: 2;
-    }
-  
-    .video_container {
-      position: relative;
-      /* height: 200vh; */
-      /* background-color: aqua; */
-    }
-  
-    .video_titles {
-      order: 1;
-      height: -20px;
-      width: 100%;
-       /* position: absolute; */
-      width: 100%;
-      left: 0;
-      margin-top: 50px;
-      height: 100vh;
-      margin-top: 0px;
-      padding-top: -20px;
-      background-color: transparent;
-      z-index: 2; /* Place it above the video_embed */
-    }
-  
-    .video_titles div:hover {
-      background-color: transparent;
-    }
-  
-    .video_embed {
-      order: 2;
-      position: absolute;
-      width: 97%; /* To take up the full width of the container */
-      left: 0;
-      margin-top: 60px;
-      margin-left: 8px;
-      background-color: transparent;
-  
-        /*background-color: rgba(0, 0, 255, 0.5);  Adjust the background color as needed */
-      z-index: 1; /* Lower z-index to have it below the video_titles */
-      /* background-color: transparent; */
-    }
-  
-    .video_embed iframe {
-      height: 414px;
-      width: 98.9%;
-    }
-  
-    .title_content {
-      color: #FF10FF;
-      backdrop-filter: blur(25px);
-      margin-top: -00px;
-    }
-  
-    .type_yt {
-      display: none;
-      position: relative;
-      height: 200px;
-      margin-top: 300px;
-      margin-bottom: -200px;
-    }
-    .type_yt_mobile {
-      margin-top: 500px;
-      position: absolute;
-      width: 100%;
-      background-color: #FF10FF;
-      
-    }
-  }
+}

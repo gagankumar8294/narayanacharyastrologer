@@ -1,3 +1,9 @@
+# *
 User-agent: *
-Disallow: /admin
-Disallow: /blog/add
+Allow: /
+
+# Host
+Host: https://www.narayanacharyastrologer.com/
+
+# Sitemaps
+Sitemap: https://www.narayanacharyastrologer.com/sitemap.xml

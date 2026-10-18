@@ -1,145 +1,14 @@
-// import React, { useState, useEffect } from 'react';
-// import { collection, getDocs, query, orderBy, limit } from 'firebase/firestore';
-// import { db } from '../../fireProductsConfig'; // Ensure correct path
-// import Image from 'next/image';
-// import styles from './Projects.module.css';
-// import { useRouter } from 'next/router';
-
-// const RecentProducts = () => {
-//   const [isLargeScreen, setIsLargeScreen] = useState(true);
-//   const [products, setProducts] = useState([]);
-//   const [currentIndex, setCurrentIndex] = useState(0);
-//   const [fade, setFade] = useState(true);
-//   const router = useRouter();
-
-//   useEffect(() => {
-//     const handleResize = () => {
-//       setIsLargeScreen(window.innerWidth > 768);
-//     };
-
-//     handleResize(); // Set the initial state
-//     window.addEventListener("resize", handleResize);
-
-//     return () => window.removeEventListener("resize", handleResize);
-//   }, []);
-
-//   // Fetch the 3 most recent products from Firestore
-//   useEffect(() => {
-//     const fetchProducts = async () => {
-//       try {
-//         const q = query(collection(db, 'products'), orderBy('createdAt', 'desc'), limit(3));
-//         const querySnapshot = await getDocs(q);
-//         const fetchedProducts = querySnapshot.docs.map((doc) => ({
-//           id: doc.id,
-//           ...doc.data(),
-//         }));
-//         setProducts(fetchedProducts);
-//       } catch (error) {
-//         console.error('Error fetching products:', error);
-//       }
-//     };
-
-//     fetchProducts();
-//   }, []);
-
-//   // Auto-slide every 5 seconds
-//   useEffect(() => {
-//     if (products.length > 0) {
-//       const slideInterval = setInterval(() => {
-//         setFade(false);
-//         setTimeout(() => {
-//           setCurrentIndex((prevIndex) => (prevIndex + 1) % products.length);
-//           setFade(true);
-//         }, 500);
-//       }, 5000);
-
-//       return () => clearInterval(slideInterval);
-//     }
-//   }, [products]);
-
-//   if (products.length === 0) {
-//     return <p>Loading products...</p>;
-//   }
-
-//   return (
-//     <>
-//       {isLargeScreen ? ( 
-//         <section className={styles.project_section}>
-//         <h3 className={styles.service_heading}>Recent Products</h3>
-//         <div className={styles.carousel}>
-//           <button className={styles.leftButton} onClick={() => setCurrentIndex((prev) => (prev - 1 + products.length) % products.length)}>&lt;</button>
-//           <div className={styles.imageContainer}>
-//             <a href={products[currentIndex].url} target="_blank" rel="noopener noreferrer">
-//               <Image
-//                 src={products[currentIndex].image}
-//                 alt={products[currentIndex].name}
-//                 width={600}
-//                 height={400}
-//                 className={`${styles.image} ${fade ? styles.fadeIn : styles.fadeOut}`}
-//               />
-//             </a>
-//             <div className={styles.description}>{products[currentIndex].name}</div>
-//           </div>
-//           <button className={styles.rightButton} onClick={() => setCurrentIndex((prev) => (prev + 1) % products.length)}>&gt;</button>
-//         </div>
-//       </section>
-//       ) : (
-//         <section className={styles.mobile_project_section}>
-//         <h3 className={styles.mobile_service_heading}>Recent Products</h3>
-//         <div className={styles.carousel}>
-//           <button className={styles.leftButton} onClick={() => setCurrentIndex((prev) => (prev - 1 + products.length) % products.length)}>&lt;</button>
-//           <div className={styles.imageContainer}>
-//             <a href={products[currentIndex].url} target="_blank" rel="noopener noreferrer">
-//               <Image
-//                 src={products[currentIndex].image}
-//                 alt={products[currentIndex].name}
-//                 width={600}
-//                 height={400}
-//                 className={`${styles.image} ${fade ? styles.fadeIn : styles.fadeOut}`}
-//               />
-//             </a>
-//             <div className={styles.mobile_description}>{products[currentIndex].name}</div>
-//           </div>
-//           <button className={styles.rightButton} onClick={() => setCurrentIndex((prev) => (prev + 1) % products.length)}>&gt;</button>
-//         </div>
-//         {/* All Products Button */}
-//       <div className={styles.allProductsContainer}>
-//         <button className={styles.allProductsButton} onClick={() => router.push('/product')}>
-//           All Products
-//         </button>
-//       </div>
-//       </section>
-//       ) }
-//     </>
-//   );
-// };
-
-// export default RecentProducts;
-
 import React, { useState, useEffect } from 'react';
 import { collection, getDocs, query, orderBy, limit } from 'firebase/firestore';
 import { db } from '../../fireProductsConfig';
 import Image from 'next/image';
-import styles from './Projects.module.css';
+import styles from './RecentProductsModern.module.css';
 import { useRouter } from 'next/router';
 
 const RecentProducts = () => {
-  const [isLargeScreen, setIsLargeScreen] = useState(true);
   const [products, setProducts] = useState([]);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [fade, setFade] = useState(true);
+  const [loading, setLoading] = useState(true);
   const router = useRouter();
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsLargeScreen(window.innerWidth > 768);
-    };
-
-    handleResize(); 
-    window.addEventListener("resize", handleResize);
-
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -148,85 +17,72 @@ const RecentProducts = () => {
         const querySnapshot = await getDocs(q);
         const fetchedProducts = querySnapshot.docs.map((doc) => ({
           id: doc.id,
-          slug: doc.data().slug, // Ensure your Firestore has a 'slug' field
+          slug: doc.data().slug || doc.id,
           ...doc.data(),
         }));
         setProducts(fetchedProducts);
       } catch (error) {
-        console.error('Error fetching products:', error);
+        console.warn('Note: Could not fetch products from Firestore:', error.message);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchProducts();
   }, []);
 
-  useEffect(() => {
-    if (products.length > 0) {
-      const slideInterval = setInterval(() => {
-        setFade(false);
-        setTimeout(() => {
-          setCurrentIndex((prevIndex) => (prevIndex + 1) % products.length);
-          setFade(true);
-        }, 500);
-      }, 5000);
-
-      return () => clearInterval(slideInterval);
-    }
-  }, [products]);
+  if (loading) {
+    return null;
+  }
 
   if (products.length === 0) {
-    return <p>Loading products...</p>;
+    return null; // Don't show empty section if no products exist in Firebase
   }
 
   return (
-    <>
-      {isLargeScreen ? ( 
-        <section className={styles.project_section}>
-        <h3 className={styles.service_heading}>Recent Products</h3>
-        <div className={styles.carousel}>
-          <button className={styles.leftButton} onClick={() => setCurrentIndex((prev) => (prev - 1 + products.length) % products.length)}>&lt;</button>
-          <div className={styles.imageContainer}>
-            <a onClick={() => router.push(`/product/${products[currentIndex].slug}`)} style={{ cursor: 'pointer' }}>
-              <Image
-                src={products[currentIndex].image}
-                alt={products[currentIndex].name}
-                width={600}
-                height={400}
-                className={`${styles.image} ${fade ? styles.fadeIn : styles.fadeOut}`}
+    <section className={styles.productSection}>
+      <div className={styles.headingWrapper}>
+        <span className={styles.badge}>Spiritual Remedies</span>
+        <h2 className={styles.heading}>Sacred Products & Yantras</h2>
+        <p className={styles.subtitle}>
+          Consecrated Yantras, Rudrakshas, and Gemstones energized through Vedic rituals.
+        </p>
+      </div>
+
+      <div className={styles.productGrid}>
+        {products.map((product) => (
+          <div
+            key={product.id}
+            className={styles.productCard}
+            onClick={() => router.push(`/product/${product.slug}`)}
+          >
+            <div className={styles.imageWrapper}>
+              <img
+                src={product.image || '/homepage/c.png'}
+                alt={product.name || 'Sacred Astrological Product'}
+                className={styles.productImage}
               />
-            </a>
-            <div className={styles.description}>{products[currentIndex].name}</div>
+            </div>
+            <div className={styles.cardBody}>
+              <div>
+                <span className={styles.productTag}>Energized Item</span>
+                <h3 className={styles.productName}>{product.name}</h3>
+              </div>
+              <button className={styles.actionBtn}>
+                <span>View Details & Order</span>
+                <span>➔</span>
+              </button>
+            </div>
           </div>
-          <button className={styles.rightButton} onClick={() => setCurrentIndex((prev) => (prev + 1) % products.length)}>&gt;</button>
-        </div>
-      </section>
-      ) : (
-        <section className={styles.mobile_project_section}>
-        <h3 className={styles.mobile_service_heading}>Recent Products</h3>
-        <div className={styles.carousel}>
-          <button className={styles.leftButton} onClick={() => setCurrentIndex((prev) => (prev - 1 + products.length) % products.length)}>&lt;</button>
-          <div className={styles.imageContainer}>
-            <a onClick={() => router.push(`/product/${products[currentIndex].slug}`)} style={{ cursor: 'pointer' }}>
-              <Image
-                src={products[currentIndex].image}
-                alt={products[currentIndex].name}
-                width={600}
-                height={400}
-                className={`${styles.image} ${fade ? styles.fadeIn : styles.fadeOut}`}
-              />
-            </a>
-            <div className={styles.mobile_description}>{products[currentIndex].name}</div>
-          </div>
-          <button className={styles.rightButton} onClick={() => setCurrentIndex((prev) => (prev + 1) % products.length)}>&gt;</button>
-        </div>
-      <div className={styles.allProductsContainer}>
-        <button className={styles.allProductsButton} onClick={() => router.push('/product')}>
-          All Products
+        ))}
+      </div>
+
+      <div className={styles.viewAllContainer}>
+        <button className={styles.viewAllBtn} onClick={() => router.push('/product')}>
+          Explore All Sacred Products ➔
         </button>
       </div>
-      </section>
-      ) }
-    </>
+    </section>
   );
 };
 

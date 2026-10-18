@@ -1,0 +1,138 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About Achary",
+    "services": "Services",
+    "blog": "Blog & Articles",
+    "videos": "Videos",
+    "products": "Sacred Products",
+    "contact": "Contact",
+    "bookAppointment": "Book Consultation",
+    "quickConsult": "Instant WhatsApp"
+  },
+  "hero": {
+    "badge": "Vedic Astrology & Vaastu Shastra Expert",
+    "titlePrefix": "Welcome to",
+    "titleHighlight": "Achary's Predictions",
+    "subtitle": "Discover cosmic clarity, destiny guidance, and powerful remedies backed by decades of Vedic heritage and 8+ years of dedicated service.",
+    "experience": "8+ Years Experience",
+    "consultations": "5,000+ Consultations",
+    "satisfaction": "100% Guidance",
+    "bookBtn": "Book Consultation",
+    "exploreBtn": "Explore Services"
+  },
+  "services": {
+    "sectionBadge": "Sacred Offerings",
+    "title": "Comprehensive Astrology & Remedial Services",
+    "subtitle": "Ancient Vedic wisdom combined with precise planetary calculations to resolve life's deepest challenges.",
+    "items": [
+      {
+        "id": "horoscope",
+        "title": "Jathaka & Horoscope Reading",
+        "desc": "In-depth birth chart analysis covering career, marriage, health, wealth, and destiny roadmap with accurate timeframes."
+      },
+      {
+        "id": "vaastu",
+        "title": "Vaastu Shastra Consultation",
+        "desc": "Residential and commercial space energization remedies to bring prosperity, health, and peaceful harmony."
+      },
+      {
+        "id": "numerology",
+        "title": "Name & Business Numerology",
+        "desc": "Lucky number, name spelling alignment for babies, individuals, and business trademarks for effortless success."
+      },
+      {
+        "id": "kundali",
+        "title": "Kundali Milan & Matchmaking",
+        "desc": "Comprehensive 36-Guna matching, dosha check, and marital harmony forecast for lasting unions."
+      },
+      {
+        "id": "gemology",
+        "title": "Gemstone Recommendation",
+        "desc": "Genuine certified gemstones prescribed according to planetary dasha periods to boost luck and remove hurdles."
+      },
+      {
+        "id": "dosha",
+        "title": "Dosha Nivarana & Shanti",
+        "desc": "Authentic rituals and simple lifestyle remedies for Kaal Sarp, Rahu-Ketu, Shani Sade Sati, and Manglik dosha."
+      }
+    ]
+  },
+  "stats": {
+    "experience": "8+ Years",
+    "experienceLabel": "Vedic Experience",
+    "clients": "5,000+",
+    "clientsLabel": "Happy Seekers",
+    "languages": "4 Languages",
+    "languagesLabel": "Multi-Lingual Support",
+    "accuracy": "99%",
+    "accuracyLabel": "Client Satisfaction"
+  },
+  "whyUs": {
+    "badge": "Why Consult Achary",
+    "title": "Trusted Spiritual Guidance You Can Rely On",
+    "reasons": [
+      {
+        "title": "Traditional Vedic Lineage",
+        "desc": "Deeply grounded in traditional Vishwakarma and Vedic astrological scriptures passed through generations."
+      },
+      {
+        "title": "Practical & Affordable Remedies",
+        "desc": "No fear-mongering. Genuine, easy-to-perform remedies, mantras, and positive lifestyle guidance."
+      },
+      {
+        "title": "100% Confidential Consultations",
+        "desc": "Every horoscope, family question, and personal struggle is handled with utmost privacy and compassion."
+      },
+      {
+        "title": "Online & In-Person Availability",
+        "desc": "Convenient phone consultations, video calls, or direct visits to our Bangalore spiritual center."
+      }
+    ]
+  },
+  "testimonials": {
+    "badge": "Client Experiences",
+    "title": "What Seekers Say About Our Guidance",
+    "items": [
+      {
+        "quote": "Achary's prediction regarding my job change was accurate to the exact month! His Vaastu remedy for my house completely shifted our financial stress.",
+        "author": "Rajesh Kumar",
+        "location": "Bangalore"
+      },
+      {
+        "quote": "We did Kundali matching for our daughter. Achary explained every detail so patiently and suggested simple pooja remedies. Very trustworthy!",
+        "author": "Sunitha Rao",
+        "location": "Mysuru"
+      },
+      {
+        "quote": "Brahma Sri Narayanacharya is a divine soul. His numerology guidance for my newly launched startup brought tremendous luck.",
+        "author": "Venkatesh Murthy",
+        "location": "Hyderabad"
+      }
+    ]
+  },
+  "about": {
+    "title": "About Brahma Sri Narayanacharya",
+    "role": "Master Astrologer, Vaastu Vidwan & Numerologist",
+    "bio1": "With over 8 years of intensive astrological practice and deep ancestral roots in Vishwakarma Vedic lineage, Brahma Sri Narayanacharya has touched thousands of lives across Karnataka, Andhra Pradesh, Telangana, and globally.",
+    "bio2": "His approach harmonizes timeless Vedic Jyotish principles, Prashna Shastra, Vaastu Vijnana, and ancient sound vibration numerology to deliver actionable, life-transforming solutions without superstitious fear.",
+    "vision": "Empowering every individual with cosmic clarity, ethical remedies, and spiritual peace to lead a prosperous, healthy, and happy life."
+  },
+  "contact": {
+    "badge": "Get In Touch",
+    "title": "Book Your Personal Consultation Today",
+    "subtitle": "Reach out directly via WhatsApp, Phone call, or visit our Bangalore Kendra.",
+    "addressTitle": "Spiritual Consultation Center",
+    "address": "Bangalore, Karnataka, India",
+    "phone": "+91 85498 03686",
+    "whatsappText": "Chat on WhatsApp",
+    "callText": "Call Directly"
+  },
+  "footer": {
+    "aboutText": "Brahma Sri Narayanacharya offers authoritative Vedic astrology, Vaastu Shastra, horoscope matching, and numerology consultations to guide you towards peace and prosperity.",
+    "quickLinks": "Quick Navigation",
+    "servicesTitle": "Our Services",
+    "reachUs": "Spiritual Kendra",
+    "rights": "All rights reserved. Dedicated to Dharma & Cosmic Wisdom."
+  }
+}
