@@ -24,15 +24,22 @@ export default function About() {
       <section className={styles.heroBanner}>
         <div className={styles.heroCosmicStars}></div>
         <div className={styles.bannerContent}>
-          <div className={styles.photoWrapper}>
+          <div className={styles.imageAuraCard}>
             <Image
               src={c}
               alt="Brahma Sri Narayanacharya - Vedic Astrologer"
               width={360}
               height={460}
-              className={styles.astrologerPhoto}
+              className={styles.astrologerImg}
               priority
             />
+            <div className={styles.floatingExperienceBadge}>
+              <span className={styles.badgeStar}>★</span>
+              <div>
+                <div className={styles.badgeNum}>8+ Years</div>
+                <div className={styles.badgeTxt}>Vedic Sadhana</div>
+              </div>
+            </div>
           </div>
 
           <div>

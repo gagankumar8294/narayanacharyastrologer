@@ -43,19 +43,52 @@
   align-items: center;
 }
 
-.photoWrapper {
+.imageAuraCard {
   position: relative;
-  border-radius: 24px;
-  overflow: hidden;
-  border: 2px solid var(--color-gold);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+  padding: 16px;
+  border-radius: 28px;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.3) 0%, rgba(107, 63, 160, 0.2) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  max-width: 380px;
 }
 
-.astrologerPhoto {
-  display: block;
-  width: 100%;
-  height: auto;
+.astrologerImg {
+  border-radius: 20px;
   object-fit: cover;
+  display: block;
+}
+
+.floatingExperienceBadge {
+  position: absolute;
+  bottom: 0px;
+  left: -20px;
+  background: rgba(15, 8, 29, 0.95);
+  border: 1px solid var(--color-gold);
+  border-radius: var(--radius-md);
+  padding: 12px 18px;
+  box-shadow: var(--shadow-medium);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.badgeStar {
+  font-size: 1.5rem;
+  color: var(--color-gold);
+}
+
+.badgeNum {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.badgeTxt {
+  font-size: 0.72rem;
+  color: var(--color-gold-light);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .bannerBadge {
@@ -197,9 +230,15 @@
   .bannerRole {
     font-size: 1rem;
   }
-  .photoWrapper {
-    max-width: 280px;
+  .imageAuraCard {
+    max-width: 300px;
     margin: 0 auto;
+    padding: 12px;
+  }
+  .floatingExperienceBadge {
+    position: static;
+    margin-top: 14px;
+    justify-content: center;
   }
   .valuesGrid {
     grid-template-columns: 1fr;
