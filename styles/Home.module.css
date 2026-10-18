@@ -524,23 +524,96 @@
 }
 
 @media (max-width: 768px) {
+  .heroSection {
+    padding-top: 100px;
+    padding-bottom: 50px;
+    min-height: auto;
+  }
+  .heroContentWrapper {
+    padding: 0 16px;
+    gap: 32px;
+  }
   .heroMainTitle {
-    font-size: 2rem;
+    font-size: 1.85rem;
   }
   .titleHighlight {
-    font-size: 2.3rem;
+    font-size: 2.1rem;
+  }
+  .typingWrapper {
+    font-size: 1.05rem;
+  }
+  .heroSubtitle {
+    font-size: 0.95rem;
+  }
+  .heroCtaRow {
+    flex-direction: column;
+    width: 100%;
+  }
+  .heroPrimaryBtn, .heroSecondaryBtn {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+  .servicesSection {
+    padding: 60px 16px;
+  }
+  .sectionTitle {
+    font-size: 1.7rem;
   }
   .servicesGrid {
     grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .whyUsSection {
+    padding: 60px 16px;
   }
   .whyUsGrid {
     grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .testimonialsSection {
+    padding: 60px 16px;
   }
   .testimonialsGrid {
     grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .statsSection {
+    padding: 24px 16px;
+  }
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  .statNumber {
+    font-size: 1.6rem;
+  }
+  .statLabel {
+    font-size: 0.78rem;
   }
   .floatingExperienceBadge {
-    left: 0;
-    bottom: -15px;
+    position: static;
+    margin-top: 14px;
+    justify-content: center;
+  }
+  .imageAuraCard {
+    padding: 10px;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+  .mapWrapper {
+    padding: 40px 16px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroMainTitle {
+    font-size: 1.55rem;
+  }
+  .titleHighlight {
+    font-size: 1.75rem;
+  }
+  .statsGrid {
+    grid-template-columns: 1fr 1fr;
   }
 }

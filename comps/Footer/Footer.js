@@ -20,7 +20,6 @@ const Footer = () => {
     { name: t.nav?.about || "About Achary", href: "/about" },
     { name: t.nav?.services || "Services", href: "/#services" },
     { name: t.nav?.blog || "Blog & Articles", href: "/blog" },
-    { name: t.nav?.videos || "Videos", href: "/videos" },
     { name: t.nav?.contact || "Contact", href: "/contact" },
   ];
 

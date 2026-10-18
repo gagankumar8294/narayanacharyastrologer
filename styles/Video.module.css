@@ -240,10 +240,22 @@
 }
 
 @media (max-width: 600px) {
+  .videoPage {
+    padding-top: 70px;
+  }
+  .headerSection {
+    padding: 35px 16px;
+  }
+  .title {
+    font-size: 1.7rem;
+  }
+  .container {
+    padding: 24px 16px;
+  }
   .videoGrid {
     grid-template-columns: 1fr;
   }
   .playerMeta {
-    padding: 18px 20px;
+    padding: 16px;
   }
 }

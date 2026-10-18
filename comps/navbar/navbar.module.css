@@ -2,39 +2,43 @@
   position: fixed;
   top: 0;
   left: 0;
+  right: 0;
   width: 100%;
-  z-index: 1000;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-  transition: all 0.3s ease;
+  z-index: 9999;
+  background: #ffffff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.25s ease;
 }
 
 .headerScrolled {
-  background: rgba(255, 255, 255, 0.98);
-  box-shadow: 0 4px 20px rgba(15, 8, 29, 0.08);
+  box-shadow: 0 4px 20px rgba(15, 8, 29, 0.1);
 }
 
 .navContainer {
+  width: 100%;
   max-width: 1240px;
   margin: 0 auto;
-  padding: 12px 24px;
+  padding: 10px 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 12px;
 }
 
 /* Brand Logo */
 .brandLink {
   text-decoration: none;
   color: inherit;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
 }
 
 .logoBadge {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
 .logoImg {
@@ -42,7 +46,9 @@
   object-fit: cover;
   border: 2px solid var(--color-primary);
   background: #fff;
-  padding: 2px;
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
 }
 
 .brandText {
@@ -53,18 +59,20 @@
 .brandName {
   font-family: var(--font-heading);
   font-weight: 800;
-  font-size: 1.15rem;
-  letter-spacing: 1px;
+  font-size: 1.05rem;
+  letter-spacing: 0.8px;
   color: #1e1b29;
   line-height: 1.1;
+  white-space: nowrap;
 }
 
 .brandTagline {
-  font-size: 0.65rem;
+  font-size: 0.62rem;
   font-weight: 700;
-  letter-spacing: 1.2px;
+  letter-spacing: 0.8px;
   color: var(--color-primary);
-  margin-top: 3px;
+  margin-top: 2px;
+  white-space: nowrap;
 }
 
 /* Desktop Navigation */
@@ -76,10 +84,14 @@
 .navMenuList {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 22px;
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+.navItem {
+  margin: 0;
 }
 
 .navLink {
@@ -87,9 +99,10 @@
   font-weight: 700;
   color: #3b354d;
   text-decoration: none;
-  padding: 6px 0;
+  padding: 6px 4px;
   position: relative;
   transition: color 0.2s ease;
+  white-space: nowrap;
 }
 
 .navLink:hover {
@@ -103,8 +116,8 @@
   left: 0;
   width: 0%;
   height: 2px;
-  background: var(--color-primary-gradient);
-  transition: width 0.3s ease;
+  background: var(--color-primary);
+  transition: width 0.25s ease;
   border-radius: 2px;
 }
 
@@ -117,11 +130,12 @@
   color: var(--color-primary);
 }
 
-/* Actions Right */
+/* Right Actions */
 .navActions {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 10px;
+  flex-shrink: 0;
 }
 
 /* Language Selector */
@@ -132,13 +146,14 @@
 .languageSelectorBtn {
   display: flex;
   align-items: center;
-  gap: 8px;
-  background: #fdf6ec;
-  border: 1px solid rgba(255, 104, 1, 0.25);
-  padding: 6px 14px;
+  gap: 6px;
+  background: #fdf5ec;
+  border: 1px solid rgba(255, 104, 1, 0.3);
+  padding: 6px 10px;
   border-radius: var(--radius-pill);
   cursor: pointer;
   transition: all 0.2s ease;
+  font-family: inherit;
 }
 
 .languageSelectorBtn:hover {
@@ -147,13 +162,14 @@
 }
 
 .langIcon {
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
+  display: block;
 }
 
 .langName {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 700;
   color: #1e1b29;
 }
@@ -165,46 +181,35 @@
 
 .languageDropdownMenu {
   position: absolute;
-  top: calc(100% + 8px);
+  top: calc(100% + 6px);
   right: 0;
   background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: var(--radius-md);
-  box-shadow: var(--shadow-medium);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
   padding: 6px;
-  min-width: 150px;
+  min-width: 140px;
   display: flex;
   flex-direction: column;
   gap: 4px;
-  z-index: 1001;
-  animation: fadeInDown 0.2s ease;
-}
-
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  z-index: 10001;
 }
 
 .dropdownOption {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 8px 12px;
+  padding: 8px 10px;
   background: transparent;
   border: none;
   border-radius: var(--radius-sm);
   cursor: pointer;
   width: 100%;
   text-align: left;
-  font-size: 0.88rem;
+  font-size: 0.85rem;
   font-weight: 600;
   color: #333;
+  font-family: inherit;
   transition: background 0.15s ease;
 }
 
@@ -229,21 +234,22 @@
 .consultationBtn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   background: var(--color-primary-gradient);
   color: #ffffff;
-  padding: 8px 18px;
+  padding: 8px 16px;
   border-radius: var(--radius-pill);
-  font-size: 0.88rem;
+  font-size: 0.85rem;
   font-weight: 700;
   text-decoration: none;
   box-shadow: var(--shadow-primary);
+  white-space: nowrap;
   transition: all 0.25s ease;
 }
 
 .consultationBtn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 24px rgba(255, 104, 1, 0.4);
+  box-shadow: 0 8px 20px rgba(255, 104, 1, 0.45);
   color: #ffffff;
 }
 
@@ -251,7 +257,7 @@
   color: var(--color-gold-light);
 }
 
-/* Mobile Hamburger */
+/* Mobile Hamburger Toggle */
 .mobileHamburger {
   display: none;
   background: transparent;
@@ -259,15 +265,22 @@
   font-size: 1.5rem;
   cursor: pointer;
   color: #1e1b29;
-  padding: 4px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  line-height: 1;
 }
 
-/* Mobile Drawer */
+.mobileHamburger:hover {
+  background: #f5f2eb;
+}
+
+/* Mobile Drawer Overlay */
 .mobileOverlay {
   display: none;
 }
 
-@media (max-width: 960px) {
+/* Breakpoint for Tablets and Mobiles */
+@media (max-width: 980px) {
   .desktopNav {
     display: none;
   }
@@ -283,23 +296,26 @@
   .mobileOverlay {
     display: block;
     position: fixed;
-    top: 70px;
+    top: 62px;
     left: 0;
     width: 100%;
-    height: calc(100vh - 70px);
-    background: rgba(15, 8, 29, 0.5);
+    height: calc(100vh - 62px);
+    background: rgba(15, 8, 29, 0.65);
     backdrop-filter: blur(4px);
-    z-index: 999;
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 10000;
   }
 
   .mobileDrawer {
     background: #ffffff;
-    padding: 24px;
-    border-bottom: 2px solid var(--color-primary);
-    box-shadow: var(--shadow-medium);
+    padding: 24px 20px 30px;
+    border-bottom: 3px solid var(--color-primary);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: column;
     gap: 20px;
+    max-height: 85vh;
+    overflow-y: auto;
   }
 
   .mobileMenuList {
@@ -308,7 +324,11 @@
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 4px;
+  }
+
+  .mobileNavItem {
+    margin: 0;
   }
 
   .mobileNavLink {
@@ -317,12 +337,18 @@
     color: #1e1b29;
     text-decoration: none;
     display: block;
-    padding: 6px 0;
-    border-bottom: 1px solid #f2ede4;
+    padding: 12px 8px;
+    border-bottom: 1px solid #f0ecf5;
+    border-radius: 4px;
   }
 
   .mobileNavLink:hover {
     color: var(--color-primary);
+    background: #fff8f2;
+  }
+
+  .mobileActionBox {
+    margin-top: 10px;
   }
 
   .mobileCtaBtn {
@@ -330,9 +356,38 @@
     text-align: center;
     background: var(--color-primary-gradient);
     color: #fff;
-    padding: 12px;
+    padding: 14px;
     border-radius: var(--radius-sm);
     text-decoration: none;
-    font-weight: 700;
+    font-weight: 800;
+    font-size: 0.95rem;
+    box-shadow: var(--shadow-primary);
+  }
+}
+
+@media (max-width: 480px) {
+  .navContainer {
+    padding: 8px 12px;
+  }
+
+  .logoImg {
+    width: 36px;
+    height: 36px;
+  }
+
+  .brandName {
+    font-size: 0.9rem;
+  }
+
+  .brandTagline {
+    font-size: 0.55rem;
+  }
+
+  .langName {
+    display: none;
+  }
+
+  .languageSelectorBtn {
+    padding: 5px;
   }
 }

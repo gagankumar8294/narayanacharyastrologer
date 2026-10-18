@@ -219,7 +219,26 @@
 }
 
 @media (max-width: 850px) {
+  .contactPage {
+    padding-top: 80px;
+  }
+  .headerSection {
+    padding: 40px 16px;
+  }
+  .title {
+    font-size: 1.8rem;
+  }
+  .container {
+    padding: 30px 16px;
+  }
   .contactGrid {
     grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .formCard {
+    padding: 24px 18px;
+  }
+  .submitBtn {
+    width: 100%;
   }
 }

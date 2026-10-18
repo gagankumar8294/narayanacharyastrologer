@@ -159,15 +159,42 @@
 }
 
 @media (max-width: 900px) {
+  .aboutPage {
+    padding-top: 80px;
+  }
+  .heroBanner {
+    padding: 40px 16px 50px;
+  }
   .bannerContent {
     grid-template-columns: 1fr;
     text-align: center;
+    gap: 30px;
+  }
+  .bannerTitle {
+    font-size: 1.85rem;
+  }
+  .bannerRole {
+    font-size: 1rem;
   }
   .photoWrapper {
-    max-width: 320px;
+    max-width: 280px;
     margin: 0 auto;
   }
   .valuesGrid {
     grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .container {
+    padding: 40px 16px;
+  }
+  .lineageBox {
+    padding: 24px 20px;
+  }
+  .bannerActions {
+    justify-content: center;
+  }
+  .primaryCta {
+    width: 100%;
+    justify-content: center;
   }
 }

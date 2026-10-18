@@ -50,7 +50,6 @@ function NavBar() {
     { label: t.nav?.about || 'About', href: '/about' },
     { label: t.nav?.services || 'Services', href: '/#services' },
     { label: t.nav?.blog || 'Blog', href: '/blog' },
-    { label: t.nav?.videos || 'Videos', href: '/videos' },
     { label: t.nav?.contact || 'Contact', href: '/contact' },
   ];
 
@@ -61,21 +60,11 @@ function NavBar() {
   return (
     <header className={`${styles.header} ${scrolled ? styles.headerScrolled : ''}`}>
       <div className={styles.navContainer}>
-        {/* Brand Logo */}
+        {/* Brand Logo - Clean Typography */}
         <Link href="/" className={styles.brandLink}>
-          <div className={styles.logoBadge}>
-            <Image
-              src="/logo/narayanachary.png"
-              alt="Narayanachary Astrologer Logo"
-              width={48}
-              height={48}
-              className={styles.logoImg}
-              priority
-            />
-            <div className={styles.brandText}>
-              <span className={styles.brandName}>NARAYANACHARY</span>
-              <span className={styles.brandTagline}>VEDIC ASTROLOGER & VAASTU</span>
-            </div>
+          <div className={styles.brandText}>
+            <span className={styles.brandName}>NARAYANACHARY</span>
+            <span className={styles.brandTagline}>VEDIC ASTROLOGER & VAASTU</span>
           </div>
         </Link>
 
