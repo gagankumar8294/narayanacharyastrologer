@@ -22,13 +22,14 @@ export default function About() {
 
       {/* Hero Banner */}
       <section className={styles.heroBanner}>
+        <div className={styles.heroCosmicStars}></div>
         <div className={styles.bannerContent}>
           <div className={styles.photoWrapper}>
             <Image
               src={c}
               alt="Brahma Sri Narayanacharya - Vedic Astrologer"
-              width={380}
-              height={480}
+              width={360}
+              height={460}
               className={styles.astrologerPhoto}
               priority
             />
@@ -75,7 +76,12 @@ export default function About() {
       <div className={styles.container}>
         <div className={styles.valuesGrid}>
           <div className={styles.valueCard}>
-            <div className={styles.valueIcon}>📜</div>
+            <div className={styles.valueIcon}>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ff6801" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              </svg>
+            </div>
             <h3 className={styles.valueTitle}>Vedic Precision</h3>
             <p className={styles.valueDesc}>
               Calculations based on classical texts including Brihat Parashara Hora Shastra, Jaimini Sutras, and Muhurtha Chintamani.
@@ -83,7 +89,14 @@ export default function About() {
           </div>
 
           <div className={styles.valueCard}>
-            <div className={styles.valueIcon}>🕊️</div>
+            <div className={styles.valueIcon}>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ff6801" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                <line x1="15" y1="9" x2="15.01" y2="9"></line>
+              </svg>
+            </div>
             <h3 className={styles.valueTitle}>Compassionate Guidance</h3>
             <p className={styles.valueDesc}>
               No fear-mongering or exorbitant rituals. Simple, accessible remedies that bring genuine peace of mind.
@@ -91,7 +104,12 @@ export default function About() {
           </div>
 
           <div className={styles.valueCard}>
-            <div className={styles.valueIcon}>🔒</div>
+            <div className={styles.valueIcon}>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ff6801" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+            </div>
             <h3 className={styles.valueTitle}>Strict Confidentiality</h3>
             <p className={styles.valueDesc}>
               Every birth chart, family circumstance, and consultation is kept completely confidential with absolute respect.

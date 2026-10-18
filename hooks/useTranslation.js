@@ -14,6 +14,6 @@ const translations = {
 
 export function useTranslation() {
   const { language, changeLanguage } = useContext(LanguageContext);
-  const t = translations[language] || translations.kannada;
+  const t = translations[language] || translations.english;
   return { t, language, changeLanguage };
 }

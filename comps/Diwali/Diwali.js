@@ -11,8 +11,12 @@ export default function DiwaliPromo() {
       <div className={styles.card}>
         <div className={styles.sparkle}></div>
 
-        <h3 className={styles.title}>
-          🪔 ದೀಪಾವಳಿ ವಿಶೇಷ ಉಳಿತಾಯ ನಿಧಿ
+        <h3 className={styles.title} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="#ffb347" stroke="#ffffff" strokeWidth="1.5">
+            <path d="M12 2c1.5 3 4 5 4 8a4 4 0 0 1-8 0c0-3 2.5-5 4-8z"></path>
+            <path d="M4 14c0 4 3.5 7 8 7s8-3 8-7H4z"></path>
+          </svg>
+          ದೀಪಾವಳಿ ವಿಶೇಷ ಉಳಿತಾಯ ನಿಧಿ
         </h3>
 
         <p className={styles.text}>

@@ -4,7 +4,7 @@ import { createContext, useState, useEffect } from "react";
 export const LanguageContext = createContext();
 
 export const LanguageProvider = ({ children }) => {
-  const [language, setLanguage] = useState("kannada"); // Default language is Kannada
+  const [language, setLanguage] = useState("english"); // Default language is English
 
   useEffect(() => {
     try {

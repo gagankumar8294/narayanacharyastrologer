@@ -16,7 +16,53 @@ const textList = [
   'Kundali Matchmaking & Remedies'
 ];
 
-const serviceIcons = ['♈', '🏠', '🔢', '💑', '💎', '🕉️'];
+const ServiceIcon = ({ type }) => {
+  switch (type) {
+    case 0: // Horoscope
+      return (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff6801" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+          <path d="M2 12h20"></path>
+        </svg>
+      );
+    case 1: // Vaastu
+      return (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff6801" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+          <polyline points="9 22 9 12 15 12 15 22"></polyline>
+        </svg>
+      );
+    case 2: // Numerology
+      return (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff6801" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="9" y1="9" x2="9" y2="15"></line>
+          <line x1="15" y1="9" x2="15" y2="15"></line>
+        </svg>
+      );
+    case 3: // Matchmaking
+      return (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff6801" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+        </svg>
+      );
+    case 4: // Gemstones
+      return (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff6801" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M6 3h12l4 6-10 12L2 9z"></path>
+          <path d="M11 3v6l-4 6"></path>
+          <path d="M13 3v6l4 6"></path>
+        </svg>
+      );
+    default: // Rituals / Dosha
+      return (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff6801" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+        </svg>
+      );
+  }
+};
 
 export default function Home() {
   const { t } = useTranslation();
@@ -28,9 +74,9 @@ export default function Home() {
   return (
     <div className={styles.homeContainer}>
       <SEO
-        title="Narayanachary - Professional Astrologer & Vaastu Expert in Bangalore"
-        description="Consult Brahma Sri Narayanacharya for authentic Vedic astrology, horoscope reading, Vaastu Shastra solutions, and numerology. 8+ years experience in Bangalore."
-        keywords="Bangalore astrologer, best astrologer in Bangalore, Vaastu Shastra expert Bangalore, horoscope prediction, Jathaka matching, Kundali milan, numerology, Brahma Sri Narayanacharya"
+        title="Narayanachary - Professional Astrologer & Vaastu Expert in Bangalore & Chintamani"
+        description="Consult Brahma Sri Narayanacharya for authentic Vedic astrology, horoscope reading, Vaastu Shastra solutions, and numerology. 8+ years experience in Bangalore & Chintamani."
+        keywords="Bangalore astrologer, Chintamani astrologer, best astrologer in Bangalore, Vaastu Shastra expert Chintamani, horoscope prediction, Jathaka matching, Kundali milan, numerology, Brahma Sri Narayanacharya"
         canonical="https://www.narayanacharyastrologer.com/"
       />
 
@@ -55,9 +101,9 @@ export default function Home() {
               <span className={styles.typingIndicator}>|</span>
               <AutoTypingText
                 textList={textList}
-                typingDelay={80}
-                erasingDelay={30}
-                pauseDelay={1600}
+                typingDelay={70}
+                erasingDelay={25}
+                pauseDelay={1000}
               />
             </div>
 
@@ -87,7 +133,7 @@ export default function Home() {
             <div className={styles.imageAuraCard}>
               <Image
                 src={c}
-                alt="Brahma Sri Narayanacharya - Astrologer in Bangalore"
+                alt="Brahma Sri Narayanacharya - Astrologer in Bangalore & Chintamani"
                 width={360}
                 height={460}
                 className={styles.astrologerImg}
@@ -147,7 +193,7 @@ export default function Home() {
             <div key={srv.id || idx} className={styles.serviceCard}>
               <div>
                 <div className={styles.serviceIconCircle}>
-                  {serviceIcons[idx % serviceIcons.length]}
+                  <ServiceIcon type={idx % 6} />
                 </div>
                 <h3 className={styles.serviceCardTitle}>{srv.title}</h3>
                 <p className={styles.serviceCardDesc}>{srv.desc}</p>
@@ -180,7 +226,11 @@ export default function Home() {
         <div className={styles.whyUsGrid}>
           {(t.whyUs?.reasons || []).map((reason, idx) => (
             <div key={idx} className={styles.whyCard}>
-              <div className={styles.whyIcon}>✦</div>
+              <div className={styles.whyIcon}>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                </svg>
+              </div>
               <h4 className={styles.whyTitle}>{reason.title}</h4>
               <p className={styles.whyDesc}>{reason.desc}</p>
             </div>
@@ -207,7 +257,13 @@ export default function Home() {
         <div className={styles.testimonialsGrid}>
           {(t.testimonials?.items || []).map((item, idx) => (
             <div key={idx} className={styles.testiCard}>
-              <div className={styles.starsRow}>★★★★★</div>
+              <div className={styles.starsRow}>
+                {[...Array(5)].map((_, starI) => (
+                  <svg key={starI} width="16" height="16" viewBox="0 0 24 24" fill="#f5a623" stroke="#f5a623" strokeWidth="1" style={{ display: 'inline-block', marginRight: '3px' }}>
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                  </svg>
+                ))}
+              </div>
               <p className={styles.testiQuote}>“{item.quote}”</p>
               <div className={styles.testiAuthorBox}>
                 <div className={styles.authorAvatar}>
@@ -230,7 +286,10 @@ export default function Home() {
 
       {/* ================= OFFICE LOCATION MAP ================= */}
       <section className={styles.mapWrapper}>
-        <h3 className={styles.mapHeading}>Visit Our Spiritual Center in Bangalore</h3>
+        <h3 className={styles.mapHeading}>Visit Our Spiritual Center in Chintamani</h3>
+        <p style={{ textAlign: 'center', color: 'var(--text-muted)', marginTop: '-14px', marginBottom: '24px', fontSize: '0.95rem' }}>
+          Near Chelur Road, Chintamani, Karnataka — Direct Consultations & Vaastu Guidance
+        </p>
         <StoreLocation />
       </section>
     </div>

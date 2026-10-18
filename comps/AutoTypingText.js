@@ -6,28 +6,33 @@ const AutoTypingText = ({ textList, typingDelay, erasingDelay, pauseDelay }) => 
   const [isTyping, setIsTyping] = useState(true);
 
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      const currentText = textList[currentIndex];
+    let timeout;
+    const currentText = textList[currentIndex];
 
-      if (isTyping) {
-        setDisplayText(currentText.substring(0, displayText.length + 1));
-
-        if (displayText === currentText) {
-          setIsTyping(false);
-          setTimeout(() => {
-            setIsTyping(true);
-            setCurrentIndex((currentIndex + 1) % textList.length);
-          }, pauseDelay);
-        }
+    if (isTyping) {
+      if (displayText.length < currentText.length) {
+        timeout = setTimeout(() => {
+          setDisplayText(currentText.substring(0, displayText.length + 1));
+        }, typingDelay);
       } else {
-        setDisplayText(currentText.substring(0, displayText.length - 1));
-
-        if (displayText === '') {
-          setIsTyping(true);
-          setCurrentIndex((currentIndex + 1) % textList.length);
-        }
+        // Full sentence is complete: wait for pauseDelay (1 second) before erasing
+        timeout = setTimeout(() => {
+          setIsTyping(false);
+        }, pauseDelay);
       }
-    }, isTyping ? typingDelay : erasingDelay);
+    } else {
+      if (displayText.length > 0) {
+        timeout = setTimeout(() => {
+          setDisplayText(currentText.substring(0, displayText.length - 1));
+        }, erasingDelay);
+      } else {
+        // Sentence erased: move to next text and start typing
+        timeout = setTimeout(() => {
+          setCurrentIndex((prev) => (prev + 1) % textList.length);
+          setIsTyping(true);
+        }, 300);
+      }
+    }
 
     return () => clearTimeout(timeout);
   }, [displayText, currentIndex, isTyping, textList, typingDelay, erasingDelay, pauseDelay]);
