@@ -37,7 +37,6 @@ const Footer = () => {
           {/* Column 1: Brand & Bio */}
           <div className={styles.brandCol}>
             <div className={styles.logoRow}>
-              <div className={styles.omBadge}>ॐ</div>
               <div>
                 <h3 className={styles.brandTitle}>NARAYANACHARY</h3>
                 <p className={styles.brandSubtitle}>VEDIC ASTROLOGER & VAASTU VIDWAN</p>
