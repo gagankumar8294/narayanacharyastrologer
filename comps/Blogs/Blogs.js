@@ -1,97 +1,160 @@
-import React, { useState, useRef, useEffect } from "react";
-import styles from './Blogs.module.css';
-import style from './Blogcard.module.css';
-import { db, storage } from '../../firebaseConfig';
-import { collection, addDoc, onSnapshot, deleteDoc, doc, query, orderBy } from "firebase/firestore"; // Import query and orderBy
+import React, { useState, useEffect } from "react";
+import styles from './Blogcard.module.css';
+import { db } from '../../firebaseConfig';
+import { collection, onSnapshot, query, orderBy } from "firebase/firestore";
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 import Spinner from "../Spinner/Spinner";
-import ErrorBoundary from "../ErrorHandling/ErrorBoundary"; // Import the ErrorBoundary
+import ErrorBoundary from "../ErrorHandling/ErrorBoundary";
 
 function Blogs() {
     const [blogs, setBlogs] = useState([]);
-    const [loading, setLoading] = useState(true); // Add a loading state
-    const titleRef = useRef(null);
+    const [loading, setLoading] = useState(true);
+    const [selectedCategory, setSelectedCategory] = useState("all");
     const router = useRouter();
 
     useEffect(() => {
         try {
-        // Create a query that orders documents by 'createdOn' field in descending order
-        const blogsQuery = query(collection(db, "blogs"), orderBy("createdOn", "desc"));
+            const blogsQuery = query(collection(db, "blogs"), orderBy("createdOn", "desc"));
 
-        // Use the ordered query with onSnapshot
-        const unsub = onSnapshot(blogsQuery, (snapshot) => {
-            const blogs = snapshot.docs.map((doc) => {
-                const data = doc.data();
-                return {
-                    id: doc.id,
-                    sections: data.sections,
-                    createdOn: data.createdOn ? data.createdOn.toDate() : null,
-                    slug: data.slug || data.sections.find(section => section.type === "title").value.toLowerCase().replace(/ /g, '-')
-                };
+            const unsub = onSnapshot(blogsQuery, (snapshot) => {
+                const fetchedBlogs = snapshot.docs.map((doc) => {
+                    const data = doc.data();
+                    const sections = data.sections || [];
+                    const titleObj = sections.find(s => s.type === "title");
+                    const titleVal = titleObj?.value || "";
+
+                    // Find first readable paragraph for snippet
+                    const firstParagraph = sections.find(s => s.type === "paragraph" && s.value && s.value.length > 20)?.value || "";
+                    const snippet = firstParagraph
+                        .replace(/[#*🪔💠🌺📍📅▪]/g, '')
+                        .replace(/\s+/g, ' ')
+                        .trim();
+
+                    return {
+                        id: doc.id,
+                        sections: sections,
+                        category: data.category || "astrology",
+                        snippet: snippet.length > 110 ? snippet.substring(0, 110) + '...' : snippet,
+                        createdOn: data.createdOn?.toDate ? data.createdOn.toDate() : null,
+                        slug: data.slug || titleVal.toLowerCase().replace(/ /g, '-')
+                    };
+                });
+                setBlogs(fetchedBlogs);
+                setLoading(false);
             });
-            setBlogs(blogs);
-            setLoading(false); // Set loading to false once blogs are fetched
-        });
 
-        return () => unsub();
-    } catch (error) {
-        console.error("Error fetching blogs:", error);
-      }
-    },[]);
+            return () => unsub();
+        } catch (error) {
+            console.error("Error fetching blogs:", error);
+            setLoading(false);
+        }
+    }, []);
 
-    const handleReadMore = (blog) => {
-        router.push(`/blog/${blog.slug}`);
-    };
+    const categories = [
+        { key: "all", label: "All Articles" },
+        { key: "astrology", label: "Vedic Astrology" },
+        { key: "vaastu", label: "Vaastu Shastra" },
+        { key: "numerology", label: "Numerology" },
+        { key: "yantra-mantra-tantra", label: "Yantra & Mantra" },
+    ];
+
+    const filteredBlogs = selectedCategory === "all"
+        ? blogs
+        : blogs.filter(b => b.category?.toLowerCase() === selectedCategory.toLowerCase());
 
     return (
-        <>
         <ErrorBoundary>
             <section className={styles.blogs_Section}>
-                <h2 className={styles.heading}>Blogs</h2>
+                <div className={styles.headerContainer}>
+                    <h1 className={styles.heading}>Articles & Insights</h1>
+                    <p className={styles.subheading}>
+                        Explore authentic Vedic wisdom, festival muhurthas, horoscope guidance, and Vaastu remedies by Brahma Sri Narayanacharya.
+                    </p>
+                </div>
 
-                {/* Show loading message while blogs are being fetched */}
+                {/* Filter Tabs */}
+                <div className={styles.filterBar}>
+                    {categories.map((cat) => (
+                        <button
+                            key={cat.key}
+                            type="button"
+                            onClick={() => setSelectedCategory(cat.key)}
+                            className={`${styles.filterPill} ${selectedCategory === cat.key ? styles.filterPillActive : ''}`}
+                        >
+                            {cat.label}
+                        </button>
+                    ))}
+                </div>
+
+                {/* Loading State */}
                 {loading ? (
                     <div>
-                        
-                        <Spinner/>
-                        <p className={styles.loading_text}>Loading... Please wait</p>
+                        <Spinner />
+                        <p className={styles.loading_text}>Loading articles... Please wait</p>
+                    </div>
+                ) : filteredBlogs.length === 0 ? (
+                    <div className={styles.emptyState}>
+                        <p>No articles found under this category.</p>
                     </div>
                 ) : (
-                
-                <div className={style.blogList}>
-                    {blogs.map((blog) => {
-                        const firstImage = blog.sections.find(section => section.type === "image");
-                        const firstTitle = blog.sections.find(section => section.type === "title");
+                    <div className={styles.blogList}>
+                        {filteredBlogs.map((blog) => {
+                            const firstImage = blog.sections.find(section => section.type === "image");
+                            const firstTitle = blog.sections.find(section => section.type === "title");
+                            const titleText = firstTitle ? firstTitle.value : "Astrology Article";
+                            const formattedDate = blog.createdOn ? blog.createdOn.toLocaleDateString("en-IN", {
+                                month: "short",
+                                day: "numeric",
+                                year: "numeric"
+                            }) : null;
 
-                        return (
-                            <div className={style.blogCard} key={blog.id}>
-                                <div className={style.cardImageWrapper}>
-                                    <img
-                                        src={firstImage ? firstImage.value : "/homepage/c.png"}
-                                        alt={firstTitle ? firstTitle.value : "Astrology Article"}
-                                    />
-                                </div>
-                                <div className={style.cardBody}>
-                                    <div>
-                                        <span className={style.cardTag}>Vedic Astrology</span>
-                                        <h3>{firstTitle ? firstTitle.value : "Astrology Insight"}</h3>
+                            return (
+                                <Link
+                                    href={`/blog/${encodeURIComponent(blog.slug)}`}
+                                    className={styles.blogCard}
+                                    key={blog.id}
+                                >
+                                    <div className={styles.cardImageWrapper}>
+                                        <img
+                                            src={firstImage ? firstImage.value : "/homepage/c.png"}
+                                            alt={titleText}
+                                        />
+                                        {formattedDate && (
+                                            <span className={styles.cardDateBadge}>
+                                                {formattedDate}
+                                            </span>
+                                        )}
                                     </div>
-                                    <button
-                                        onClick={() => handleReadMore(blog)}
-                                        className={style.readMore}
-                                    >
-                                        <span>Read Full Article</span>
-                                        <span>➔</span>
-                                    </button>
-                                </div>
-                            </div>
-                        );
-                    })}
-                </div>
+                                    <div className={styles.cardBody}>
+                                        <div>
+                                            <span className={styles.cardTag}>
+                                                {blog.category ? blog.category.replace(/-/g, ' ') : "Vedic Astrology"}
+                                            </span>
+                                            <h3>{titleText}</h3>
+                                            {blog.snippet && (
+                                                <p className={styles.cardSnippet}>{blog.snippet}</p>
+                                            )}
+                                        </div>
+                                        <button
+                                            type="button"
+                                            className={styles.readMore}
+                                            onClick={(e) => {
+                                                e.preventDefault();
+                                                router.push(`/blog/${encodeURIComponent(blog.slug)}`);
+                                            }}
+                                        >
+                                            <span>Read Full Article</span>
+                                            <span>➔</span>
+                                        </button>
+                                    </div>
+                                </Link>
+                            );
+                        })}
+                    </div>
                 )}
             </section>
-            </ErrorBoundary>
-        </>
+        </ErrorBoundary>
     );
 }
 
