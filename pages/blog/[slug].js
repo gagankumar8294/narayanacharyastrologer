@@ -2,11 +2,14 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { db } from '../../firebaseConfig';
-import { collection, query, where, getDocs, limit, orderBy } from 'firebase/firestore';
 import styles from '../../styles/Blog.module.css';
 import SEO from '@/comps/SEO/SEO';
-import Spinner from '@/comps/Spinner/Spinner';
+import ImageWithSkeleton from '@/comps/Common/ImageWithSkeleton';
+import { db } from '../../firebaseConfig';
+import { collection, query, where, getDocs, limit } from 'firebase/firestore';
+
+// In-memory client cache for visited articles
+const clientCache = new Map();
 
 const BlogDetail = () => {
   const router = useRouter();
@@ -27,8 +30,42 @@ const BlogDetail = () => {
   useEffect(() => {
     if (!slug) return;
 
+    // Check client in-memory cache first for instant 0ms rendering
+    if (clientCache.has(slug)) {
+      const cached = clientCache.get(slug);
+      setBlog(cached.blog);
+      setRelatedBlogs(cached.relatedBlogs || []);
+      setLoading(false);
+      if (cached.blog?.createdOn) {
+        formatBlogDate(cached.blog.createdOn);
+      }
+      return;
+    }
+
     const fetchBlogData = async () => {
       setLoading(true);
+
+      // Strategy 1: Fetch via high-speed server-cached API route
+      try {
+        const res = await fetch(`/api/blogs/${encodeURIComponent(slug)}`);
+        if (res.ok) {
+          const data = await res.json();
+          if (data.blog) {
+            setBlog(data.blog);
+            setRelatedBlogs(data.relatedBlogs || []);
+            clientCache.set(slug, { blog: data.blog, relatedBlogs: data.relatedBlogs });
+            if (data.blog.createdOn) {
+              formatBlogDate(data.blog.createdOn);
+            }
+            setLoading(false);
+            return;
+          }
+        }
+      } catch (apiErr) {
+        console.warn('API route fetch failed, falling back to client Firestore:', apiErr);
+      }
+
+      // Strategy 2: Fallback to direct Firestore client SDK query
       try {
         const q = query(collection(db, 'blogs'), where('slug', '==', slug));
         const querySnapshot = await getDocs(q);
@@ -36,53 +73,97 @@ const BlogDetail = () => {
         if (!querySnapshot.empty) {
           const blogData = querySnapshot.docs[0].data();
           setBlog(blogData);
-
           if (blogData.createdOn) {
-            const dateObj = blogData.createdOn.toDate ? blogData.createdOn.toDate() : new Date(blogData.createdOn.seconds * 1000);
-            const formatted = dateObj.toLocaleDateString('en-IN', {
-              day: 'numeric',
-              month: 'long',
-              year: 'numeric',
-            });
-            setPostDate(formatted);
+            formatBlogDate(blogData.createdOn);
           }
+
+          // Asynchronously fetch related blogs without blocking main content
+          fetchRelatedClientSide(slug);
+          clientCache.set(slug, { blog: blogData, relatedBlogs: [] });
         } else {
           setBlog(null);
         }
-
-        // Fetch 3 related blogs
-        try {
-          const qRelated = query(collection(db, 'blogs'), limit(6));
-          const relatedSnap = await getDocs(qRelated);
-          const related = relatedSnap.docs
-            .map((doc) => ({ id: doc.id, ...doc.data() }))
-            .filter((b) => b.slug !== slug && b.slug)
-            .slice(0, 3);
-          setRelatedBlogs(related);
-        } catch (err) {
-          console.warn('Could not fetch related blogs:', err);
-        }
       } catch (err) {
-        console.error('Error fetching blog:', err);
+        console.error('Error fetching blog from Firestore:', err);
+        setBlog(null);
       } finally {
         setLoading(false);
+      }
+    };
+
+    const fetchRelatedClientSide = async (currentSlug) => {
+      try {
+        const qRelated = query(collection(db, 'blogs'), limit(6));
+        const relatedSnap = await getDocs(qRelated);
+        const related = relatedSnap.docs
+          .map((doc) => {
+            const d = doc.data();
+            const s = d.sections || [];
+            return {
+              id: doc.id,
+              slug: d.slug,
+              title: s.find((x) => x.type === 'title')?.value || d.slug?.replace(/-/g, ' '),
+              imageUrl: s.find((x) => x.type === 'image')?.value || '/homepage/c.png',
+              imageAlt: s.find((x) => x.type === 'image')?.alt || '',
+            };
+          })
+          .filter((b) => b.slug !== currentSlug && b.slug)
+          .slice(0, 3);
+        setRelatedBlogs(related);
+      } catch (e) {
+        console.warn('Could not fetch related blogs:', e);
       }
     };
 
     fetchBlogData();
   }, [slug]);
 
+  const formatBlogDate = (dateVal) => {
+    let dateObj;
+    if (typeof dateVal === 'string') {
+      dateObj = new Date(dateVal);
+    } else if (dateVal?.toDate) {
+      dateObj = dateVal.toDate();
+    } else if (dateVal?.seconds) {
+      dateObj = new Date(dateVal.seconds * 1000);
+    }
+    if (dateObj && !isNaN(dateObj.getTime())) {
+      const formatted = dateObj.toLocaleDateString('en-IN', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+      });
+      setPostDate(formatted);
+    }
+  };
+
+  // Full Article Skeleton Loading Screen
   if (loading) {
     return (
       <div className={styles.blogPageWrapper}>
-        <div className={styles.loadingContainer}>
-          <Spinner />
-          <p>Loading article, please wait...</p>
+        <div className={styles.skeletonPage} aria-busy="true" aria-label="Loading article">
+          <div className={styles.skeletonBreadcrumb} />
+          <div className={styles.skeletonCategoryPill} />
+          <div className={styles.skeletonMainTitle} />
+          <div className={styles.skeletonMainTitleShort} />
+          <div className={styles.skeletonMetaBar}>
+            <div className={styles.skeletonAvatar} />
+            <div className={styles.skeletonMetaText} />
+          </div>
+          <div className={styles.skeletonBannerBox} />
+          <div className={styles.skeletonParagraphLine} />
+          <div className={styles.skeletonParagraphLine} style={{ width: '92%' }} />
+          <div className={styles.skeletonParagraphLine} style={{ width: '85%' }} />
+          <div className={styles.skeletonCardBox} />
+          <div className={styles.skeletonParagraphLine} />
+          <div className={styles.skeletonParagraphLine} style={{ width: '96%' }} />
+          <div className={styles.skeletonParagraphLine} style={{ width: '70%' }} />
         </div>
       </div>
     );
   }
 
+  // Not Found State
   if (!blog) {
     return (
       <div className={styles.blogPageWrapper}>
@@ -131,13 +212,13 @@ const BlogDetail = () => {
     return `Read ${blogTitle} by Brahma Sri Narayanacharya. Vedic astrology insights, rituals, and auspicious muhurthas.`;
   };
 
-  // Check if paragraph is a sacred mantra or panchanga box
+  // Render paragraph content, mantras, or sacred announcement cards
   const renderParagraphContent = (value, key) => {
     if (!value || !value.trim()) return null;
 
     const trimmed = value.trim();
 
-    // Sacred mantra detection (e.g. Sanskrit stotra, Baliraja namastubhyam, closing sloka)
+    // Sacred mantra detection
     const isMantra =
       trimmed.includes('ಬಲಿರಾಜ ನಮಸ್ತುಭ್ಯಂ') ||
       trimmed.includes('ಯಮಂ ತರ್ಪಯಾಮಿ') ||
@@ -200,41 +281,57 @@ const BlogDetail = () => {
           </Link>
           <span className={styles.breadcrumbSeparator}>/</span>
           <Link href="/blog" className={styles.breadcrumbLink}>
-            Articles
+            Blog
           </Link>
           <span className={styles.breadcrumbSeparator}>/</span>
           <span className={styles.breadcrumbCurrent}>{blogTitle}</span>
         </nav>
 
-        {/* Article Header */}
+        {/* Hero Header */}
         <header className={styles.articleHeader}>
-          <div className={styles.categoryBadge}>
-            <span>✦</span>
-            <span>{blog.category ? blog.category.toUpperCase() : 'VEDIC ASTROLOGY'}</span>
-          </div>
-
+          <span className={styles.categoryBadge}>
+            🪔 {blog.category ? blog.category.replace(/-/g, ' ') : 'Vedic Astrology'}
+          </span>
           <h1 className={styles.mainHeading}>{blogTitle}</h1>
 
-          {/* Author & Meta Bar */}
+          {/* Author and Metadata Bar */}
           <div className={styles.authorMetaBar}>
             <div className={styles.authorLeft}>
-              <img
-                src="/homepage/c.png"
-                alt="Brahma Sri Narayanacharya"
-                className={styles.authorAvatar}
-              />
-              <div className={styles.authorInfo}>
+              <div className={styles.authorAvatar}>
+                <img src="/homepage/guruji.png" alt="Brahma Sri Narayanacharya" />
+              </div>
+              <div className={styles.authorDetails}>
                 <span className={styles.authorName}>Brahma Sri Narayanacharya</span>
-                <div className={styles.metaRow}>
-                  {postDate && <span>{postDate}</span>}
-                  <span className={styles.metaDot}>•</span>
-                  <span>{readTimeMinutes} min read</span>
-                  <span className={styles.metaDot}>•</span>
-                  <span>ಚಿಂತಾಮಣಿ / ಬೆಂಗಳೂರು</span>
-                </div>
+                <span className={styles.metaSubtext}>
+                  Vedic Astrologer & Vaastu Expert • Chintamani
+                </span>
               </div>
             </div>
 
+            <div className={styles.metaRight}>
+              {postDate && (
+                <span className={styles.metaItem}>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                    <line x1="16" y1="2" x2="16" y2="6" />
+                    <line x1="8" y1="2" x2="8" y2="6" />
+                    <line x1="3" y1="10" x2="21" y2="10" />
+                  </svg>
+                  {postDate}
+                </span>
+              )}
+              <span className={styles.metaItem}>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="12 6 12 12 16 14" />
+                </svg>
+                {readTimeMinutes} min read
+              </span>
+            </div>
+          </div>
+
+          {/* Quick WhatsApp Share Button in Header */}
+          <div style={{ marginTop: '16px' }}>
             <a
               href={`https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`}
               target="_blank"
@@ -249,13 +346,15 @@ const BlogDetail = () => {
           </div>
         </header>
 
-        {/* Featured Banner Image */}
+        {/* Featured Banner with High-Performance Skeleton Loader */}
         {firstImage && (
           <div className={styles.featuredImageWrapper}>
-            <img
+            <ImageWithSkeleton
               src={firstImage.value}
               alt={firstImage.alt || blogTitle}
               className={styles.featuredImage}
+              aspectRatio="16/9"
+              priority={true}
             />
             {firstImage.alt && firstImage.alt.trim() !== '' && (
               <div className={styles.imageCaption}>{firstImage.alt}</div>
@@ -266,7 +365,7 @@ const BlogDetail = () => {
         {/* Article Body Content */}
         <div className={styles.articleBody}>
           {sections.map((section, index) => {
-            // Skip the title section (already rendered in the hero header)
+            // Skip the title section (already rendered in header)
             if (section.type === 'title') {
               return null;
             }
@@ -298,155 +397,139 @@ const BlogDetail = () => {
                   </h3>
                 );
 
-              case 'content':
-              case 'paragraph':
-                return renderParagraphContent(section.value, index);
-
-              case 'link':
-                const linkUrl =
-                  section.value.startsWith('http://') || section.value.startsWith('https://')
-                    ? section.value
-                    : `https://${section.value}`;
-                return (
-                  <p key={index} className={styles.paragraph}>
-                    <a
-                      href={linkUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={styles.articleLink}
-                    >
-                      {section.linkText || section.value} ↗
-                    </a>
-                  </p>
-                );
-
               case 'image':
                 return (
-                  <div key={index} className={styles.inlineImageContainer}>
-                    <img
+                  <div key={index} className={styles.inlineImageWrapper}>
+                    <ImageWithSkeleton
                       src={section.value}
-                      alt={section.alt || 'Article visual'}
+                      alt={section.alt || blogTitle}
                       className={styles.inlineImage}
+                      aspectRatio="16/9"
+                      priority={false}
                     />
-                    {section.alt && (
+                    {section.alt && section.alt.trim() !== '' && (
                       <div className={styles.imageCaption}>{section.alt}</div>
                     )}
                   </div>
                 );
 
+              case 'paragraph':
+              case 'p':
+                return renderParagraphContent(section.value, index);
+
               default:
+                if (section.value && typeof section.value === 'string' && section.value.trim() !== '') {
+                  return renderParagraphContent(section.value, index);
+                }
                 return null;
             }
           })}
         </div>
 
-        {/* Social Sharing Section */}
-        <section className={styles.shareSection}>
-          <h4 className={styles.shareTitle}>ಈ ಲೇಖನವನ್ನು ನಿಮ್ಮ ಸ್ನೇಹಿತರು & ಕುಟುಂಬದೊಂದಿಗೆ ಹಂಚಿಕೊಳ್ಳಿ</h4>
-          <ul className={styles.shareButtonsList}>
-            <li>
-              <a
-                href={`https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`${styles.shareBtn} ${styles.shareWhatsApp}`}
-              >
-                <svg viewBox="0 0 32 32">
-                  <path d="M27.281 4.65c-2.994-3-6.975-4.65-11.219-4.65-8.738 0-15.85 7.112-15.85 15.856 0 2.794 0.731 5.525 2.119 7.925l-2.25 8.219 8.406-2.206c2.319 1.262 4.925 1.931 7.575 1.931h0.006c0 0 0 0 0 0 8.738 0 15.856-7.113 15.856-15.856 0-4.238-1.65-8.219-4.644-11.219zM16.069 29.050v0c-2.369 0-4.688-0.637-6.713-1.837l-0.481-0.288-4.987 1.306 1.331-4.863-0.313-0.5c-1.325-2.094-2.019-4.519-2.019-7.012 0-7.269 5.912-13.181 13.188-13.181 3.519 0 6.831 1.375 9.319 3.862 2.488 2.494 3.856 5.8 3.856 9.325-0.006 7.275-5.919 13.188-13.181 13.188z" />
-                </svg>
-                <span>WhatsApp</span>
-              </a>
-            </li>
+        {/* Social Share Bar */}
+        <div className={styles.shareSection}>
+          <span className={styles.shareLabel}>Share this sacred wisdom:</span>
+          <div className={styles.shareButtonsList}>
+            {/* WhatsApp */}
+            <a
+              href={`https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${styles.shareBtn} ${styles.shareWhatsApp}`}
+              title="Share on WhatsApp"
+            >
+              <svg width="18" height="18" viewBox="0 0 32 32" fill="currentColor">
+                <path d="M27.281 4.65c-2.994-3-6.975-4.65-11.219-4.65-8.738 0-15.85 7.112-15.85 15.856 0 2.794 0.731 5.525 2.119 7.925l-2.25 8.219 8.406-2.206c2.319 1.262 4.925 1.931 7.575 1.931h0.006c0 0 0 0 0 0 8.738 0 15.856-7.113 15.856-15.856 0-4.238-1.65-8.219-4.644-11.219z" />
+              </svg>
+              <span>WhatsApp</span>
+            </a>
 
-            <li>
-              <a
-                href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(blogURL)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`${styles.shareBtn} ${styles.shareFacebook}`}
-              >
-                <svg viewBox="0 0 32 32">
-                  <path d="M29 0h-26c-1.65 0-3 1.35-3 3v26c0 1.65 1.35 3 3 3h13v-14h-4v-4h4v-2c0-3.306 2.694-6 6-6h4v4h-4c-1.1 0-2 0.9-2 2v2h6l-1 4h-5v14h9c1.65 0 3-1.35 3-3v-26c0-1.65-1.35-3-3-3z" />
-                </svg>
-                <span>Facebook</span>
-              </a>
-            </li>
+            {/* Facebook */}
+            <a
+              href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(blogURL)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${styles.shareBtn} ${styles.shareFacebook}`}
+              title="Share on Facebook"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+              </svg>
+              <span>Facebook</span>
+            </a>
 
-            <li>
-              <a
-                href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(blogURL)}&text=${encodeURIComponent(blogTitle)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`${styles.shareBtn} ${styles.shareTwitter}`}
-              >
-                <svg viewBox="0 0 24 24">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                </svg>
-                <span>X (Twitter)</span>
-              </a>
-            </li>
+            {/* X / Twitter */}
+            <a
+              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(blogTitle)}&url=${encodeURIComponent(blogURL)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${styles.shareBtn} ${styles.shareTwitter}`}
+              title="Share on X (Twitter)"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg>
+              <span>X</span>
+            </a>
 
-            <li>
-              <a
-                href={`https://t.me/share/url?url=${encodeURIComponent(blogURL)}&text=${encodeURIComponent(blogTitle)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`${styles.shareBtn} ${styles.shareTelegram}`}
-              >
-                <svg viewBox="0 0 32 32">
-                  <path d="M16 0c-8.838 0-16 7.162-16 16s7.162 16 16 16 16-7.163 16-16-7.163-16-16-16zM23.863 10.969l-2.625 12.369c-0.181 0.881-0.712 1.087-1.45 0.681l-4-2.956-1.919 1.869c-0.225 0.219-0.4 0.4-0.8 0.4-0.519 0-0.431-0.194-0.606-0.688l-1.363-4.475-3.956-1.231c-0.856-0.262-0.862-0.85 0.194-1.269l15.412-5.95c0.7-0.319 1.381 0.169 1.113 1.25z" />
-                </svg>
-                <span>Telegram</span>
-              </a>
-            </li>
+            {/* Telegram */}
+            <a
+              href={`https://t.me/share/url?url=${encodeURIComponent(blogURL)}&text=${encodeURIComponent(blogTitle)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${styles.shareBtn} ${styles.shareTelegram}`}
+              title="Share on Telegram"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.832.922z" />
+              </svg>
+              <span>Telegram</span>
+            </a>
 
-            <li>
-              <button
-                type="button"
-                onClick={handleCopyLink}
-                className={`${styles.shareBtn} ${styles.shareCopy}`}
-              >
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
-                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-                </svg>
-                <span>{copied ? 'Link Copied!' : 'Copy Link'}</span>
-              </button>
-            </li>
-          </ul>
-        </section>
+            {/* Copy Link */}
+            <button
+              type="button"
+              onClick={handleCopyLink}
+              className={`${styles.shareBtn} ${styles.shareCopy}`}
+              title="Copy Article Link"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+              </svg>
+              <span>{copied ? 'Link Copied! ✓' : 'Copy Link'}</span>
+            </button>
+          </div>
+        </div>
 
-        {/* Author Profile Card & Consultation CTA */}
+        {/* Guruji Author Card */}
         <section className={styles.authorCard}>
-          <img
-            src="/homepage/c.png"
-            alt="Brahma Sri Narayanacharya"
-            className={styles.authorCardAvatar}
-          />
+          <div className={styles.authorCardAvatarWrapper}>
+            <img
+              src="/homepage/guruji.png"
+              alt="Brahma Sri Narayanacharya"
+              className={styles.authorCardAvatar}
+            />
+          </div>
           <div className={styles.authorCardContent}>
             <h3 className={styles.authorCardTitle}>Brahma Sri Narayanacharya</h3>
             <p className={styles.authorCardSubtitle}>
-              ವೇದ ಜ್ಯೋತಿಷ್ಯ ಹಾಗೂ ವಾಸ್ತು ಪರಿಣಿತರು • ಶ್ರೀ ನಾಗಸಾಯಿ ಜ್ಯೋತಿಷ್ಯಾಲಯ
+              Renowned Vedic Astrologer & Vaastu Expert • Chintamani, Karnataka
             </p>
             <p className={styles.authorCardBio}>
-              ಜಾತಕ ಪರಿಶೀಲನೆ, ವಿವಾಹ ಹೊಂದಾಣಿಕೆ, ವಾಸ್ತು ದೋಷ ನಿವಾರಣೆ, ವ್ಯಾಪಾರ-ವ್ಯವಹಾರ ಅಭಿವೃದ್ಧಿ ಹಾಗೂ ಮುಹೂರ್ತ ನಿರ್ಣಯಕ್ಕಾಗಿ
-              ನೇರವಾಗಿ ಸಂಪರ್ಕಿಸಿ ಸಮಾಲೋಚನೆ ಪಡೆಯಿರಿ.
+              Over 25+ years of providing authentic Vedic astrology consultations, Jathaka Kundali analysis,
+              accurate life predictions, Vaastu Shastra solutions, and dosha shanti pariharas with divine blessings.
             </p>
-            <a
-              href="https://wa.me/918549803686?text=Namaskara%20Guruji,%20I%20read%20your%20article%20and%20would%20like%20to%20consult."
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.consultBtn}
-            >
-              <span>ಸಮಾಲೋಚನೆಗೆ ಸಂಪರ್ಕಿಸಿ (Consult Guruji)</span>
+            <Link href="/contact" className={styles.consultBtn}>
+              <span>Book Personal Consultation</span>
               <span>➔</span>
-            </a>
+            </Link>
           </div>
         </section>
 
-        {/* Community Banner */}
+        {/* WhatsApp Community Banner */}
         <section className={styles.communityCard}>
-          <h3>ದೈನಂದಿನ ಪಂಚಾಂಗ & ಧಾರ್ಮಿಕ ಅಪ್ಡೇಟ್ಸ್</h3>
+          <h3>🪔 Join Our Vedic Astrology WhatsApp Community</h3>
           <p>
             ನಮ್ಮ ವಾಟ್ಸಾಪ್ ಕಮ್ಯೂನಿಟಿಗೆ ಸೇರಿಕೊಂಡು ನಿತ್ಯ ಪಂಚಾಂಗ, ಹಬ್ಬಗಳ ಶುಭ ಮುಹೂರ್ತಗಳು ಮತ್ತು ಜ್ಯೋತಿಷ್ಯ ಸಲಹೆಗಳನ್ನು ನಿಮ್ಮ
             ಮೊಬೈಲ್‌ನಲ್ಲಿ ನೇರವಾಗಿ ಪಡೆಯಿರಿ.
@@ -464,14 +547,15 @@ const BlogDetail = () => {
           </a>
         </section>
 
-        {/* Related / Recent Articles */}
+        {/* Related / Recent Articles with Skeleton Loaders */}
         {relatedBlogs.length > 0 && (
           <section className={styles.relatedSection}>
             <h3 className={styles.relatedHeading}>ಇನ್ನಷ್ಟು ಪ್ರಮುಖ ಲೇಖನಗಳು (More Articles)</h3>
             <div className={styles.relatedGrid}>
               {relatedBlogs.map((item) => {
-                const itemImg = item.sections?.find((s) => s.type === 'image');
+                const itemImg = item.imageUrl || item.sections?.find((s) => s.type === 'image')?.value || '/homepage/c.png';
                 const itemTitle =
+                  item.title ||
                   item.sections?.find((s) => s.type === 'title')?.value ||
                   item.slug?.replace(/-/g, ' ');
 
@@ -482,10 +566,11 @@ const BlogDetail = () => {
                     className={styles.relatedCard}
                   >
                     <div className={styles.relatedCardImageWrapper}>
-                      <img
-                        src={itemImg ? itemImg.value : '/homepage/c.png'}
+                      <ImageWithSkeleton
+                        src={itemImg}
                         alt={itemTitle}
-                        className={styles.relatedCardImage}
+                        aspectRatio="16/10"
+                        priority={false}
                       />
                     </div>
                     <div className={styles.relatedCardBody}>
