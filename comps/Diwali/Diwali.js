@@ -3,8 +3,9 @@ import { ArrowRightIcon } from "@/comps/Common/Icons";
 import styles from "./DiwaliPromo.module.css";
 
 export default function DiwaliPromo() {
-
-    const router = useRouter();
+  return null;
+  /*
+  const router = useRouter();
 
   return (
     <section className={styles.wrapper}>
@@ -36,4 +37,5 @@ export default function DiwaliPromo() {
       </div>
     </section>
   );
+  */
 }

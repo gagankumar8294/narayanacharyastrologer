@@ -254,10 +254,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ================= DIWALI PROMO / SEASONAL ================= */}
-      <section>
+      {/* ================= DIWALI PROMO / SEASONAL (Commented out) ================= */}
+      {/* <section>
         <DiwaliPromo />
-      </section>
+      </section> */}
 
       {/* ================= CLIENT TESTIMONIALS ================= */}
       <section className={styles.testimonialsSection}>
