@@ -134,12 +134,6 @@
   position: relative;
 }
 
-.blogNavLink::before {
-  content: '🪔';
-  font-size: 0.75rem;
-  margin-right: 4px;
-}
-
 /* Right Actions */
 .navActions {
   display: flex;

@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import ImageWithSkeleton from '../Common/ImageWithSkeleton';
+import { SparkleIcon, ArrowRightIcon, DiyaIcon } from '../Common/Icons';
 import styles from './RecentBlogs.module.css';
 
 const RecentBlogs = () => {
@@ -44,7 +45,8 @@ const RecentBlogs = () => {
         {/* Section Header */}
         <div className={styles.sectionHeader}>
           <span className={styles.sectionBadge}>
-            ✦ ಜ್ಯೋತಿಷ್ಯ ಲೇಖನಗಳು & ಪಂಚಾಂಗ (Vedic Blog)
+            <SparkleIcon size={12} color="var(--color-primary)" />
+            <span style={{ marginLeft: '6px' }}>ಜ್ಯೋತಿಷ್ಯ ಲೇಖನಗಳು & ಪಂಚಾಂಗ (Vedic Blog)</span>
           </span>
           <h2 className={styles.sectionTitle}>
             Latest Astrological Insights & Festival Guides
@@ -98,7 +100,7 @@ const RecentBlogs = () => {
 
                   <span className={styles.readMoreLink}>
                     <span>Read Full Article</span>
-                    <span>➔</span>
+                    <ArrowRightIcon size={14} />
                   </span>
                 </div>
               </Link>
@@ -110,7 +112,7 @@ const RecentBlogs = () => {
         <div className={styles.ctaContainer}>
           <Link href="/blog" className={styles.viewAllBtn}>
             <span>View All Articles & Muhurthas (Blog)</span>
-            <span>➔</span>
+            <ArrowRightIcon size={16} />
           </Link>
         </div>
       </div>

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import styles from '../../styles/Blog.module.css';
 import SEO from '@/comps/SEO/SEO';
 import ImageWithSkeleton from '@/comps/Common/ImageWithSkeleton';
+import { DiyaIcon, ArrowRightIcon, ArrowLeftIcon, CheckIcon, SparkleIcon } from '@/comps/Common/Icons';
 import { db } from '../../firebaseConfig';
 import { collection, query, where, getDocs, limit } from 'firebase/firestore';
 
@@ -172,8 +173,9 @@ const BlogDetail = () => {
           <p style={{ color: 'var(--text-muted, #5e5a6f)', marginBottom: '24px' }}>
             The article you are looking for does not exist or may have been moved.
           </p>
-          <Link href="/blog" className={styles.consultBtn}>
-            ← Back to All Articles
+          <Link href="/blog" className={styles.consultBtn} style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+            <ArrowLeftIcon size={14} />
+            <span>Back to All Articles</span>
           </Link>
         </div>
       </div>
@@ -290,7 +292,8 @@ const BlogDetail = () => {
         {/* Hero Header */}
         <header className={styles.articleHeader}>
           <span className={styles.categoryBadge}>
-            🪔 {blog.category ? blog.category.replace(/-/g, ' ') : 'Vedic Astrology'}
+            <DiyaIcon size={14} color="var(--color-primary)" />
+            <span style={{ marginLeft: '6px' }}>{blog.category ? blog.category.replace(/-/g, ' ') : 'Vedic Astrology'}</span>
           </span>
           <h1 className={styles.mainHeading}>{blogTitle}</h1>
 
@@ -497,7 +500,7 @@ const BlogDetail = () => {
                 <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
                 <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
               </svg>
-              <span>{copied ? 'Link Copied! ✓' : 'Copy Link'}</span>
+              <span>{copied ? <><CheckIcon size={14} /> Link Copied!</> : 'Copy Link'}</span>
             </button>
           </div>
         </div>
@@ -522,14 +525,17 @@ const BlogDetail = () => {
             </p>
             <Link href="/contact" className={styles.consultBtn}>
               <span>Book Personal Consultation</span>
-              <span>➔</span>
+              <ArrowRightIcon size={14} />
             </Link>
           </div>
         </section>
 
         {/* WhatsApp Community Banner */}
         <section className={styles.communityCard}>
-          <h3>🪔 Join Our Vedic Astrology WhatsApp Community</h3>
+          <h3 style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+            <DiyaIcon size={22} color="#ffd976" />
+            <span>Join Our Vedic Astrology WhatsApp Community</span>
+          </h3>
           <p>
             ನಮ್ಮ ವಾಟ್ಸಾಪ್ ಕಮ್ಯೂನಿಟಿಗೆ ಸೇರಿಕೊಂಡು ನಿತ್ಯ ಪಂಚಾಂಗ, ಹಬ್ಬಗಳ ಶುಭ ಮುಹೂರ್ತಗಳು ಮತ್ತು ಜ್ಯೋತಿಷ್ಯ ಸಲಹೆಗಳನ್ನು ನಿಮ್ಮ
             ಮೊಬೈಲ್‌ನಲ್ಲಿ ನೇರವಾಗಿ ಪಡೆಯಿರಿ.
@@ -577,7 +583,7 @@ const BlogDetail = () => {
                       <h4 className={styles.relatedCardTitle}>{itemTitle}</h4>
                       <span className={styles.relatedCardLink}>
                         <span>ಓದಿ (Read)</span>
-                        <span>➔</span>
+                        <ArrowRightIcon size={14} />
                       </span>
                     </div>
                   </Link>

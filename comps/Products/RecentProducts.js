@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { collection, getDocs, query, orderBy, limit } from 'firebase/firestore';
 import { db } from '../../fireProductsConfig';
 import Image from 'next/image';
+import { ArrowRightIcon } from '@/comps/Common/Icons';
 import styles from './RecentProductsModern.module.css';
 import { useRouter } from 'next/router';
 
@@ -70,7 +71,7 @@ const RecentProducts = () => {
               </div>
               <button className={styles.actionBtn}>
                 <span>View Details & Order</span>
-                <span>➔</span>
+                <ArrowRightIcon size={14} />
               </button>
             </div>
           </div>
@@ -78,8 +79,9 @@ const RecentProducts = () => {
       </div>
 
       <div className={styles.viewAllContainer}>
-        <button className={styles.viewAllBtn} onClick={() => router.push('/product')}>
-          Explore All Sacred Products ➔
+        <button className={styles.viewAllBtn} onClick={() => router.push('/product')} style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+          <span>Explore All Sacred Products</span>
+          <ArrowRightIcon size={14} />
         </button>
       </div>
     </section>

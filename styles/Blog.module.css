@@ -258,15 +258,6 @@
   overflow: hidden;
 }
 
-.sacredBox::before {
-  content: '🪔';
-  position: absolute;
-  top: 14px;
-  right: 18px;
-  font-size: 1.4rem;
-  opacity: 0.4;
-}
-
 .sacredBoxText {
   font-size: 1.06rem;
   line-height: 1.88;

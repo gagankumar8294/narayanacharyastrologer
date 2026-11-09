@@ -3,6 +3,7 @@ import Link from "next/link";
 import SEO from "@/comps/SEO/SEO";
 import StoreLocation from "@/comps/maps/StoreLocation";
 import { useTranslation } from "@/hooks/useTranslation";
+import { SparkleIcon, ArrowRightIcon, CheckIcon } from "@/comps/Common/Icons";
 import styles from "../styles/Contact.module.css";
 
 export default function Contact() {
@@ -75,8 +76,10 @@ export default function Contact() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.contactActionLink}
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}
                 >
-                  Start WhatsApp Chat ➔
+                  <span>Start WhatsApp Chat</span>
+                  <ArrowRightIcon size={14} />
                 </a>
               </div>
             </div>
@@ -104,8 +107,9 @@ export default function Contact() {
               <p className={styles.formSubtitle}>Fill this short form to connect directly via WhatsApp.</p>
 
               {submitted ? (
-                <div className={styles.successMessage}>
-                  ✓ Thank you! Your request has been initiated on WhatsApp. Achary Ji will reply shortly.
+                <div className={styles.successMessage} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <CheckIcon size={18} color="#1b5e20" />
+                  <span>Thank you! Your request has been initiated on WhatsApp. Achary Ji will reply shortly.</span>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className={styles.form}>
@@ -160,8 +164,9 @@ export default function Contact() {
                     ></textarea>
                   </div>
 
-                  <button type="submit" className={styles.submitBtn}>
-                    Send Request via WhatsApp ➔
+                  <button type="submit" className={styles.submitBtn} style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+                    <span>Send Request via WhatsApp</span>
+                    <ArrowRightIcon size={15} />
                   </button>
                 </form>
               )}
@@ -185,8 +190,9 @@ export default function Contact() {
           marginBottom: '20px'
         }}>
           <div>
-            <span style={{ fontSize: '0.8rem', fontWeight: 800, color: 'var(--color-primary, #ff6801)', textTransform: 'uppercase', letterSpacing: '0.6px' }}>
-              ✦ Free Spiritual Guidance
+            <span style={{ fontSize: '0.8rem', fontWeight: 800, color: 'var(--color-primary, #ff6801)', textTransform: 'uppercase', letterSpacing: '0.6px', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+              <SparkleIcon size={12} color="var(--color-primary, #ff6801)" />
+              <span>Free Spiritual Guidance</span>
             </span>
             <h3 style={{ fontFamily: 'var(--font-heading, "Cinzel", serif)', fontSize: '1.25rem', margin: '4px 0 6px', color: '#1e1b29' }}>
               Looking for authentic astrological articles and festival muhurthas?
@@ -213,7 +219,7 @@ export default function Contact() {
             }}
           >
             <span>Visit Blog (21+ Articles)</span>
-            <span>➔</span>
+            <ArrowRightIcon size={14} />
           </Link>
         </div>
 

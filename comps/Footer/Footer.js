@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useTranslation } from "@/hooks/useTranslation";
+import { SparkleIcon, ArrowRightIcon, DiyaIcon } from "@/comps/Common/Icons";
 import styles from "./footer.module.css";
 
 const Footer = () => {
@@ -47,13 +48,20 @@ const Footer = () => {
                 "Brahma Sri Narayanacharya offers authoritative Vedic astrology, Vaastu Shastra, horoscope matching, and numerology consultations to guide you towards peace and prosperity."}
             </p>
             <div className={styles.trustBadges}>
-              <span className={styles.badgeItem}>✦ 8+ Years Vedic Sadhana</span>
-              <span className={styles.badgeItem}>✦ Authentic Vishwakarma Lineage</span>
+              <span className={styles.badgeItem}>
+                <SparkleIcon size={11} color="var(--color-gold-light)" />
+                <span style={{ marginLeft: "5px" }}>8+ Years Vedic Sadhana</span>
+              </span>
+              <span className={styles.badgeItem}>
+                <SparkleIcon size={11} color="var(--color-gold-light)" />
+                <span style={{ marginLeft: "5px" }}>Authentic Vishwakarma Lineage</span>
+              </span>
             </div>
             <div style={{ marginTop: '12px' }}>
               <Link href="/blog" className={styles.footerBlogBadge}>
-                <span>🪔 Read Our Astrological Blog (21+ Articles)</span>
-                <span>➔</span>
+                <DiyaIcon size={15} color="#ffaa6b" />
+                <span>Read Our Astrological Blog (21+ Articles)</span>
+                <ArrowRightIcon size={14} />
               </Link>
             </div>
           </div>
@@ -134,7 +142,8 @@ const Footer = () => {
                       rel="noopener noreferrer"
                       className={styles.whatsappActionLink}
                     >
-                      Instant WhatsApp Chat ➔
+                      <span>Instant WhatsApp Chat</span>
+                      <ArrowRightIcon size={14} />
                     </a>
                   </p>
                 </div>
@@ -149,7 +158,7 @@ const Footer = () => {
             © {new Date().getFullYear()} Brahma Sri Narayanachary Astrologer. {t.footer?.rights || "All rights reserved."}
           </div>
           <div className={styles.spiritualNotice}>
-            <span>Shree Gurubhyo Namaha</span> ✦ <span>Lokah Samastah Sukhino Bhavantu</span>
+            <span>Shree Gurubhyo Namaha</span> • <span>Lokah Samastah Sukhino Bhavantu</span>
           </div>
         </div>
       </div>

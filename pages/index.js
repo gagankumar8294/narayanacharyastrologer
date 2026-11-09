@@ -7,6 +7,7 @@ import RecentProducts from '@/comps/Products/RecentProducts';
 import StoreLocation from '@/comps/maps/StoreLocation';
 import SEO from '@/comps/SEO/SEO';
 import { useTranslation } from '@/hooks/useTranslation';
+import { SparkleIcon, ArrowRightIcon, DiyaIcon } from '@/comps/Common/Icons';
 import c from "../public/homepage/c.png";
 import styles from '../styles/Home.module.css';
 
@@ -87,7 +88,8 @@ export default function Home() {
         <div className={styles.heroContentWrapper}>
           <div className={styles.heroLeft}>
             <div className={styles.heroBadge}>
-              <span>✦</span> {t.hero?.badge || "Vedic Astrology & Vaastu Expert"}
+              <SparkleIcon size={12} color="#ff9d54" />
+              <span style={{ marginLeft: '6px' }}>{t.hero?.badge || "Vedic Astrology & Vaastu Expert"}</span>
             </div>
 
             <h1 className={styles.heroMainTitle}>
@@ -121,7 +123,7 @@ export default function Home() {
                 className={styles.heroPrimaryBtn}
               >
                 <span>{t.hero?.bookBtn || "Book Consultation"}</span>
-                <span>➔</span>
+                <ArrowRightIcon size={14} />
               </a>
 
               <Link href="#services" className={styles.heroSecondaryBtn}>
@@ -129,7 +131,8 @@ export default function Home() {
               </Link>
 
               <Link href="/blog" className={styles.heroBlogBtn}>
-                <span>🪔 {t.nav?.blog || "Blog & Articles"}</span>
+                <DiyaIcon size={15} color="#ffaa6b" />
+                <span>{t.nav?.blog || "Blog & Articles"}</span>
               </Link>
             </div>
           </div>
@@ -145,7 +148,7 @@ export default function Home() {
                 priority
               />
               <div className={styles.floatingExperienceBadge}>
-                <span className={styles.badgeStar}>★</span>
+                <SparkleIcon size={16} color="var(--color-gold)" />
                 <div>
                   <div className={styles.badgeNum}>8+ Years</div>
                   <div className={styles.badgeTxt}>Vedic Sadhana</div>
@@ -210,7 +213,7 @@ export default function Home() {
                 className={styles.serviceActionLink}
               >
                 <span>Consult on this Service</span>
-                <span>➔</span>
+                <ArrowRightIcon size={14} />
               </a>
             </div>
           ))}
@@ -218,8 +221,9 @@ export default function Home() {
 
         <div style={{ textAlign: "center", marginTop: "40px" }}>
           <Link href="/blog" className={styles.servicesBlogLink}>
-            <span>🪔 Want in-depth Vedic guides and remedies? Read Our Blog</span>
-            <span>➔</span>
+            <DiyaIcon size={16} color="var(--color-primary)" />
+            <span style={{ margin: "0 6px" }}>Want in-depth Vedic guides and remedies? Read Our Blog</span>
+            <ArrowRightIcon size={14} />
           </Link>
         </div>
       </section>

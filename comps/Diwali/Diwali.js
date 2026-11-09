@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-
+import { ArrowRightIcon } from "@/comps/Common/Icons";
 import styles from "./DiwaliPromo.module.css";
 
 export default function DiwaliPromo() {
@@ -27,8 +27,10 @@ export default function DiwaliPromo() {
         <button
             className={styles.button}
             onClick={() => router.push("/diwali")}
+            style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}
             >
-            ದೀಪಾವಳಿ ವಿವರಗಳನ್ನು ನೋಡಿ ➜
+            <span>ದೀಪಾವಳಿ ವಿವರಗಳನ್ನು ನೋಡಿ</span>
+            <ArrowRightIcon size={14} />
         </button>
 
       </div>

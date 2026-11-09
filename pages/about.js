@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import SEO from "@/comps/SEO/SEO";
 import { useTranslation } from "@/hooks/useTranslation";
+import { SparkleIcon, ArrowRightIcon, DiyaIcon } from "@/comps/Common/Icons";
 import c from "../public/homepage/c.png";
 import styles from "../styles/About.module.css";
 
@@ -34,7 +35,7 @@ export default function About() {
               priority
             />
             <div className={styles.floatingExperienceBadge}>
-              <span className={styles.badgeStar}>★</span>
+              <span className={styles.badgeStar}><SparkleIcon size={16} color="var(--color-gold, #f39c12)" /></span>
               <div>
                 <div className={styles.badgeNum}>8+ Years</div>
                 <div className={styles.badgeTxt}>Vedic Sadhana</div>
@@ -69,7 +70,7 @@ export default function About() {
                 className={styles.primaryCta}
               >
                 <span>Book Personal Consultation</span>
-                <span>➔</span>
+                <ArrowRightIcon size={14} />
               </a>
               <Link href="/#services" className={styles.primaryCta} style={{ background: "rgba(255,255,255,0.12)", boxShadow: "none" }}>
                 View Services
@@ -135,7 +136,7 @@ export default function About() {
         {/* Astrological Writings & Blog Callout */}
         <div className={styles.blogBannerCallout}>
           <div>
-            <span className={styles.blogBannerBadge}>🪔 Vedic Articles & Muhurthas</span>
+            <span className={styles.blogBannerBadge}><DiyaIcon size={14} color="var(--color-primary, #ff6801)" /> Vedic Articles & Muhurthas</span>
             <h3 className={styles.blogBannerTitle}>Explore Guruji's Astrological Writings & Insights</h3>
             <p className={styles.blogBannerDesc}>
               Read authentic festival articles (Deepavali, Makar Sankranti, Vaikuntha Ekadashi), planetary dosha remedies, and daily wellness guides.
@@ -143,7 +144,7 @@ export default function About() {
           </div>
           <Link href="/blog" className={styles.blogBannerBtn}>
             <span>Visit Blog Page</span>
-            <span>➔</span>
+            <ArrowRightIcon size={14} />
           </Link>
         </div>
       </div>

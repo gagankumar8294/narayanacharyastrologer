@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { ArrowLeftIcon, ArrowRightIcon } from "@/comps/Common/Icons";
 import styles from "./diwali.module.css";
 
 export async function getServerSideProps() {
@@ -52,10 +53,10 @@ export default function Home({ data }) {
       <h2 className={styles.heading}>Diwali savings / festival fund</h2>
 
       <div className={styles.tableContainer}>
-        {/* ⬅ Left Arrow */}
+        {/* Left Arrow */}
         {showLeft && (
-          <button className={`${styles.arrow} ${styles.left}`} onClick={scrollLeft}>
-            ⬅
+          <button className={`${styles.arrow} ${styles.left}`} onClick={scrollLeft} aria-label="Scroll left">
+            <ArrowLeftIcon size={18} />
           </button>
         )}
 
@@ -90,10 +91,10 @@ export default function Home({ data }) {
           </table>
         </div>
 
-        {/* ➜ Right Arrow */}
+        {/* Right Arrow */}
         {showRight && (
-          <button className={`${styles.arrow} ${styles.right}`} onClick={scrollRight}>
-            ➜
+          <button className={`${styles.arrow} ${styles.right}`} onClick={scrollRight} aria-label="Scroll right">
+            <ArrowRightIcon size={18} />
           </button>
         )}
       </div>

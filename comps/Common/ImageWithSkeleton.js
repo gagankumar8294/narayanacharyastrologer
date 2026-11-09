@@ -1,6 +1,7 @@
 // comps/Common/ImageWithSkeleton.js
 import React, { useState, useEffect } from 'react';
 import styles from './ImageWithSkeleton.module.css';
+import { DiyaIcon } from './Icons';
 
 const ImageWithSkeleton = ({
   src,
@@ -29,7 +30,11 @@ const ImageWithSkeleton = ({
       {!isLoaded && (
         <>
           <div className={styles.skeletonShimmer} />
-          {showEmblem && <div className={styles.skeletonEmblem}>🪔</div>}
+          {showEmblem && (
+            <div className={styles.skeletonEmblem}>
+              <DiyaIcon size={32} color="rgba(255, 104, 1, 0.35)" />
+            </div>
+          )}
         </>
       )}
 

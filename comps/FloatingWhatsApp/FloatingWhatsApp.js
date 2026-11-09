@@ -2,6 +2,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useTranslation } from "@/hooks/useTranslation";
+import { CloseIcon, ArrowRightIcon } from "@/comps/Common/Icons";
 import styles from "./FloatingWhatsApp.module.css";
 
 export default function FloatingWhatsApp() {
@@ -30,7 +31,7 @@ export default function FloatingWhatsApp() {
               className={styles.closeBtn}
               aria-label="Close WhatsApp chat popup"
             >
-              ✕
+              <CloseIcon size={16} />
             </button>
           </div>
           <div className={styles.popupBody}>
@@ -47,7 +48,7 @@ export default function FloatingWhatsApp() {
               className={styles.startChatBtn}
             >
               <span>Continue to WhatsApp</span>
-              <span>➔</span>
+              <ArrowRightIcon size={14} />
             </a>
           </div>
         </div>

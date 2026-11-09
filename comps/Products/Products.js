@@ -87,7 +87,7 @@
 //     }
 //   };
 
-//   // 🗑️ Delete Function with Confirmation
+//   // Delete Function with Confirmation
 //   const handleDelete = async (productId) => {
 //     const confirmDelete = window.confirm("Are you sure you want to delete this product?");
 //     if (!confirmDelete) return;
@@ -100,7 +100,7 @@
 //     }
 //   };
 
-//   // ✏️ Edit Function
+//   // Edit Function
 //   const handleEdit = (product) => {
 //     setFormData({
 //       image: product.image,

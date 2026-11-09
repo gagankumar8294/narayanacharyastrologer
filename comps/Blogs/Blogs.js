@@ -6,6 +6,7 @@ import Link from 'next/link';
 import ErrorBoundary from '../ErrorHandling/ErrorBoundary';
 import ImageWithSkeleton from '../Common/ImageWithSkeleton';
 import BlogCardSkeleton from './BlogCardSkeleton';
+import { ArrowRightIcon, SparkleIcon } from '../Common/Icons';
 
 const PAGE_SIZE = 6;
 
@@ -200,7 +201,7 @@ function Blogs() {
                         }}
                       >
                         <span>Read Full Article</span>
-                        <span>➔</span>
+                        <ArrowRightIcon size={14} />
                       </button>
                     </div>
                   </Link>
@@ -229,7 +230,10 @@ function Blogs() {
                   className={styles.loadMoreBtn}
                 >
                   <span>Load More Articles</span>
-                  <span>↓</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginLeft: '4px' }}>
+                    <line x1="12" y1="5" x2="12" y2="19" />
+                    <polyline points="19 12 12 19 5 12" />
+                  </svg>
                 </button>
               </div>
             )}
@@ -237,7 +241,9 @@ function Blogs() {
             {/* All articles viewed notice */}
             {!hasMore && blogs.length > 0 && (
               <div className={styles.endOfBlogs}>
-                <span>✨ You have viewed all {totalCount} articles ✨</span>
+                <SparkleIcon size={12} color="var(--color-primary)" />
+                <span style={{ margin: '0 8px' }}>You have viewed all {totalCount} articles</span>
+                <SparkleIcon size={12} color="var(--color-primary)" />
               </div>
             )}
           </>
