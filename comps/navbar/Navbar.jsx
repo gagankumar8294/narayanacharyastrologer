@@ -45,11 +45,13 @@ function NavBar() {
     setIsDropdownOpen(false);
   };
 
+  const isBlogRoute = router.pathname.startsWith('/blog');
+
   const navLinks = [
     { label: t.nav?.home || 'Home', href: '/' },
     { label: t.nav?.about || 'About', href: '/about' },
     { label: t.nav?.services || 'Services', href: '/#services' },
-    { label: t.nav?.blog || 'Blog', href: '/blog' },
+    { label: t.nav?.blog || 'Blog & Articles', href: '/blog', isBlog: true },
     { label: t.nav?.contact || 'Contact', href: '/contact' },
   ];
 
@@ -71,16 +73,19 @@ function NavBar() {
         {/* Desktop Navigation Links */}
         <nav className={styles.desktopNav} aria-label="Main Navigation">
           <ul className={styles.navMenuList}>
-            {navLinks.map((item) => (
-              <li key={item.href} className={styles.navItem}>
-                <Link
-                  href={item.href}
-                  className={`${styles.navLink} ${router.pathname === item.href ? styles.activeNavLink : ''}`}
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
+            {navLinks.map((item) => {
+              const isItemActive = item.isBlog ? isBlogRoute : router.pathname === item.href;
+              return (
+                <li key={item.href} className={styles.navItem}>
+                  <Link
+                    href={item.href}
+                    className={`${styles.navLink} ${isItemActive ? styles.activeNavLink : ''} ${item.isBlog ? styles.blogNavLink : ''}`}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </nav>
 
@@ -151,17 +156,21 @@ function NavBar() {
         <div className={styles.mobileOverlay}>
           <div className={styles.mobileDrawer}>
             <ul className={styles.mobileMenuList}>
-              {navLinks.map((item) => (
-                <li key={item.href} className={styles.mobileNavItem}>
-                  <Link
-                    href={item.href}
-                    className={styles.mobileNavLink}
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
+              {navLinks.map((item) => {
+                const isItemActive = item.isBlog ? isBlogRoute : router.pathname === item.href;
+                return (
+                  <li key={item.href} className={styles.mobileNavItem}>
+                    <Link
+                      href={item.href}
+                      className={`${styles.mobileNavLink} ${isItemActive ? styles.mobileActiveNavLink : ''}`}
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {item.isBlog && <span style={{ marginRight: '8px' }}>🪔</span>}
+                      {item.label}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
 
             <div className={styles.mobileActionBox}>

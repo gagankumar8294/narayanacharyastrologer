@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import AutoTypingText from '../comps/AutoTypingText';
 import DiwaliPromo from '@/comps/Diwali/Diwali';
+import RecentBlogs from '@/comps/Blogs/RecentBlogs';
 import RecentProducts from '@/comps/Products/RecentProducts';
 import StoreLocation from '@/comps/maps/StoreLocation';
 import SEO from '@/comps/SEO/SEO';
@@ -126,6 +127,10 @@ export default function Home() {
               <Link href="#services" className={styles.heroSecondaryBtn}>
                 {t.hero?.exploreBtn || "Explore Services"}
               </Link>
+
+              <Link href="/blog" className={styles.heroBlogBtn}>
+                <span>🪔 {t.nav?.blog || "Blog & Articles"}</span>
+              </Link>
             </div>
           </div>
 
@@ -210,6 +215,13 @@ export default function Home() {
             </div>
           ))}
         </div>
+
+        <div style={{ textAlign: "center", marginTop: "40px" }}>
+          <Link href="/blog" className={styles.servicesBlogLink}>
+            <span>🪔 Want in-depth Vedic guides and remedies? Read Our Blog</span>
+            <span>➔</span>
+          </Link>
+        </div>
       </section>
 
       {/* ================= WHY CHOOSE US ================= */}
@@ -278,6 +290,9 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      {/* ================= RECENT BLOG ARTICLES ================= */}
+      <RecentBlogs />
 
       {/* ================= RECENT SACRED PRODUCTS ================= */}
       <section>

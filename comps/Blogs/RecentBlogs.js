@@ -1,90 +1,120 @@
+// comps/Blogs/RecentBlogs.js
 import React, { useState, useEffect } from 'react';
-import { collection, getDocs, query, orderBy, limit } from 'firebase/firestore';
-import { db } from '../../firebaseConfig.js'; // Ensure correct path
-import Image from 'next/image';
-import styles from './Projects.module.css';
+import Link from 'next/link';
+import ImageWithSkeleton from '../Common/ImageWithSkeleton';
+import styles from './RecentBlogs.module.css';
 
 const RecentBlogs = () => {
-
-  const [isLargeScreen, setIsLargeScreen] = useState(true);
-  const [products, setProducts] = useState([]);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [fade, setFade] = useState(true);
+  const [blogs, setBlogs] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsLargeScreen(window.innerWidth > 764);
-    };
+    let isMounted = true;
 
-    handleResize(); // Set the initial state
-    window.addEventListener("resize", handleResize);
-
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  // Fetch the 3 most recent products from Firestore
-  useEffect(() => {
-    const fetchProducts = async () => {
+    async function fetchRecent() {
       try {
-        const q = query(collection(db, 'blogs'), orderBy('createdAt', 'desc'), limit(3));
-        const querySnapshot = await getDocs(q);
-        const fetchedProducts = querySnapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        setProducts(fetchedProducts);
-      } catch (error) {
-        console.error('Error fetching products:', error);
+        const res = await fetch('/api/blogs?limit=3&skip=0');
+        if (res.ok) {
+          const data = await res.json();
+          if (isMounted && data.blogs) {
+            setBlogs(data.blogs);
+          }
+        }
+      } catch (err) {
+        console.warn('Could not fetch recent blogs for homepage:', err);
+      } finally {
+        if (isMounted) setLoading(false);
       }
-    };
+    }
 
-    fetchProducts();
+    fetchRecent();
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
-  // Auto-slide every 5 seconds
-  useEffect(() => {
-    if (products.length > 0) {
-      const slideInterval = setInterval(() => {
-        setFade(false);
-        setTimeout(() => {
-          setCurrentIndex((prevIndex) => (prevIndex + 1) % products.length);
-          setFade(true);
-        }, 500);
-      }, 5000);
-
-      return () => clearInterval(slideInterval);
-    }
-  }, [products]);
-
-  if (products.length === 0) {
-    return <p>Loading products...</p>;
+  if (!loading && blogs.length === 0) {
+    return null; // Don't render empty section
   }
 
   return (
-    <>
-      {isLargeScreen ? ( 
-      <section className={styles.project_section}>
-        <h3 className={styles.service_heading}>Recent Products</h3>
-        <div className={styles.carousel}>
-          <button className={styles.leftButton} onClick={() => setCurrentIndex((prev) => (prev - 1 + products.length) % products.length)}>&lt;</button>
-          <div className={styles.imageContainer}>
-            <a href={products[currentIndex].url} target="_blank" rel="noopener noreferrer">
-              <Image
-                src={products[currentIndex].image}
-                alt={products[currentIndex].name}
-                width={600}
-                height={400}
-                className={`${styles.image} ${fade ? styles.fadeIn : styles.fadeOut}`}
-              />
-            </a>
-            <div className={styles.description}>{products[currentIndex].description}</div>
-          </div>
-          <button className={styles.rightButton} onClick={() => setCurrentIndex((prev) => (prev + 1) % products.length)}>&gt;</button>
+    <section className={styles.recentBlogsSection} aria-label="Latest Astrological Articles">
+      <div className={styles.container}>
+        {/* Section Header */}
+        <div className={styles.sectionHeader}>
+          <span className={styles.sectionBadge}>
+            ✦ ಜ್ಯೋತಿಷ್ಯ ಲೇಖನಗಳು & ಪಂಚಾಂಗ (Vedic Blog)
+          </span>
+          <h2 className={styles.sectionTitle}>
+            Latest Astrological Insights & Festival Guides
+          </h2>
+          <p className={styles.sectionSubtitle}>
+            Explore authentic Vedic wisdom, festival muhurthas, horoscope guidance, and Vaastu remedies by Brahma Sri Narayanacharya.
+          </p>
         </div>
-      </section>
-    ) : ( <h2>mobile width</h2>) }
-    </>
-    
+
+        {/* 3 Featured Blog Cards */}
+        <div className={styles.cardsGrid}>
+          {blogs.map((blog) => {
+            const formattedDate = blog.createdOn
+              ? new Date(blog.createdOn).toLocaleDateString('en-IN', {
+                  month: 'short',
+                  day: 'numeric',
+                  year: 'numeric',
+                })
+              : null;
+
+            return (
+              <Link
+                href={`/blog/${encodeURIComponent(blog.slug)}`}
+                key={blog.id}
+                className={styles.card}
+              >
+                <div className={styles.imageWrapper}>
+                  <ImageWithSkeleton
+                    src={blog.imageUrl}
+                    alt={blog.imageAlt || blog.title}
+                    aspectRatio="16/10"
+                    priority={false}
+                  />
+                  {formattedDate && (
+                    <span className={styles.cardDateBadge}>
+                      {formattedDate}
+                    </span>
+                  )}
+                </div>
+
+                <div className={styles.cardBody}>
+                  <div>
+                    <span className={styles.cardTag}>
+                      {blog.category ? blog.category.replace(/-/g, ' ') : 'Vedic Astrology'}
+                    </span>
+                    <h3 className={styles.cardTitle}>{blog.title}</h3>
+                    {blog.snippet && (
+                      <p className={styles.cardSnippet}>{blog.snippet}</p>
+                    )}
+                  </div>
+
+                  <span className={styles.readMoreLink}>
+                    <span>Read Full Article</span>
+                    <span>➔</span>
+                  </span>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+
+        {/* Big CTA Button linking directly to /blog */}
+        <div className={styles.ctaContainer}>
+          <Link href="/blog" className={styles.viewAllBtn}>
+            <span>View All Articles & Muhurthas (Blog)</span>
+            <span>➔</span>
+          </Link>
+        </div>
+      </div>
+    </section>
   );
 };
 

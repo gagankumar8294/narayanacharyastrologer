@@ -50,6 +50,12 @@ const Footer = () => {
               <span className={styles.badgeItem}>✦ 8+ Years Vedic Sadhana</span>
               <span className={styles.badgeItem}>✦ Authentic Vishwakarma Lineage</span>
             </div>
+            <div style={{ marginTop: '12px' }}>
+              <Link href="/blog" className={styles.footerBlogBadge}>
+                <span>🪔 Read Our Astrological Blog (21+ Articles)</span>
+                <span>➔</span>
+              </Link>
+            </div>
           </div>
 
           {/* Column 2: Quick Links */}

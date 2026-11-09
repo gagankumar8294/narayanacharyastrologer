@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Link from "next/link";
 import SEO from "@/comps/SEO/SEO";
 import StoreLocation from "@/comps/maps/StoreLocation";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -166,6 +167,54 @@ export default function Contact() {
               )}
             </div>
           </div>
+        </div>
+
+        {/* Blog Guidance Notice */}
+        <div style={{
+          background: '#ffffff',
+          borderRadius: '16px',
+          padding: '24px 28px',
+          border: '1px solid rgba(255, 104, 1, 0.25)',
+          boxShadow: '0 4px 18px rgba(15, 8, 29, 0.05)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          flexWrap: 'wrap',
+          gap: '16px',
+          marginTop: '40px',
+          marginBottom: '20px'
+        }}>
+          <div>
+            <span style={{ fontSize: '0.8rem', fontWeight: 800, color: 'var(--color-primary, #ff6801)', textTransform: 'uppercase', letterSpacing: '0.6px' }}>
+              ✦ Free Spiritual Guidance
+            </span>
+            <h3 style={{ fontFamily: 'var(--font-heading, "Cinzel", serif)', fontSize: '1.25rem', margin: '4px 0 6px', color: '#1e1b29' }}>
+              Looking for authentic astrological articles and festival muhurthas?
+            </h3>
+            <p style={{ margin: 0, fontSize: '0.92rem', color: '#5e5a6f' }}>
+              Explore comprehensive guides authored by Brahma Sri Narayanacharya on our blog.
+            </p>
+          </div>
+          <Link
+            href="/blog"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              padding: '10px 24px',
+              background: 'var(--color-primary-gradient, linear-gradient(135deg, #ff6801, #ff8c38))',
+              color: '#ffffff',
+              borderRadius: '9999px',
+              fontSize: '0.9rem',
+              fontWeight: 750,
+              textDecoration: 'none',
+              boxShadow: '0 4px 14px rgba(255, 104, 1, 0.3)',
+              whiteSpace: 'nowrap'
+            }}
+          >
+            <span>Visit Blog (21+ Articles)</span>
+            <span>➔</span>
+          </Link>
         </div>
 
         {/* Kendra Map */}

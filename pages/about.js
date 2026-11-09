@@ -131,6 +131,21 @@ export default function About() {
             Hailing from the sacred Vishwakarma artisan-scholar tradition, Brahma Sri Narayanacharya brings inherited intuitive clarity to structural Vaastu, directional geometry, and planetary energy balance. His consultations help individuals align their inner energy (Horoscope) with their outer dwelling (Vaastu).
           </p>
         </div>
+
+        {/* Astrological Writings & Blog Callout */}
+        <div className={styles.blogBannerCallout}>
+          <div>
+            <span className={styles.blogBannerBadge}>🪔 Vedic Articles & Muhurthas</span>
+            <h3 className={styles.blogBannerTitle}>Explore Guruji's Astrological Writings & Insights</h3>
+            <p className={styles.blogBannerDesc}>
+              Read authentic festival articles (Deepavali, Makar Sankranti, Vaikuntha Ekadashi), planetary dosha remedies, and daily wellness guides.
+            </p>
+          </div>
+          <Link href="/blog" className={styles.blogBannerBtn}>
+            <span>Visit Blog Page</span>
+            <span>➔</span>
+          </Link>
+        </div>
       </div>
     </div>
   );

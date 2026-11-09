@@ -130,6 +130,16 @@
   color: var(--color-primary);
 }
 
+.blogNavLink {
+  position: relative;
+}
+
+.blogNavLink::before {
+  content: '🪔';
+  font-size: 0.75rem;
+  margin-right: 4px;
+}
+
 /* Right Actions */
 .navActions {
   display: flex;
@@ -345,6 +355,13 @@
   .mobileNavLink:hover {
     color: var(--color-primary);
     background: #fff8f2;
+  }
+
+  .mobileActiveNavLink {
+    color: var(--color-primary) !important;
+    background: #fff4ea !important;
+    font-weight: 800;
+    border-left: 3px solid var(--color-primary);
   }
 
   .mobileActionBox {
